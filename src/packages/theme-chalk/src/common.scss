@@ -1,0 +1,43 @@
+@import './element-ui.scss';
+@import './data-display.scss';
+@import './data-card.scss';
+@import './data-tabs.scss';
+@import './data-icons.scss';
+@import './data-box.scss';
+@import './crud-quill/quill.core.css';
+@import './crud-quill/quill.snow.css';
+@import './crud-quill/quill.bubble.css';
+.avue-row {
+    width: 100%;
+    height: auto;
+    overflow: hidden
+}
+
+.avue-dialog {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.avue-tip {
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    i {
+        font-size: 16px;
+    }
+    .name {
+        margin-right: 10px;
+        color: #333;
+    }
+    .count {
+        padding: 0 6px;
+        color: #409eff;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .menu {
+        cursor: pointer;
+    }
+}
