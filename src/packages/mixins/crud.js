@@ -132,7 +132,7 @@ export default function() {
                             if (validatenull(this.option.dicUrl)) {
                                 resolve(locaDic[ele]);
                             } else {
-                                this.GetDicByType(`${this.option.dicUrl.replace('{{key}}',ele.dicData)}`).then(function(res) {
+                                this.GetDicByType(`${this.option.dicUrl.replace('{{key}}',ele)}`).then(function(res) {
                                     resolve(res);
                                 })
                             }
@@ -140,7 +140,7 @@ export default function() {
                     })
                     cascaderList.forEach(ele => {
                         result.push(new Promise((resolve) => {
-                            this.GetDicByType(`${ele.dicUrl.replace('{{key}}',ele.dicData)}`).then(function(res) {
+                            this.GetDicByType(`${ele.dicUrl.replace('{{key}}',ele)}`).then(function(res) {
                                 list.push(ele.dicData);
                                 resolve(res);
                             })
