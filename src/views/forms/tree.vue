@@ -8,7 +8,6 @@
     <basic-container>
       <tree-view :data="option"
                  :options="jsonOption"></tree-view>
-      </el-input>
     </basic-container>
   </div>
 </template>
@@ -37,7 +36,7 @@ export default {
 
   },
   methods: {
-    handleSubmit (form) {
+    handleSubmit () {
       this.$message({
         message: this.form,
         type: "success"

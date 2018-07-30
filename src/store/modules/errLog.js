@@ -8,7 +8,7 @@ const errLog = {
             state.errLog.push(log)
             setStore({ name: 'errLog', content: state.errLog })
         },
-        CLEAR_ALL_LOG: (state, action) => {
+        CLEAR_ALL_LOG: (state) => {
             state.errLog = [];
             setStore({ name: 'errLog', content: state.errLog })
         }

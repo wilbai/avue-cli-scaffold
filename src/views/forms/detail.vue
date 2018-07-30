@@ -6,8 +6,7 @@
 
         <template slot="zdy"
                   slot-scope="scope">
-          自定义区域内容卡槽</br>
-          回传数据：{{scope}}
+          自定义区域内容卡槽<br /> 回传数据：{{scope}}
         </template>
         <template slot="ztForm"
                   slot-scope="scope">

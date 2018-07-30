@@ -3,7 +3,7 @@
 这是基于vue-cli@3.0改的一个脚手架  
 
 ## Run vueUI
-* 1.npm install vue -g 全局安装vue脚手架最新版
+* 1.npm install -g @vue/cli  全局安装vue脚手架最新版
 * 2.vue --version 查看版本是否为3.x版本
 * 3.vue-ui 运行管理工具，导入avue-cli项目
 * 4.剩下的自己摸索吧，下面时图示

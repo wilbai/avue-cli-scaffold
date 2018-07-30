@@ -70,7 +70,7 @@ export default {
     handleWitch () {
       this.form = this.obj[this.type];
     },
-    handleSubmit (form) {
+    handleSubmit () {
       this.$message({
         message: this.form,
         type: "success"

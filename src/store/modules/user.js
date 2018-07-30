@@ -1,8 +1,8 @@
-import { getToken, setToken, removeToken } from '@/util/auth'
-import { setStore, getStore, removeStore } from '@/util/store'
+import { setToken, removeToken } from '@/util/auth'
+import { setStore, getStore } from '@/util/store'
 import { validatenull } from '@/util/validate'
 import { encryption } from '@/util/util'
-import { loginByUsername, getUserInfo, getTableData, getMenu, logout, getMenuAll, RefeshToken } from '@/api/user'
+import { loginByUsername, getUserInfo, getTableData, getMenu, logout, getMenuAll } from '@/api/user'
 const user = {
     state: {
         userInfo: {},
@@ -14,14 +14,14 @@ const user = {
     },
     actions: {
         //根据用户名登录
-        LoginByUsername({ commit, state, dispatch }, userInfo) {
+        LoginByUsername({ commit }, userInfo) {
             const user = encryption({
                 data: userInfo,
                 type: 'Aes',
                 key: 'avue',
                 param: ['useranme', 'password']
             });
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 loginByUsername(user.username, user.password, userInfo.code, userInfo.redomStr).then(res => {
                     const data = res.data;
                     commit('SET_TOKEN', data);
@@ -33,8 +33,8 @@ const user = {
             })
         },
         //根据手机号登录
-        LoginByPhone({ commit, state, dispatch }, userInfo) {
-            return new Promise((resolve, reject) => {
+        LoginByPhone({ commit }, userInfo) {
+            return new Promise((resolve) => {
                 loginByUsername(userInfo.phone, userInfo.code).then(res => {
                     const data = res.data;
                     commit('SET_TOKEN', data);
@@ -45,16 +45,16 @@ const user = {
                 })
             })
         },
-        GetTableData({ commit, state, dispatch }, page) {
-            return new Promise((resolve, reject) => {
+        GetTableData(params, page) {
+            return new Promise((resolve) => {
                 getTableData(page).then(res => {
                     const data = res.data;
                     resolve(data);
                 })
             })
         },
-        GetUserInfo({ commit, state, dispatch }) {
-            return new Promise((resolve, reject) => {
+        GetUserInfo({ commit }) {
+            return new Promise((resolve) => {
                 getUserInfo().then((res) => {
                     const data = res.data;
                     commit('SET_USERIFNO', data.userInfo);
@@ -65,11 +65,11 @@ const user = {
             })
         },
         //刷新token
-        RefeshToken({ commit, state }) {
+        RefeshToken({ commit }) {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
-                    commit('SET_TOKEN', data);
-                    setToken(data);
+                    commit('SET_TOKEN', new Date().getTime());
+                    setToken();
                     resolve();
                 }).catch(error => {
                     reject(error)
@@ -77,7 +77,7 @@ const user = {
             })
         },
         // 登出
-        LogOut({ commit, state }) {
+        LogOut({ commit }) {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
                     commit('SET_TOKEN', '')

@@ -1,9 +1,6 @@
 import {
     validatenull
 } from './validate'
-import {
-    baseUrl
-} from '@/config/env'
 /**
  * 设置灰度模式
  */
@@ -73,7 +70,7 @@ export const encryption = (params) => {
         })
     } else if (type == 'Aes') {
         param.forEach(ele => {
-            result[ele] = CryptoJS.AES.encrypt(result[ele], key).toString();
+            result[ele] = window.CryptoJS.AES.encrypt(result[ele], key).toString();
         })
 
     }
@@ -91,35 +88,35 @@ export const setTitle = function(title) {
  * 浏览器判断是否全屏
  */
 export const fullscreenToggel = () => {
-        if (fullscreenEnable()) {
-            exitFullScreen();
-        } else {
-            reqFullScreen();
-        }
+    if (fullscreenEnable()) {
+        exitFullScreen();
+    } else {
+        reqFullScreen();
     }
-    /**
-     * esc监听全屏
-     */
+};
+/**
+ * esc监听全屏
+ */
 export const listenfullscreen = (callback) => {
-        function listen() {
-            callback()
-        }
-        document.addEventListener("fullscreenchange", function(e) {
-            listen();
-        });
-        document.addEventListener("mozfullscreenchange", function(e) {
-            listen();
-        });
-        document.addEventListener("webkitfullscreenchange", function(e) {
-            listen();
-        });
-        document.addEventListener("msfullscreenchange", function(e) {
-            listen();
-        });
+    function listen() {
+        callback()
     }
-    /**
-     * 浏览器判断是否全屏
-     */
+    document.addEventListener("fullscreenchange", function() {
+        listen();
+    });
+    document.addEventListener("mozfullscreenchange", function() {
+        listen();
+    });
+    document.addEventListener("webkitfullscreenchange", function() {
+        listen();
+    });
+    document.addEventListener("msfullscreenchange", function() {
+        listen();
+    });
+};
+/**
+ * 浏览器判断是否全屏
+ */
 export const fullscreenEnable = () => {
     var isFullscreen = document.fullscreenEnabled ||
         window.fullScreen ||
@@ -245,7 +242,6 @@ export const findArray = (dic, value) => {
         for (let i = 0; i < dic.length; i++) {
             if (dic[i].value == value) {
                 return i;
-                break;
             }
         }
         return -1;

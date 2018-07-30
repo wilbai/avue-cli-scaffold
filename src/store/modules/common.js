@@ -4,14 +4,8 @@ import {
     removeStore
 } from '@/util/store'
 import {
-    validatenull
-} from '@/util/validate'
-import {
     getDic
 } from '@/api/admin'
-import {
-    baseUrl
-} from '@/config/env';
 import website from '@/const/website'
 const common = {
 
@@ -34,12 +28,8 @@ const common = {
     },
     actions: {
         //获取字典公用类
-        GetDic({
-            commit,
-            state,
-            dispatch
-        }, dic) {
-            return new Promise((resolve, reject) => {
+        GetDic(params, dic) {
+            return new Promise((resolve) => {
                 if (dic instanceof Array) {
                     Promise.all(dic.map(ele => getDic(ele))).then(data => {
                         let result = {};
@@ -53,13 +43,13 @@ const common = {
         }
     },
     mutations: {
-        SET_COLLAPSE: (state, action) => {
+        SET_COLLAPSE: (state) => {
             state.isCollapse = !state.isCollapse;
         },
-        SET_FULLSCREN: (state, action) => {
+        SET_FULLSCREN: (state) => {
             state.isFullScren = !state.isFullScren;
         },
-        SET_LOCK: (state, action) => {
+        SET_LOCK: (state) => {
             state.isLock = true;
             setStore({
                 name: 'isLock',
@@ -89,7 +79,7 @@ const common = {
                 type: 'session'
             })
         },
-        CLEAR_LOCK: (state, action) => {
+        CLEAR_LOCK: (state) => {
             state.isLock = false;
             state.lockPasswd = '';
             removeStore({

@@ -35,7 +35,6 @@
 
 <script>
 import { setStore, getStore, removeStore } from '@/util/store'
-import { DIC } from "@/const/dic";
 import { validatenull } from "@/util/validate";
 import tableOption from "@/const/table/tableGenerator";
 import formOption from "@/const/table/formGenerator";
@@ -84,13 +83,13 @@ export default {
 
   watch: {
     column: {
-      handler (n, o) {
+      handler (n) {
         setStore({ name: '$table', content: n })
       },
       deep: true
     },
     form: {
-      handler (n, o) {
+      handler (n) {
         setStore({ name: '$form', content: n })
       },
       deep: true
@@ -116,10 +115,10 @@ export default {
       removeStore({ name: '$form' })
       this.$message.success(`清除成功`)
     },
-    onCopy (e) {
+    onCopy () {
       this.$message.success(`复制成功`)
     },
-    onError (e) {
+    onError () {
       this.$message.error(`复制失败`)
     },
     handleSave (row, done) {
@@ -140,7 +139,7 @@ export default {
       }).then(() => {
         this.column.splice(index, 1);
         this.$message.success('删除成功');
-      }).catch(err => { });
+      }).catch(() => { });
     }
   }
 };

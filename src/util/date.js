@@ -12,6 +12,9 @@ export const calcDate = (date1, date2) => {
     var leave3 = leave2 % (60 * 1000) //计算分钟数后剩余的毫秒数  
     var seconds = Math.round(date3 / 1000)
     return {
+        leave1,
+        leave2,
+        leave3,
         days: days,
         hours: hours,
         minutes: minutes,

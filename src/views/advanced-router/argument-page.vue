@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import tableOption from "@/const/router/routerOption";
 import tableData from "@/const/router/routerData";
 export default {

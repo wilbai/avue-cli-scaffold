@@ -8,7 +8,6 @@
     <basic-container>
       <tree-view :data="option"
                  :options="jsonOption"></tree-view>
-      </el-input>
     </basic-container>
   </div>
 </template>

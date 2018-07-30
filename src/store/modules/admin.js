@@ -4,16 +4,16 @@ const user = {
 
     },
     actions: {
-        GetUserData({ commit, state, dispatch }, page) {
-            return new Promise((resolve, reject) => {
+        GetUserData(params, page) {
+            return new Promise((resolve) => {
                 getUserData(page).then(res => {
                     const data = res.data;
                     resolve(data);
                 })
             })
         },
-        GetRoleData({ commit, state, dispatch }, page) {
-            return new Promise((resolve, reject) => {
+        GetRoleData(params, page) {
+            return new Promise((resolve) => {
                 getRoleData(page).then(res => {
                     const data = res.data;
                     resolve(data);

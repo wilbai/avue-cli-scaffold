@@ -123,7 +123,7 @@ export default {
             type: "success"
           });
         })
-        .catch(err => { });
+        .catch(() => { });
     },
     /**
      * @title 数据更新

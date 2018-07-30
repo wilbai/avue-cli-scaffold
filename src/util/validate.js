@@ -52,7 +52,7 @@ export const vaildatePc = function() {
      * @returns {boolean}
      */
 export function validateEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return re.test(email)
 }
 
@@ -122,7 +122,6 @@ export function cardid(code) {
                     wi = factor[i];
                     sum += ai * wi;
                 }
-                var last = parity[sum % 11];
                 if (parity[sum % 11] != code[17]) {
                     msg = "证件号码校验位错误";
                 } else {
@@ -150,7 +149,6 @@ export function isvalidatemobile(phone) {
     let msg = '';
     var isPhone = /^0\d{2,3}-?\d{7,8}$/;
     //增加134 减少|1349[0-9]{7}，增加181,增加145，增加17[678]  
-    var isMob = /^((\+?86)|(\(\+86\)))?(13[0123456789][0-9]{8}|15[012356789][0-9]{8}|18[012356789][0-9]{8}|14[57][0-9]{8}|17[3678][0-9]{8})$/;
     if (!validatenull(phone)) {
         if (phone.length == 11) {
             if (isPhone.test(phone)) {

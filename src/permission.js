@@ -2,9 +2,7 @@ import router from './router/router'
 import store from './store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import {
-    getToken
-} from '@/util/auth'
+
 import {
     setTitle
 } from '@/util/util';
@@ -15,12 +13,10 @@ NProgress.configure({
     showSpinner: false
 });
 const lockPage = store.getters.website.lockPage;
-router.addRoutes(asyncRouterMap); // 动态添加可访问路由表
+router.addRoutes(asyncRouterMap);
 router.beforeEach((to, from, next) => {
-    NProgress.start() // start progress bar
-
-    if (store.getters.token) { // determine if there has token
-        /* has token*/
+    NProgress.start()
+    if (store.getters.token) {
         if (store.getters.isLock && to.path != lockPage) {
             next({
                 path: lockPage
@@ -33,7 +29,7 @@ router.beforeEach((to, from, next) => {
             NProgress.done();
         } else {
             if (store.getters.roles.length === 0) {
-                store.dispatch('GetUserInfo').then(res => {
+                store.dispatch('GetUserInfo').then(() => {
                     next({...to,
                         replace: true
                     })
@@ -67,7 +63,6 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
-        /* has no token*/
         let flag = true;
         const whiteList = store.getters.website.whiteList
         for (let i = 0; i < whiteList.length; i++) {
@@ -90,6 +85,5 @@ router.afterEach(() => {
     setTimeout(() => {
         const tag = store.getters.tag;
         setTitle(tag.label);
-
     }, 0);
 })

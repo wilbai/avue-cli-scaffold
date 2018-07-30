@@ -1,5 +1,4 @@
 import { setStore, getStore, removeStore } from '@/util/store'
-import { validatenull } from "@/util/validate"
 const tagObj = {
     label: '',
     value: '',
@@ -7,6 +6,7 @@ const tagObj = {
     num: '',
     close: true,
 }
+
 function setFistTag(list) {
     if (list.length == 1) {
         list[0].close = false;
@@ -56,14 +56,14 @@ const navs = {
                 }
             });
         },
-        DEL_ALL_TAG: (state, action) => {
+        DEL_ALL_TAG: (state) => {
             state.tag = tagObj;
             state.tagList = [];
             state.tagList.push(state.tagWel);
             removeStore({ name: 'tag' });
             removeStore({ name: 'tagList' });
         },
-        DEL_TAG_OTHER: (state, action) => {
+        DEL_TAG_OTHER: (state) => {
             state.tagList.forEach((ele, num) => {
                 if (ele.value === state.tag.value) {
                     state.tagList = state.tagList.slice(num, num + 1)

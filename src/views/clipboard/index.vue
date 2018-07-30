@@ -32,7 +32,7 @@ export default {
       this.$message(`复制成功${e.text}`)
     },
     onError (e) {
-      this.$message.error(`复制失败`)
+      this.$message.error(`复制失败${e}`)
     }
   }
 }

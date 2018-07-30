@@ -88,7 +88,7 @@ export default {
     };
   },
   created () {
-    this.$store.dispatch("GetMenuAll").then(data => { });
+    this.$store.dispatch("GetMenuAll").then(() => { });
   },
   mounted () { },
   computed: {
@@ -96,7 +96,7 @@ export default {
   },
   props: [],
   methods: {
-    handleNodeClick (data, checked, indeterminate) {
+    handleNodeClick (data) {
       this.parentForm = Object.assign({}, findParent(this.menuAll, data.id));
       this.formGrade = true;
       this.formStatus = "";
@@ -134,7 +134,7 @@ export default {
             type: "success"
           });
         })
-        .catch(err => { });
+        .catch(() => { });
     },
     handleSubmit () { }
   }

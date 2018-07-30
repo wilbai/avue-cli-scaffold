@@ -105,10 +105,10 @@
                      icon="el-icon-check"
                      size="small"
                      plain
-                     @click.stop.safe="handleEdit(scope.row,scope.index)">编辑</el-button>
+                     @click.stop.self="handleEdit(scope.row,scope.index)">编辑</el-button>
           <el-button icon="el-icon-check"
                      size="small"
-                     @click.stop.safe="handleGrade(scope.row,scope.index)">权限</el-button>
+                     @click.stop.self="handleGrade(scope.row,scope.index)">权限</el-button>
         </template>
       </avue-crud>
     </basic-container>
@@ -139,6 +139,7 @@
 import { mapGetters } from 'vuex';
 import html2canvas from 'html2canvas';
 import tableOption from '@/const/table/tableOption';
+import { parseTime } from '@/filters/'
 import { validatenull } from '@/util/validate';
 export default {
   name: 'table',
@@ -179,7 +180,7 @@ export default {
   },
   props: [],
   methods: {
-    tableRowClassName ({ row, rowIndex }) {
+    tableRowClassName ({ rowIndex }) {
       if (rowIndex === 1) {
         return 'warning-row';
       } else if (rowIndex === 3) {
@@ -217,7 +218,7 @@ export default {
      * @title 权限选择
      *
      **/
-    handleGradeCheckChange (data, checked, indeterminate) {
+    handleGradeCheckChange (data, checked) {
       if (checked) {
         this.grade.check.push(data.id);
       } else {
@@ -248,8 +249,8 @@ export default {
     /**
      * @title 打开权限
      */
-    handleGrade (row, index) {
-      this.$store.dispatch('GetMenuAll').then(data => {
+    handleGrade (row) {
+      this.$store.dispatch('GetMenuAll').then(() => {
         this.grade.box = true;
         this.tabelObj = row;
         this.grade.check = this.tabelObj.check;
@@ -273,7 +274,6 @@ export default {
      *
      **/
     handleJpeg () {
-      let vm = this;
       let table = this.$refs.crud.$el;
       html2canvas(table).then(canvas => {
         var url = canvas.toDataURL();
@@ -382,9 +382,10 @@ export default {
      *
      **/
     handleRowDBLClick (row, event) {
+      console.log(row, event);
       this.$notify({
         showClose: true,
-        message: '双击',
+        message: '双击' + row,
         type: 'success',
       });
     },
@@ -397,6 +398,7 @@ export default {
      *
      **/
     handleRowClick (row, event, column) {
+      console.log(row, event, column)
       this.$notify({
         showClose: true,
         message: '单机',
@@ -441,7 +443,7 @@ export default {
             type: 'success',
           });
         })
-        .catch(err => { });
+        .catch(() => { });
     },
     /**
      * @title 数据更新

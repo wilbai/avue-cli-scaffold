@@ -9,7 +9,6 @@ export const setStore = (params) => {
             name,
             content,
             type,
-            datetime
         } = params;
         let obj = {
             dataType: typeof(content),
@@ -32,8 +31,8 @@ export const getStore = (params) => {
         } = params;
         let obj = {},
             content;
-        obj = window.localStorage.getItem(name);
-        if (validatenull(obj)) obj = window.sessionStorage.getItem(name);
+        if (validatenull(type)) obj = window.sessionStorage.getItem(name);
+        else obj = window.localStorage.getItem(name);
         if (validatenull(obj)) return;
         obj = JSON.parse(obj);
         if (debug) {

@@ -86,7 +86,7 @@ export default {
      * @title 权限选择
      *
      **/
-    handleGradeCheckChange (data, checked, indeterminate) {
+    handleGradeCheckChange (data, checked) {
       if (checked) {
         this.grade.check.push(data.id);
       } else {
@@ -96,8 +96,8 @@ export default {
     /**
      * @title 打开权限
      */
-    handleGrade (row, index) {
-      this.$store.dispatch("GetMenuAll").then(data => {
+    handleGrade (row) {
+      this.$store.dispatch("GetMenuAll").then(() => {
         this.grade.box = true;
         this.tabelObj = row;
         this.grade.check = this.tabelObj.check;
@@ -166,7 +166,7 @@ export default {
             type: "success"
           });
         })
-        .catch(err => { });
+        .catch(() => { });
     },
     /**
      * @title 数据更新

@@ -5,7 +5,7 @@
         <el-form :model="searchForm"
                  :inline="true"
                  ref="searchForm"
-                 v-if="searchFlag && searchShow ">
+                 v-if="searchShow && searchFlag">
           <!-- 循环列搜索框 -->
           <el-form-item :label="column.label"
                         :prop="column.prop"
@@ -58,7 +58,7 @@
                    circle
                    size="small"
                    @click="searchShow=!searchShow"
-                   v-if="vaildData(option.showSearchBtn,true) && searchFlag"></el-button>
+                   v-if="vaildData(option.showSearchBtn,true)"></el-button>
       </div>
     </div>
     <el-tag class="avue-tip"
@@ -273,13 +273,7 @@ export default {
       return this.tableSelect ? this.tableSelect.length : 0;
     },
     searchFlag () {
-      if (validatenull(this.searchForm)) {
-        this.searchShow = false;
-        return false;
-      } else {
-        this.searchShow = true;
-        return true
-      }
+      return !this.validatenull(this.searchForm);
     },
     formOption () {
       let option = Object.assign({}, this.option);
@@ -357,7 +351,6 @@ export default {
           this.showClomnuIndex.push(index);
         }
         if (ele.showClomnu != false) {
-
           let obj = {
             label: ele.label,
             index: index
