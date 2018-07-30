@@ -63,6 +63,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    parentCheck:{
+      type: Boolean,
+      default: true,
+    },
     prefixIcon: {
       type: String,
     },
@@ -172,7 +176,7 @@ export default {
       });
     },
     handleNodeClick (data) {
-      if (validatenull(data[this.childrenKey]) && !this.multiple) {
+      if (validatenull(data[this.childrenKey]) && !this.multiple || this.parentCheck) {
         this.box = false;
         const value = data[this.valueKey];
         const label = data[this.labelKey];

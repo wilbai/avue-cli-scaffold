@@ -105,10 +105,10 @@
                      icon="el-icon-check"
                      size="small"
                      plain
-                     @click.stop.self="handleEdit(scope.row,scope.index)">编辑</el-button>
+                     @click.stop="handleEdit(scope.row,scope.index)">编辑</el-button>
           <el-button icon="el-icon-check"
                      size="small"
-                     @click.stop.self="handleGrade(scope.row,scope.index)">权限</el-button>
+                     @click.stop="handleGrade(scope.row,scope.index)">权限</el-button>
         </template>
       </avue-crud>
     </basic-container>

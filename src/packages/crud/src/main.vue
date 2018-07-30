@@ -154,12 +154,12 @@
             <el-button type="primary"
                        icon="el-icon-edit"
                        size="small"
-                       @click.stop.self="rowEdit(scope.row,scope.$index)"
+                       @click.stop="rowEdit(scope.row,scope.$index)"
                        v-if="vaildData(option.editBtn,true)">编 辑</el-button>
             <el-button type="danger"
                        icon="el-icon-delete"
                        size="small"
-                       @click.stop.self="rowDel(scope.row,scope.$index)"
+                       @click.stop="rowDel(scope.row,scope.$index)"
                        v-if="vaildData(option.delBtn,true)">删 除</el-button>
           </template>
           <slot :row="scope.row"

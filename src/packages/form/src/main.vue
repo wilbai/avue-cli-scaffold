@@ -34,6 +34,7 @@
                            :controls-position="column.controlsPosition"
                            :expand-trigger="column.expandTrigger"
                            :size="column.size"
+                           :parentCheck="column.parentCheck"
                            :colors="column.colors"
                            :action="column.action"
                            :limit="column.limit"
