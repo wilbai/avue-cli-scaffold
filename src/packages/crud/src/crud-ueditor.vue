@@ -57,16 +57,3 @@ export default {
 };
 </script>
 
-
-<style lang="scss">
-.avue-editor {
-  position: relative;
-  // overflow: hidden;
-  .ql-container {
-    height: calc(100% - 98px) !important;
-  }
-  .ql-editor {
-    height: 100%;
-  }
-}
-</style>

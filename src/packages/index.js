@@ -23,7 +23,6 @@ import FormSteps from './form-steps/index.js'
 import FormDetail from './form-detail/index.js'
 import TableTree from './table-tree';
 import { vaildData } from './utils/util'
-import './theme-chalk/src/common.scss'
 const components = [
     Crud,
     Form,

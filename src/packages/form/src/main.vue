@@ -143,7 +143,7 @@ export default {
     // 验证表单是否禁止
     vaildDisabled (column) {
       if (!(this.boxType)) {
-        return column.disabled || false;
+        return this.vaildData(column.disabled, false);
       } else if (this.boxType == 'add') {
         return this.vaildData(column.addDisabled, false)
       } else if (this.boxType == 'edit') {
@@ -153,7 +153,7 @@ export default {
     //验证表单是否显隐
     vaildVisdiplay (column) {
       if (!(this.boxType)) {
-        return column.visdiplay || true;
+        return this.vaildData(column.visdiplay, true);
       } else if (this.boxType == 'add') {
         return this.vaildData(column.addVisdiplay, true)
       } else if (this.boxType == 'edit') {
@@ -239,25 +239,3 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.from {
-  padding: 8px 10px;
-}
-.from {
-  .el-checkbox + .el-checkbox {
-    margin-left: 20px;
-  }
-}
-.form-menu {
-  width: 100%;
-  &.is-center {
-    text-align: center;
-  }
-  &.is-left {
-    text-align: left;
-  }
-  &.is-right {
-    text-align: right;
-  }
-}
-</style>

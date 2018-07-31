@@ -9,44 +9,44 @@ import AvueCurdInputNumber from './src/crud-input-number';
 import AvueCurdUeditor from './src/crud-ueditor';
 import AvueCurdSwitch from './src/crud-switch';
 import AvueCurdRate from './src/crud-rate';
-import AvueCurdUpload from './src/crud-upload'
-import AvueCurdSilder from './src/crud-silder'
+import AvueCurdUpload from './src/crud-upload';
+import AvueCurdSilder from './src/crud-silder';
 import AvueCrud from './src/main';
 const components = [
-    AvueCrud,
-    AvueCurdCheckbox,
-    AvueCurdDate,
-    AvueCurdTime,
-    AvueCurdInput,
-    AvueCurdRadio,
-    AvueCurdSelect,
-    AvueCurdCascader,
-    AvueCurdInputNumber,
-    AvueCurdUeditor,
-    AvueCurdSwitch,
-    AvueCurdRate,
-    AvueCurdUpload,
-    AvueCurdSilder
-]
+  AvueCrud,
+  AvueCurdCheckbox,
+  AvueCurdDate,
+  AvueCurdTime,
+  AvueCurdInput,
+  AvueCurdRadio,
+  AvueCurdSelect,
+  AvueCurdCascader,
+  AvueCurdInputNumber,
+  AvueCurdUeditor,
+  AvueCurdSwitch,
+  AvueCurdRate,
+  AvueCurdUpload,
+  AvueCurdSilder
+];
 
 /* istanbul ignore next */
 export default function(Vue) {
-    components.map(component => {
-        Vue.component(component.name, component);
-    });
+  components.map(component => {
+    Vue.component(component.name, component);
+  });
 }
 
 export {
-    AvueCrud,
-    AvueCurdCheckbox,
-    AvueCurdDate,
-    AvueCurdTime,
-    AvueCurdInput,
-    AvueCurdRadio,
-    AvueCurdSelect,
-    AvueCurdInputNumber,
-    AvueCurdUeditor,
-    AvueCurdSwitch,
-    AvueCurdRate,
-    AvueCurdSilder
+  AvueCrud,
+  AvueCurdCheckbox,
+  AvueCurdDate,
+  AvueCurdTime,
+  AvueCurdInput,
+  AvueCurdRadio,
+  AvueCurdSelect,
+  AvueCurdInputNumber,
+  AvueCurdUeditor,
+  AvueCurdSwitch,
+  AvueCurdRate,
+  AvueCurdSilder
 };

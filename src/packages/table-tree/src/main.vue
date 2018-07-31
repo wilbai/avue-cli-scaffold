@@ -60,25 +60,25 @@ export default {
     evalFunc: Function,
     evalArgs: Array
   },
-  data() {
+  data () {
     return {};
   },
-  created() {},
+  created () { },
   computed: {
-    data: function() {
+    data: function () {
       return this.option.data || [];
     },
-    columns: function() {
+    columns: function () {
       return this.option.columns || [];
     },
-    expandAll: function() {
+    expandAll: function () {
       return this.option.expandAll;
     },
-    border: function() {
+    border: function () {
       return this.option.border || true;
     },
     // 格式化数据源
-    formatData: function() {
+    formatData: function () {
       let tmp;
       if (!Array.isArray(this.data)) {
         tmp = [this.data];
@@ -93,7 +93,7 @@ export default {
     }
   },
   methods: {
-    showRow: function(row) {
+    showRow: function (row) {
       const show = row.row.parent
         ? row.row.parent._expanded && row.row.parent._show
         : true;
@@ -103,64 +103,14 @@ export default {
         : "display:none;";
     },
     // 切换下级是否展开
-    toggleExpanded: function(trIndex) {
+    toggleExpanded: function (trIndex) {
       const record = this.formatData[trIndex];
       record._expanded = !record._expanded;
     },
     // 图标显示
-    iconShow(index, record) {
+    iconShow (index, record) {
       return index === 0 && record.children && record.children.length > 0;
     }
   }
 };
 </script>
-<style rel="stylesheet/css">
-@keyframes treeTableShow {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes treeTableShow {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-</style>
-
-<style lang="scss" rel="stylesheet/scss" scoped>
-$color-blue: #2196f3;
-$space-width: 18px;
-.ms-tree-space {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1;
-  width: $space-width;
-  height: 14px;
-  &::before {
-    content: "";
-  }
-}
-.processContainer {
-  width: 100%;
-  height: 100%;
-}
-table td {
-  line-height: 26px;
-}
-
-.tree-ctrl {
-  position: relative;
-  cursor: pointer;
-  color: $color-blue;
-  margin-left: -$space-width;
-}
-</style>
