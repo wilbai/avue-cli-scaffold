@@ -191,7 +191,7 @@ export default {
       this.formVal();
       for (let i = 0; i < this.option.column.length; i++) {
         const ele = this.option.column[i];
-        if (ele.cascaderFirst && ele.type == 'select') {
+        if (ele.cascaderFirst) {
           const cascader = [].concat(ele.cascader)
           const cascaderLen = ele.cascader.length - 1;
           if (!validatenull(this.form[ele.prop])) this.change(i);
@@ -227,7 +227,6 @@ export default {
     },
     resetForm () {
       this.$refs.form.resetFields();
-
     },
     submit () {
       this.$refs["form"].validate(valid => {

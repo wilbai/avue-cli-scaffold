@@ -63,9 +63,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    parentCheck:{
+    parentCheck: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     prefixIcon: {
       type: String,

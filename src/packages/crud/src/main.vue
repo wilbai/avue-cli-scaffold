@@ -251,7 +251,7 @@ export default {
         tableForm: {},
         searchForm: {}
       },
-      searchShow: false,
+      searchShow: true,
       searchForm: {},
       boxVisible: false,
       boxType: 'add',
@@ -273,7 +273,7 @@ export default {
       return this.tableSelect ? this.tableSelect.length : 0;
     },
     searchFlag () {
-      return !this.validatenull(this.searchForm);
+      return !validatenull(this.searchForm);
     },
     formOption () {
       let option = Object.assign({}, this.option);
