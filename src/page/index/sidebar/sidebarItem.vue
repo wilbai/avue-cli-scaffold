@@ -1,7 +1,7 @@
 <template>
   <div class="menu-wrapper">
     <template v-for="(item,index) in menu">
-      <el-menu-item v-if="item.children.length===0 "
+      <el-menu-item v-if="validatenull(item.children)"
                     :index="filterPath(item.href,index)"
                     @click="open(item)"
                     :key="item.label">
@@ -10,7 +10,7 @@
       </el-menu-item>
       <el-submenu v-else
                   :index="filterPath(item.label,index)"
-                  :key="item.name">
+                  :key="item.label">
         <template slot="title">
           <i :class="item.icon"></i>
           <span slot="title"
@@ -20,8 +20,8 @@
           <el-menu-item :class="{'siderbar-active':nowTagValue==child.href}"
                         :index="filterPath(child.href,cindex)"
                         @click="open(child)"
-                        v-if="child.children.length==0"
-                        :key="cindex">
+                        v-if="validatenull(child.children)"
+                        :key="child.label">
             <i :class="child.icon"></i>
             <span slot="title">{{child.label}}</span>
           </el-menu-item>
@@ -36,6 +36,7 @@
 </template>
 <script>
 import { resolveUrlPath, setUrlPath } from '@/util/util'
+import { validatenull } from '@/util/validate';
 export default {
   name: 'SidebarItem',
   data () {
@@ -57,6 +58,9 @@ export default {
     }
   },
   methods: {
+    validatenull (val) {
+      return validatenull(val);
+    },
     filterPath (path, index) {
       return path == null ? index + '' : path
     },

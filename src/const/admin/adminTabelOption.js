@@ -4,7 +4,6 @@ import {
 export const userOption = {
     border: true,
     index: true,
-    height: 'auto',
     indexLabel: '序号',
     selection: false,
     dicData: DIC,
