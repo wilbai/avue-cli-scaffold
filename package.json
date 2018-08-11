@@ -31,18 +31,16 @@
         "xlsx": "^0.13.3"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.0.0-rc.9",
-        "@vue/cli-plugin-eslint": "^3.0.0-rc.9",
-        "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.9",
-        "@vue/cli-service": "^3.0.0-rc.9",
+        "@vue/cli-plugin-babel": "^3.0.0",
+        "@vue/cli-plugin-e2e-cypress": "^3.0.0",
+        "@vue/cli-plugin-eslint": "^3.0.0",
+        "@vue/cli-plugin-unit-mocha": "^3.0.0",
+        "@vue/cli-service": "^3.0.0",
         "@vue/test-utils": "^1.0.0-beta.20",
         "chai": "^4.1.2",
-        "lint-staged": "^7.2.0",
         "node-sass": "^4.9.0",
-        "sass-loader": "^7.0.1"
-    },
-    "gitHooks": {
-        "pre-commit": "lint-staged"
+        "sass-loader": "^7.0.1",
+        "vue-template-compiler": "^2.5.17"
     },
     "lint-staged": {
         "*.js": [
