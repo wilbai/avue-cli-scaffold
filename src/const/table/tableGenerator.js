@@ -24,7 +24,7 @@ const columnList = {
         label: "表单类型",
         prop: "type",
         type: "tree",
-        dicData: 'CRUDTYPE',
+        dicData: DIC.CRUDTYPE,
         rules: [{
             required: true,
             message: "请选择表单类型",
@@ -46,14 +46,14 @@ const columnList = {
         prop: "fixed",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     hide: {
         label: "隐藏列",
         prop: "hide",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     span: {
         label: "表单栅列",
@@ -65,72 +65,75 @@ const columnList = {
         prop: "addDisabled",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     editDisabled: {
         label: "表单编辑禁止",
         prop: "editDisabled",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     clearable: {
         label: "表单可清空",
         prop: "clearable",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     addVisdiplay: {
         label: "表单新增隐藏",
         prop: "addVisdiplay",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     editVisdiplay: {
         label: "表单编辑隐藏",
         prop: "editVisdiplay",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     formsolt: {
         label: "表单自定义",
         prop: "formsolt",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     solt: {
         label: "列自定义",
         prop: "solt",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     overHidden: {
         label: "超省略号",
         prop: "overHidden",
         hide: true,
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     dicData: {
         label: "字典",
         prop: "dicData",
+        row: true,
+        span: 24,
+        formsolt: true,
     },
     search: {
         label: "搜索",
         prop: "select",
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     multiple: {
         label: "是否多选",
         prop: "multiple",
         type: "select",
-        dicData: 'VAILDATA',
+        dicData: DIC.VAILDATA,
     },
     minRows: {
         label: "最小行",
@@ -145,10 +148,18 @@ const columnList = {
 }
 const typeList = {
     common: ['label', 'prop', 'type', 'valueDefault', 'width', 'fixed', 'hide', 'span', 'addDisabled', 'editDisabled', 'clearable', 'addVisdiplay', 'editVisdiplay', 'formsolt', 'solt', 'overHidden', 'dicData', 'search', 'multiple', 'minRows', 'maxRows'],
+    builder: ['label', 'prop', 'type', 'valueDefault', 'span', 'clearable', 'dicData'],
     default: [],
 }
+export const getList = (type) => {
+    type = type || 'common';
+    const column = [];
+    typeList[type].forEach(ele => {
+        column.push(columnList[ele])
+    });
+    return column;
+}
 export default function(type) {
-    type = type || 'default';
     return {
         page: false,
         border: true,
@@ -158,12 +169,6 @@ export default function(type) {
         labelWidth: 100,
         menuAlign: 'center',
         dicData: DIC,
-        column: (function() {
-            let column = [];
-            typeList['common'].concat(typeList[type]).forEach(ele => {
-                column.push(columnList[ele])
-            });
-            return column;
-        })(),
+        column: getList(type),
     }
 }

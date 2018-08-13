@@ -123,6 +123,11 @@ export default [{
     component: Layout,
     redirect: '/forms/index',
     children: [{
+        path: 'builder',
+        name: '拖动表单',
+        component: () =>
+            import ('@/views/forms/builder')
+    }, {
         path: 'index',
         name: '表单CRUD',
         component: () =>

@@ -10,7 +10,7 @@
         "test:e2e": "vue-cli-service test:e2e"
     },
     "dependencies": {
-        "@smallwei/avue": "^1.0.4",
+        "@smallwei/avue": "^1.0.7",
         "axios": "^0.18.0",
         "driver.js": "^0.6.2",
         "element-ui": "^2.4.5",
@@ -27,6 +27,7 @@
         "vue-json-tree-view": "^2.1.4",
         "vue-quill-editor": "^3.0.6",
         "vue-router": "^3.0.1",
+        "vuedraggable": "^2.16.0",
         "vuex": "^3.0.1",
         "xlsx": "^0.13.3"
     },

@@ -171,9 +171,16 @@ const first = [{
     }]
 }, {
     id: 9,
-    label: "CRUD生成器",
+    label: "CRUD表格生成器",
     href: `/table/generator`,
     icon: 'icon-biaoge',
+    meta: {},
+    children: []
+}, {
+    id: 19,
+    label: "CRUD表单生成器",
+    href: '/forms/builder',
+    icon: 'icon-biaodan',
     meta: {},
     children: []
 }]
