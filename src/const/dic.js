@@ -70,6 +70,9 @@ export const DIC = {
         }
     ],
     CRUDTYPE: [{
+            label: "输入框",
+            value: ''
+        }, {
             label: "选择框",
             value: 'select'
         },

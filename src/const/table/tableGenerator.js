@@ -24,12 +24,17 @@ const columnList = {
         label: "表单类型",
         prop: "type",
         type: "tree",
-        dicData: DIC.CRUDTYPE,
-        rules: [{
-            required: true,
-            message: "请选择表单类型",
-            trigger: "blur"
-        }]
+        dicData: DIC.CRUDTYPE
+    },
+    row: {
+        label: "单独一行",
+        prop: "row",
+        type: "select",
+        dicData: DIC.VAILDATA
+    },
+    placeholder: {
+        label: "自定义提示语",
+        prop: 'placeholder',
     },
     valueDefault: {
         label: "默认值",
@@ -140,15 +145,28 @@ const columnList = {
         prop: "minRows",
         type: "number",
     },
+    disabled: {
+        label: "禁止",
+        prop: "disabled",
+        type: "select",
+        dicData: DIC.VAILDATA,
+    },
     maxRows: {
         label: "最大行",
         prop: "maxRows",
         type: "number",
+    },
+    default: {
+        labelWidth: 0,
+        prop: "default",
+        span: 24,
+        row: true,
+        formsolt: true,
     }
 }
 const typeList = {
-    common: ['label', 'prop', 'type', 'valueDefault', 'width', 'fixed', 'hide', 'span', 'addDisabled', 'editDisabled', 'clearable', 'addVisdiplay', 'editVisdiplay', 'formsolt', 'solt', 'overHidden', 'dicData', 'search', 'multiple', 'minRows', 'maxRows'],
-    builder: ['label', 'prop', 'type', 'valueDefault', 'span', 'clearable', 'dicData'],
+    common: ['label', 'prop', 'type', 'valueDefault', 'width', 'fixed', 'hide', 'span', 'addDisabled', 'editDisabled', 'clearable', 'addVisdiplay', 'editVisdiplay', 'formsolt', 'solt', 'overHidden', 'search', 'multiple', 'minRows', 'maxRows'],
+    builder: ['label', 'prop', 'row', 'span', 'placeholder', 'type', 'valueDefault', 'disabled', 'hide', 'clearable', 'default'],
     default: [],
 }
 export const getList = (type) => {

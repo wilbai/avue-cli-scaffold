@@ -92,6 +92,9 @@ export default [{
         {
             path: 'generator',
             name: '表格生成器',
+            meta: {
+                keepAlive: true,
+            },
             component: () =>
                 import ('@/views/table/generator')
         },
@@ -125,6 +128,9 @@ export default [{
     children: [{
         path: 'builder',
         name: '拖动表单',
+        meta: {
+            keepAlive: true,
+        },
         component: () =>
             import ('@/views/forms/builder')
     }, {

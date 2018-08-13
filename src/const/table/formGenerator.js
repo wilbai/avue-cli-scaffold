@@ -115,6 +115,5 @@ export default {
             dicData: 'VAILDATA',
             span: 6,
         }
-
     ]
 };
