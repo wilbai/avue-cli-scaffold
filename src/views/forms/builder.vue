@@ -7,7 +7,7 @@
         <el-button type="primary"
                    @click="statusFlag=!statusFlag">{{statusFlag?'预览表单':'关闭预览'}}</el-button>
         <el-button type="primary"
-                   v-clipboard:copy="resultOption"
+                   v-clipboard:copy="resultOptionText"
                    v-clipboard:success="onCopy"
                    v-clipboard:error="onError">复制代码</el-button>
         <el-button type="primary"
@@ -205,6 +205,9 @@ export default {
     }
   },
   computed: {
+    resultOptionText () {
+      return JSON.stringify(this.resultOption, null, 2);
+    },
     resultOption () {
       return {
         labelWidth: 110,
