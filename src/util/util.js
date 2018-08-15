@@ -22,24 +22,24 @@ export const setTheme = (name) => {
  * 获取字典
  */
 export const setDic = (dicData, DIC) => {
-        return (typeof(dicData) == 'string') ? DIC : dicData
-    }
-    /**
-     * 设置px
-     */
+    return (typeof(dicData) == 'string') ? DIC : dicData
+};
+/**
+ * 设置px
+ */
 export const setPx = (val, defval) => {
-        if (validatenull(val)) {
-            val = defval;
-        }
-        val = val + '';
-        if (val.indexOf('%') == -1) {
-            val = val + 'px';
-        }
-        return val;
+    if (validatenull(val)) {
+        val = defval;
     }
-    /**
-     * 动态获取组件
-     */
+    val = val + '';
+    if (val.indexOf('%') == -1) {
+        val = val + 'px';
+    }
+    return val;
+};
+/**
+ * 动态获取组件
+ */
 export const getComponent = (type) => {
     if (type == "select") {
         return "crudSelect";
@@ -129,29 +129,29 @@ export const fullscreenEnable = () => {
  * 浏览器全屏
  */
 export const reqFullScreen = () => {
-        if (document.documentElement.requestFullScreen) {
-            document.documentElement.requestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
-            document.documentElement.webkitRequestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        }
+    if (document.documentElement.requestFullScreen) {
+        document.documentElement.requestFullScreen();
+    } else if (document.documentElement.webkitRequestFullScreen) {
+        document.documentElement.webkitRequestFullScreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
     }
-    /**
-     * 浏览器退出全屏
-     */
+};
+/**
+ * 浏览器退出全屏
+ */
 export const exitFullScreen = () => {
-        if (document.documentElement.requestFullScreen) {
-            document.exitFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
-            document.webkitCancelFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.mozCancelFullScreen();
-        }
+    if (document.documentElement.requestFullScreen) {
+        document.exitFullScreen();
+    } else if (document.documentElement.webkitRequestFullScreen) {
+        document.webkitCancelFullScreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+        document.mozCancelFullScreen();
     }
-    /**
-     * 递归寻找子类的父类
-     */
+};
+/**
+ * 递归寻找子类的父类
+ */
 
 export const findParent = (menu, id) => {
     for (let i = 0; i < menu.length; i++) {
@@ -167,91 +167,111 @@ export const findParent = (menu, id) => {
             }
         }
     }
-}
+};
 
 /**
  * 总体路由处理器
  */
 export const resolveUrlPath = (url, name) => {
 
-        let reqUrl = url;
-        if (url.indexOf("http") != -1 || url.indexOf("https") != -1) {
-            reqUrl = `/myiframe/urlPath?src=${reqUrl}&name=${name}`;
-        } else {
-            reqUrl = `${reqUrl}`;
-        }
-        return reqUrl;
+    let reqUrl = url;
+    if (url.indexOf("http") != -1 || url.indexOf("https") != -1) {
+        reqUrl = `/myiframe/urlPath?src=${reqUrl}&name=${name}`;
+    } else {
+        reqUrl = `${reqUrl}`;
     }
-    /**
-     * 总体路由设置器
-     */
+    return reqUrl;
+};
+/**
+ * 总体路由设置器
+ */
 export const setUrlPath = ($route) => {
-        let value = "";
-        if ($route.query.src) {
-            value = $route.query.src;
-        } else {
-            value = $route.path;
-        }
-        return value;
+    let value = "";
+    if ($route.query.src) {
+        value = $route.query.src;
+    } else {
+        value = $route.path;
     }
-    /**
-     * 动态插入css
-     */
+    return value;
+};
+/**
+ * 动态插入css
+ */
 
 export const loadStyle = url => {
-        const link = document.createElement('link');
-        link.type = 'text/css';
-        link.rel = 'stylesheet';
-        link.href = url;
-        const head = document.getElementsByTagName('head')[0];
-        head.appendChild(link);
-    }
-    /**
-     * 根据字典的value显示label
-     */
+    const link = document.createElement('link');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = url;
+    const head = document.getElementsByTagName('head')[0];
+    head.appendChild(link);
+};
+/**
+ * 根据字典的value显示label
+ */
 export const findByvalue = (dic, value) => {
-        let result = '';
-        if (validatenull(dic)) return value;
-        if (typeof(value) == 'string' || typeof(value) == 'number' || typeof(value) == 'boolean') {
-            let index = 0;
-            index = findArray(dic, value);
+    let result = '';
+    if (validatenull(dic)) return value;
+    if (typeof(value) == 'string' || typeof(value) == 'number' || typeof(value) == 'boolean') {
+        let index = 0;
+        index = findArray(dic, value);
+        if (index != -1) {
+            result = dic[index].label;
+        } else {
+            result = value;
+        }
+    } else if (value instanceof Array) {
+        result = [];
+        let index = 0;
+        value.forEach(ele => {
+            index = findArray(dic, ele);
             if (index != -1) {
-                result = dic[index].label;
+                result.push(dic[index].label);
             } else {
-                result = value;
+                result.push(value);
             }
-        } else if (value instanceof Array) {
-            result = [];
-            let index = 0;
-            value.forEach(ele => {
-                index = findArray(dic, ele);
-                if (index != -1) {
-                    result.push(dic[index].label);
-                } else {
-                    result.push(value);
-                }
-            });
-            result = result.toString();
-        }
-        return result;
+        });
+        result = result.toString();
     }
-    /**
-     * 根据字典的value查找对应的index
-     */
+    return result;
+};
+/**
+ * 根据字典的value查找对应的index
+ */
 export const findArray = (dic, value) => {
-        for (let i = 0; i < dic.length; i++) {
-            if (dic[i].value == value) {
-                return i;
-            }
+    for (let i = 0; i < dic.length; i++) {
+        if (dic[i].value == value) {
+            return i;
         }
-        return -1;
     }
-    /**
-     * 生成随机len位数字
-     */
+    return -1;
+};
+/**
+ * 生成随机len位数字
+ */
 export const randomLenNum = (len, date) => {
     let random = '';
     random = Math.ceil(Math.random() * 100000000000000).toString().substr(0, len ? len : 4);
     if (date) random = random + Date.now();
     return random;
+};
+/**
+ * 打开小窗口
+ */
+export const openWindow = (url, title, w, h) => {
+    // Fixes dual-screen position                            Most browsers       Firefox
+    const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
+    const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
+
+    const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width
+    const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height
+
+    const left = ((width / 2) - (w / 2)) + dualScreenLeft
+    const top = ((height / 2) - (h / 2)) + dualScreenTop
+    const newWindow = window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left)
+
+    // Puts focus on the newWindow
+    if (window.focus) {
+        newWindow.focus()
+    }
 }
