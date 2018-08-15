@@ -159,6 +159,16 @@ const first = [{
         meta: {},
         children: []
     }, {
+        id: 161,
+        label: "表格EDIT",
+        href: '/table/edit',
+        query: {
+            a: 1
+        },
+        icon: 'icon-biaoge',
+        meta: {},
+        children: []
+    }, {
         id: 16,
         label: "表格TREE自定义",
         href: '/table/alltree',

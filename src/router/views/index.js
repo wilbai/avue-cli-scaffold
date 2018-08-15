@@ -105,6 +105,12 @@ export default [{
                 import ('@/views/table/table-tree/index')
         },
         {
+            path: 'edit',
+            name: '表格EDIT',
+            component: () =>
+                import ('@/views/table/edit')
+        },
+        {
             path: 'alltree',
             name: '表格TREE自定义',
             component: () =>

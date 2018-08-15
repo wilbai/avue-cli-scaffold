@@ -28,6 +28,7 @@ function getPickerOptions() {
     }
 }
 export default {
+    labelWidth: 110,
     column: [{
         label: "日期范围",
         prop: "daterange",
@@ -37,6 +38,12 @@ export default {
         pickerOptions: getPickerOptions()
     }, {
         label: "时间范围",
+        value: 'timerange',
+        type: 'timerange',
+        startPlaceholder: '时间开始范围自定义',
+        endPlaceholder: '时间结束范围自定义'
+    }, {
+        label: "日期时间范围",
         value: 'datetimerange',
         type: 'datetimerange',
         startPlaceholder: '时间开始范围自定义',
@@ -48,6 +55,10 @@ export default {
         type: "date"
     }, {
         label: "时间",
+        prop: "time",
+        type: "time",
+    }, {
+        label: "日期时间",
         prop: "datetime",
         type: "datetime",
     }, {
