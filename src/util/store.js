@@ -26,13 +26,12 @@ export const setStore = (params) => {
 export const getStore = (params) => {
         let {
             name,
-            type,
             debug
         } = params;
         let obj = {},
             content;
-        if (validatenull(type)) obj = window.sessionStorage.getItem(name);
-        else obj = window.localStorage.getItem(name);
+        obj = window.sessionStorage.getItem(name);
+        if (validatenull(obj)) obj = window.localStorage.getItem(name);
         if (validatenull(obj)) return;
         obj = JSON.parse(obj);
         if (debug) {
