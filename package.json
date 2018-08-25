@@ -10,7 +10,7 @@
         "test:e2e": "vue-cli-service test:e2e"
     },
     "dependencies": {
-        "@smallwei/avue": "^1.0.18",
+        "@smallwei/avue": "^1.0.25",
         "axios": "^0.18.0",
         "driver.js": "^0.6.2",
         "element-ui": "^2.4.5",

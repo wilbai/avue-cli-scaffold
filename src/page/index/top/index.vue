@@ -23,6 +23,14 @@
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
+                  :content="logsFlag?'没有错误日志':`${logsLen}条错误日志`"
+                  placement="bottom">
+        <span class="top-item">
+          <top-logs></top-logs>
+        </span>
+      </el-tooltip>
+      <el-tooltip class="item"
+                  effect="dark"
                   content="锁屏"
                   placement="bottom">
         <span class="top-item">
@@ -88,8 +96,9 @@ import topMenu from "./top-menu";
 import topBreadcrumb from "./top-breadcrumb";
 import topColor from "./top-color";
 import topTheme from "./top-theme";
+import topLogs from "./top-logs";
 export default {
-  components: { topLock, topMenu, topBreadcrumb, topColor, topTheme },
+  components: { topLock, topMenu, topBreadcrumb, topColor, topTheme, topLogs },
   name: "top",
   data () {
     return {};
@@ -106,7 +115,9 @@ export default {
       "tagWel",
       "tagList",
       "isCollapse",
-      "tag"
+      "tag",
+      "logsLen",
+      "logsFlag"
     ])
   },
   methods: {

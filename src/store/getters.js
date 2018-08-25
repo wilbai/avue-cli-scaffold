@@ -16,6 +16,8 @@ const getters = {
     permission: state => state.user.permission,
     menu: state => state.user.menu,
     menuAll: state => state.user.menuAll,
-    errLog: state => state.errLog.errLog,
+    logsList: state => state.logs.logsList,
+    logsLen: state => state.logs.logsList.length || 0,
+    logsFlag: (state, getters) => getters.logsLen === 0
 }
 export default getters

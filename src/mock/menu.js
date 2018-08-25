@@ -220,15 +220,15 @@ const second = [{
     icon: 'icon-cuowu',
     meta: {},
     children: [{
-        id: 14,
-        label: "错误日志",
-        href: '/errlog/index',
-        icon: 'icon-rizhi',
+        id: 15,
+        label: "错误页面",
+        href: '/logs/page',
+        icon: 'icon-cuowutishitubiao',
         children: []
     }, {
         id: 15,
-        label: "错误页面",
-        href: '/errlog/page',
+        label: "错误日志",
+        href: '/logs/error',
         icon: 'icon-cuowutishitubiao',
         children: []
     }]

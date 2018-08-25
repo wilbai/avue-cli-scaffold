@@ -4,19 +4,19 @@ import user from './modules/user'
 import common from './modules/common'
 import tags from './modules/tags'
 import admin from './modules/admin'
-import errLog from './modules/errLog'
+import logs from './modules/logs'
 import getters from './getters'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
-  modules: {
-    user,
-    common,
-    errLog,
-    admin,
-    tags
-  },
-  getters,
+    modules: {
+        user,
+        common,
+        logs,
+        admin,
+        tags
+    },
+    getters,
 })
 
 export default store

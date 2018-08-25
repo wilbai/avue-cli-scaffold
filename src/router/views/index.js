@@ -211,19 +211,19 @@ export default [{
             import ('@/views/json-tree/index')
     }]
 }, {
-    path: '/errlog',
+    path: '/logs',
     component: Layout,
-    redirect: '/errlog/index',
+    redirect: '/logs/index',
     children: [{
-        path: 'index',
-        name: '错误日志',
-        component: () =>
-            import ('@/page/errlog/index')
-    }, {
         path: 'page',
         name: '错误页面',
         component: () =>
-            import ('@/page/errlog/errorPage')
+            import ('@/page/logs/page')
+    }, {
+        path: 'error',
+        name: '错误日志',
+        component: () =>
+            import ('@/page/logs/error')
     }]
 }, {
     path: '/advanced-router',
