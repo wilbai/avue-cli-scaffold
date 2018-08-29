@@ -90,9 +90,9 @@ export default {
 
 <style lang="scss">
 .login-container {
-  padding-top: 150px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   // background: rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -120,7 +120,6 @@ export default {
   color: #333;
 }
 .login-info {
-  padding-top: 80px;
   padding-left: 140px;
 }
 .login-info-title {

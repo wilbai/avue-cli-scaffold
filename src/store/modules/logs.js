@@ -7,9 +7,9 @@ const logs = {
     },
     actions: {
         //发送错误日志
-        SendLogs({ commit }) {
+        SendLogs({ state, commit }) {
             return new Promise((resolve, reject) => {
-                sendLogs().then(() => {
+                sendLogs(state.logsList).then(() => {
                     commit('CLEAR_LOGS');
                     resolve();
                 }).catch(error => {

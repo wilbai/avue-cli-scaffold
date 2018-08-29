@@ -32,6 +32,9 @@
     .el-menu {
         background-color: transparent !important
     }
+    .logo_subtitle {
+        color: #ccc !important;
+    }
     .logo_title,
     .tags-breadcrumb,
     {
@@ -62,30 +65,51 @@
             }
         }
     }
-    .nest-menu .el-submenu>.el-submenu__title:hover,
-    .el-submenu .el-menu-item:hover {
-        background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
-    }
-    .el-menu--vertical {
-        background: linear-gradient(120deg, #bc00e3, #4efffb) !important;
-    }
     .el-menu-item {
-        &.is-active,
-        &.siderbar-active {
-            background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
-            span {
+        i,
+        span {
+            color: #fff;
+        }
+        &:hover {
+            span,
+            i {
                 color: #fff !important;
             }
         }
-        color: #fff !important;
-        i {
-            color: #fff !important;
+        &.is-active {
+            &::before {
+                background: #fff;
+            }
+            span,
+            i {
+                color: #fff !important;
+            }
+            background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
+            &:hover {
+                color: #fff !important;
+                background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
+            }
         }
     }
     .el-submenu__title {
-        color: #fff !important;
-        i {
+        i,
+        span {
             color: #fff !important;
+        }
+    }
+    .el-submenu .el-menu-item {
+        &:hover {
+            span,
+            i {
+                color: #fff !important;
+            }
+        }
+        &.is-active {
+            background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
+            span,
+            i {
+                color: #fff !important;
+            }
         }
     }
 }

@@ -32,6 +32,9 @@
     .el-menu {
         background-color: transparent !important
     }
+    .logo_subtitle {
+        color: #ccc !important;
+    }
     .logo_title,
     .tags-breadcrumb,
     {
@@ -68,31 +71,51 @@
             }
         }
     }
-    .nest-menu .el-submenu>.el-submenu__title:hover,
-    .el-submenu .el-menu-item:hover {
-        background: hsla(0, 0%, 100%, .05) !important;
-    }
-    .el-menu--vertical {
-        background-color: #002253!important;
-    }
     .el-menu-item {
-        &.is-active,
-        &.siderbar-active {
-            background: hsla(0, 0%, 100%, .05)!important;
+        i,
+        span {
+            color: #ff929a;
+        }
+        &:hover {
             span,
             i {
                 color: #ffb870 !important;
             }
         }
-        color: #ff929a !important;
-        i {
-            color: #ff929a !important;
+        &.is-active {
+            &::before {
+                background: #ffb870;
+            }
+            span,
+            i {
+                color: #ffb870 !important;
+            }
+            background: hsla(0, 0%, 100%, .05) !important;
+            &:hover {
+                color: #ffb870 !important;
+                background: hsla(0, 0%, 100%, .05) !important;
+            }
         }
     }
     .el-submenu__title {
-        color: #ff929a !important;
-        i {
+        i,
+        span {
             color: #ff929a !important;
+        }
+    }
+    .el-submenu .el-menu-item {
+        &:hover {
+            span,
+            i {
+                color: #ffb870 !important;
+            }
+        }
+        &.is-active {
+            background: hsla(0, 0%, 100%, .05) !important;
+            span,
+            i {
+                color: #ffb870 !important;
+            }
         }
     }
 }

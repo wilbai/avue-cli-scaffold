@@ -17,20 +17,20 @@
     .el-menu-item {
         &:hover {
             background-color: transparent !important;
-            color: $mainBg !important;
+            color: $mainBg;
             span,
             i {
-                color: $mainBg !important;
+                color: $mainBg;
             }
         }
         &.is-active {
             background-color: #e2edff !important;
             span,
             i {
-                color: $mainBg !important;
+                color: $mainBg
             }
             &:hover {
-                background-color: #e2edff !important;
+                background-color: #e2edff
             }
             &::before {
                 content: " ";
@@ -54,14 +54,14 @@
             background-color: #e2edff !important;
             span,
             i {
-                color: #666 !important;
+                color: $mainBg
             }
         }
         &:hover {
             background-color: transparent;
             span,
             i {
-                color: $mainBg !important;
+                color: $mainBg;
             }
         }
     }
