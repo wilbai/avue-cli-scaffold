@@ -16,5 +16,8 @@ export default {
 .basic-container {
   padding: 20px;
   border-radius: 6px;
+  &:first-child {
+    padding-top: 0;
+  }
 }
 </style>

@@ -32,18 +32,11 @@ export default {
             type: "select",
             dicData: 'GRADE'
         },
-        {
-            label: "权限",
-            prop: "grade",
-            span: 6,
-            type: "checkbox",
-            dicData: 'GRADE'
-        },
 
         {
             label: "开关",
             prop: "switch",
-            span: 6,
+            span: 8,
             type: "switch",
             dicData: 'SEX',
             hide: true,
@@ -51,16 +44,24 @@ export default {
         {
             label: "性别",
             prop: "sex",
-            span: 6,
+            span: 8,
             type: "radio",
             dicData: 'SEX',
             valueDefault: 0,
+        },
+
+        {
+            label: "权限",
+            prop: "grade",
+            span: 8,
+            type: "checkbox",
+            dicData: 'GRADE'
         },
         {
             label: "数字",
             prop: "number",
             type: 'number',
-            span: 6,
+            span: 24,
             valueDefault: 3,
             minRows: 0,
             maxRows: 3,

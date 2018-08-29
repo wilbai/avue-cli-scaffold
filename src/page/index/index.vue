@@ -1,31 +1,42 @@
 <template>
   <el-container class="avue-contail">
-    <el-aside :style="{width: isCollapse ? asideWidthCollapse : asideWidth}">
-      <!-- 左侧导航栏 -->
-      <sidebar class="avue-sidebar"></sidebar>
-    </el-aside>
-    <el-container>
-      <el-header height="auto"
-                 class="avue-tabs">
-        <!-- 顶部导航栏 -->
-        <top />
+    <el-header height="auto"
+               class="avue-header">
+      <!-- 顶部导航栏 -->
+      <top class="avue-top" />
+    </el-header>
+
+    <el-container class="avue-layout">
+      <el-aside :style="{width: isCollapse ? asideWidthCollapse : asideWidth}">
+        <!-- 左侧导航栏 -->
+        <el-scrollbar style="height:100%">
+          <sidebar class="avue-sidebar"></sidebar>
+        </el-scrollbar>
+      </el-aside>
+      <el-main class="avue-main">
         <!-- 顶部标签卡 -->
         <tags />
-      </el-header>
-      <el-main class="avue-main">
         <!-- 主体视图层 -->
-        <transition name="fade-transverse">
-          <keep-alive>
+        <el-scrollbar style="height:100%">
+          <transition name="fade-transverse">
+            <keep-alive>
+              <router-view class="avue-view"
+                           v-if="$route.meta.keepAlive" />
+            </keep-alive>
+          </transition>
+          <transition name="fade-transverse">
             <router-view class="avue-view"
-                         v-if="$route.meta.keepAlive" />
-          </keep-alive>
-        </transition>
-        <transition name="fade-transverse">
-          <router-view class="avue-view"
-                       v-if="!$route.meta.keepAlive" />
-        </transition>
+                         v-if="!$route.meta.keepAlive" />
+          </transition>
+        </el-scrollbar>
       </el-main>
     </el-container>
+    <!-- <el-footer class="avue-footer">
+      <img src="/svg/logo.svg"
+           alt=""
+           class="logo">
+      <p class="copyright">© 2018 Avue designed by smallwei</p>
+    </el-footer> -->
   </el-container>
 </template>
 
@@ -47,7 +58,7 @@ export default {
   data () {
     return {
       // [侧边栏宽度] 正常状态
-      asideWidth: '230px',
+      asideWidth: '200px',
       // [侧边栏宽度] 折叠状态
       asideWidthCollapse: '65px',
       //刷新token锁
@@ -92,23 +103,53 @@ export default {
 
 <style lang="scss" scoped>
 .avue-contail {
+  width: 100%;
   height: 100%;
+  background-color: #eceef3;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.avue-layout,
+.avue-top {
+  width: 1300px;
+  height: 100%;
+  margin: 0 auto;
 }
 .avue-sidebar {
   height: 100%;
 }
-.avue-tabs {
-  padding: 0;
+.avue-header {
+  background: #fff;
+  min-width: 1300px;
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
 }
 .avue-main {
-  position: relative;
   padding: 0;
+  position: relative;
+  height: calc(100% - 8px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .avue-view {
+  padding-bottom: 22px;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   box-sizing: border-box;
+}
+.avue-footer {
+  margin: 0 auto;
+  padding: 0 22px;
+  width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .logo {
+    margin-left: -50px;
+  }
+  .copyright {
+    color: #666;
+    line-height: 1.5;
+    font-size: 12px;
+  }
 }
 </style>

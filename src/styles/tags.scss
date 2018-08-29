@@ -18,10 +18,12 @@
 }
 
 .tags-container {
+    margin: 0 21px 10px 21px;
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    border-radius: 5px;
+    background-color: #fff;
     .tags-box {
         position: relative;
         box-sizing: border-box;
@@ -37,7 +39,7 @@
         transition: left .3s ease;
     }
     .tag-item-icon {
-        color: #eee;
+        color: #ccc;
         font-size: 11px !important;
     }
     .tag-item {
@@ -47,19 +49,20 @@
         line-height: 30px;
         margin: 2px 4px 2px 0;
         padding: 0 10px;
-        border: 1px solid #eee;
+        border: 1px solid #ccc;
         border-radius: 3px;
-        color: #495060!important;
+        color: #ccc;
         font-size: 12px;
         vertical-align: middle;
         opacity: 1;
         overflow: hidden;
         cursor: pointer;
         &.is-active {
+            color: #495060;
+            border-color: $mainBg;
             .tag-item-icon {
                 color: $mainBg;
             }
-            border-color: $mainBg;
         }
     }
     .tag-text {

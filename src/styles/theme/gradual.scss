@@ -2,6 +2,10 @@
     .avue-contail {
         background: linear-gradient(120deg, #bc00e3, #4efffb) !important;
     }
+    .avue-header,
+    .tags-container {
+        background-color: transparent;
+    }
     .el-card {
         opacity: .9;
     }

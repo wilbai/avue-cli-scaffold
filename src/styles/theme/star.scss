@@ -3,6 +3,10 @@
         background-image: url("/img/bg/star-squashed.jpeg");
         background-size: 100% 100%;
     }
+    .avue-header,
+    .tags-container {
+        background-color: transparent;
+    }
     .el-card {
         opacity: .9;
     }

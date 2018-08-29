@@ -31,7 +31,7 @@
     </el-form-item>
     <el-form-item prop="code">
       <el-row :span="24">
-        <el-col :span="14">
+        <el-col :span="16">
           <el-input size="small"
                     @keyup.enter.native="handleLogin"
                     :maxlength="code.len"
@@ -42,7 +42,7 @@
                class="icon-yanzhengma"></i>
           </el-input>
         </el-col>
-        <el-col :span="10">
+        <el-col :span="8">
           <div class="login-code">
             <span class="login-code-img"
                   @click="refreshCode"

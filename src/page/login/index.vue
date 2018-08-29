@@ -1,38 +1,41 @@
 <template>
   <div class="login-container pull-height"
        @keyup.enter.native="handleLogin">
-    <div class="login-info text-white animated fadeInLeft">
-      <h2 class="login-info-title">{{website.info.title}}</h2>
-      <ul class="login-info-list">
-        <li class="login-info-item"
-            v-for="(item,index) in website.info.list"
-            :key="index">
-          <i class="el-icon-check"></i>&nbsp;{{item}}
-        </li>
-      </ul>
+    <div class="login-logo animated fadeIn">
+      <img src="/svg/logo.svg"
+           alt="">
+    </div>
+    <div class="login-left animated fadeInLeft">
+      <div class="login-info">
+        <h2 class="login-info-title">{{website.info.title}}</h2>
+        <ul class="login-info-list">
+          <li class="login-info-item"
+              v-for="(item,index) in website.info.list"
+              :key="index">
+            <i class="el-icon-check"></i>&nbsp;{{item}}
+          </li>
+        </ul>
+        <el-button type="primary"
+                   size="small"
+                   class="login-index">首页</el-button>
+      </div>
     </div>
     <div class="login-border  animated fadeInRight">
       <div class="login-main">
-        <h4 class="login-title">登录{{website.title}}
-          <top-color></top-color>
-        </h4>
-        <el-tabs v-model="activeName">
-          <el-tab-pane label="用户密码"
-                       name="user">
-            <userLogin></userLogin>
-          </el-tab-pane>
-          <el-tab-pane label="短信验证码"
-                       name="code">
-            <codeLogin></codeLogin>
-          </el-tab-pane>
-          <el-tab-pane label="第三方授权登录"
-                       name="third">
-            <thirdLogin></thirdLogin>
-          </el-tab-pane>
-        </el-tabs>
+        <h4 class="login-title">登录 {{website.title}}</h4>
+        <userLogin v-if="activeName==='user'"></userLogin>
+        <codeLogin v-else-if="activeName==='code'"></codeLogin>
+        <thirdLogin v-else-if="activeName==='third'"></thirdLogin>
+      </div>
+      <div class="login-menu">
+        <a href="#"
+           @click.stop="activeName='user'">账号密码</a>
+        <a href="#"
+           @click.stop="activeName='code'">验证码登录</a>
+        <a href="#"
+           @click.stop="activeName='third'">第三方登录</a>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -87,10 +90,10 @@ export default {
 
 <style lang="scss">
 .login-container {
+  padding-top: 200px;
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  background: rgba(0, 0, 0, 0.2);
+  // background: rgba(0, 0, 0, 0.2);
   position: relative;
 }
 .login-container::before {
@@ -104,28 +107,39 @@ export default {
   background-image: url('/img/login.png');
   background-size: cover;
 }
+.login-left {
+  position: relative;
+  flex: 1;
+}
+.login-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 50px;
+  font-size: 24px;
+  color: #333;
+}
 .login-info {
-  padding-left: 60px;
+  padding-top: 80px;
+  padding-left: 140px;
 }
 .login-info-title {
   line-height: 90px;
+  color: rgb(52, 58, 64);
 }
 .login-info-item {
   font-size: 14px;
+  line-height: 2.5;
+  color: rgb(33, 37, 41);
 }
 .login-border {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 30px 50px 25px 50px;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 1px 1px 2px #eee;
+  flex: 1;
+  box-sizing: border-box;
 }
 .login-main {
-  border-radius: 3px;
+  margin: 0 auto;
+  width: 50%;
   box-sizing: border-box;
-  background-color: #fff;
 }
 .login-main > h3 {
   margin-bottom: 20px;
@@ -134,29 +148,63 @@ export default {
   color: #76838f;
 }
 .login-title {
-  margin: 0 0 20px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  font-size: 22px;
   text-align: center;
-  color: #409eff;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+}
+.login-menu {
+  width: 100%;
+  text-align: center;
+  a {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    margin: 0px 8px;
+  }
+}
+.login-index {
+  margin-top: 40px;
+  width: 180px;
+  height: 48px;
+  text-align: center;
+  border-radius: 50px;
+  background: transparent;
+  color: #333;
+  font-size: 16px;
+  border: 1px solid rgb(152, 22, 244);
 }
 .login-submit {
-  margin-top: 20px;
-  width: 100%;
-  border-radius: 28px;
+  display: block;
+  margin: 40px auto 10px auto;
+  width: 200px;
+  height: 48px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 50px;
+  border: 0px;
+  box-shadow: rgba(152, 22, 244, 0.19) 0px 5px 10px 2px;
 }
 .login-form {
   margin: 10px 0;
+  i {
+    color: #999;
+  }
   .el-form-item__content {
-    width: 270px;
+    width: 100%;
   }
   .el-form-item {
     margin-bottom: 12px;
   }
   .el-input {
     input {
+      padding-bottom: 10px;
       text-indent: 5px;
-      border-color: #dcdcdc;
-      border-radius: 3px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      color: #333;
+      border-bottom: 1px solid rgb(235, 237, 242);
     }
     .el-input__prefix {
       i {
@@ -175,14 +223,14 @@ export default {
 .login-code-img {
   margin-top: 2px;
   width: 100px;
-  height: 32px;
+  height: 38px;
   background-color: #fdfdfd;
   border: 1px solid #f0f0f0;
   color: #333;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 5px;
-  line-height: 32px;
+  line-height: 38px;
   text-indent: 5px;
   text-align: center;
 }

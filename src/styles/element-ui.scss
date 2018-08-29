@@ -3,6 +3,14 @@
     line-height: 28px;
 }
 
+.el-card.is-always-shadow {
+    box-shadow: none;
+}
+
+.el-scrollbar__view {
+    height: 100%;
+}
+
 .el-menu--horizontal {
     border-bottom: none !important;
 }
