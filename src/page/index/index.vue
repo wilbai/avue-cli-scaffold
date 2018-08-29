@@ -111,7 +111,8 @@ export default {
 }
 .avue-layout,
 .avue-top {
-  width: 1300px;
+  min-width: 1300px;
+  width: 90%;
   height: 100%;
   margin: 0 auto;
 }
