@@ -31,7 +31,7 @@
         <a href="#"
            @click.stop="activeName='user'">账号密码</a>
         <a href="#"
-           @click.stop="activeName='code'">验证码登录</a>
+           @click.stop="activeName='code'">手机号登录</a>
         <a href="#"
            @click.stop="activeName='third'">第三方登录</a>
       </div>
@@ -90,7 +90,7 @@ export default {
 
 <style lang="scss">
 .login-container {
-  padding-top: 200px;
+  padding-top: 150px;
   display: flex;
   justify-content: space-around;
   // background: rgba(0, 0, 0, 0.2);

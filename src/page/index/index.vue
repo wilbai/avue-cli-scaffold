@@ -7,7 +7,7 @@
     </el-header>
 
     <el-container class="avue-layout">
-      <el-aside :style="{width: isCollapse ? asideWidthCollapse : asideWidth}">
+      <el-aside class="avue-left">
         <!-- 左侧导航栏 -->
         <el-scrollbar style="height:100%">
           <sidebar class="avue-sidebar"></sidebar>
@@ -18,16 +18,12 @@
         <tags />
         <!-- 主体视图层 -->
         <el-scrollbar style="height:100%">
-          <transition name="fade-transverse">
-            <keep-alive>
-              <router-view class="avue-view"
-                           v-if="$route.meta.keepAlive" />
-            </keep-alive>
-          </transition>
-          <transition name="fade-transverse">
+          <keep-alive>
             <router-view class="avue-view"
-                         v-if="!$route.meta.keepAlive" />
-          </transition>
+                         v-if="$route.meta.keepAlive" />
+          </keep-alive>
+          <router-view class="avue-view"
+                       v-if="!$route.meta.keepAlive" />
         </el-scrollbar>
       </el-main>
     </el-container>
@@ -57,10 +53,6 @@ export default {
   name: 'index',
   data () {
     return {
-      // [侧边栏宽度] 正常状态
-      asideWidth: '200px',
-      // [侧边栏宽度] 折叠状态
-      asideWidthCollapse: '65px',
       //刷新token锁
       refreshLock: false,
       //刷新token的时间
@@ -115,6 +107,9 @@ export default {
   width: 90%;
   height: 100%;
   margin: 0 auto;
+}
+.avue-left {
+  width: 220px !important;
 }
 .avue-sidebar {
   height: 100%;
