@@ -14,6 +14,7 @@ export default {
         label: '穿梭框',
         prop: 'shenfeng',
         component: 'AvueTransfer',
+        dataType: 'array',
         span: 24,
         dicData: generateData()
     }]

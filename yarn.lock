@@ -670,8 +670,8 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
 
 "@smallwei/avue@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.1.0.tgz#d12a64e3ad4e06b8ec91187348a9c252ab30d0fc"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.1.1.tgz#b7da475badb34bcdca32a388dd3001f89a65c684"
   dependencies:
     async-validator "~1.8.1"
     axios "^0.16.2"
@@ -1338,9 +1338,9 @@ autoprefixer@^8.6.5:
     postcss "^6.0.23"
     postcss-value-parser "^3.2.3"
 
-avue-plugin-transfer@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/avue-plugin-transfer/-/avue-plugin-transfer-0.0.1.tgz#e1ff0d76cfcb786ca15ee756673948f58a662e1a"
+avue-plugin-transfer@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/avue-plugin-transfer/-/avue-plugin-transfer-0.0.2.tgz#5ad4e8d78208cd6d26a7037cf4552ec157bf585a"
   dependencies:
     axios "^0.18.0"
     element-ui "^2.4.6"
