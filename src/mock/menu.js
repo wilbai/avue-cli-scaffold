@@ -131,6 +131,13 @@ const first = [{
         icon: 'icon-biaodan',
         meta: {},
         children: []
+    }, {
+        id: 10,
+        label: "表单自定义组件",
+        href: '/forms/transfer',
+        icon: 'icon-biaodan',
+        meta: {},
+        children: []
     }]
 }, {
     id: 6,

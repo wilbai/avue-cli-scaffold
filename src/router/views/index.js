@@ -189,6 +189,11 @@ export default [{
         name: '表单SILDER',
         component: () =>
             import ('@/views/forms/silder')
+    }, {
+        path: 'transfer',
+        name: '表单自定义',
+        component: () =>
+            import ('@/views/forms/transfer')
     }]
 }, {
     path: '/iconfont',

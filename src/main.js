@@ -5,6 +5,7 @@ import App from './App';
 import './permission'; // 权限
 import './error'; // 日志
 import router from './router/router';
+import 'avue-plugin-transfer/packages' //引入avue-plugin-transfer插件
 import store from './store';
 import {
     loadStyle
