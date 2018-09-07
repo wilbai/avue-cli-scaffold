@@ -1,5 +1,6 @@
 module.exports = {
     lintOnSave: true,
+    productionSourceMap: false,
     chainWebpack: (config) => {
         config.externals({
             'vue': 'Vue',

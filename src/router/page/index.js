@@ -7,7 +7,7 @@ export default [{
         path: '/login',
         name: '登录页',
         component: () =>
-            import ('@/page/login/index'),
+            import ( /* webpackChunkName: "page" */ '@/page/login/index'),
         meta: {
             keepAlive: true,
         }
@@ -16,24 +16,24 @@ export default [{
         path: '/lock',
         name: '锁屏页',
         component: () =>
-            import ('@/page/lock/index'),
+            import ( /* webpackChunkName: "page" */ '@/page/lock/index'),
     },
     {
         path: '/404',
         component: () =>
-            import ('@/components/error-page/404'),
+            import ( /* webpackChunkName: "page" */ '@/components/error-page/404'),
         name: '404'
     },
     {
         path: '/403',
         component: () =>
-            import ('@/components/error-page/403'),
+            import ( /* webpackChunkName: "page" */ '@/components/error-page/403'),
         name: '403'
     },
     {
         path: '/500',
         component: () =>
-            import ('@/components/error-page/500'),
+            import ( /* webpackChunkName: "page" */ '@/components/error-page/500'),
         name: '500'
     },
     {
@@ -49,7 +49,7 @@ export default [{
             path: ":routerPath",
             name: 'iframe',
             component: () =>
-                import ('@/components/iframe/main'),
+                import ( /* webpackChunkName: "page" */ '@/components/iframe/main'),
             props: true
         }]
 
