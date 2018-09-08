@@ -1,9 +1,9 @@
-import Vue from 'vue';
 import VueRouter from 'vue-router';
 import PageRouter from './page/'
 import ViewsRouter from './views/'
-Vue.use(VueRouter);
-export default new VueRouter({
+import AvueRouter from './avue-router';
+import Store from '../store/';
+let Router = new VueRouter({
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition
@@ -18,4 +18,6 @@ export default new VueRouter({
         }
     },
 });
+AvueRouter.install(Router, Store);
+export default Router;
 export const asyncRouterMap = [].concat(PageRouter, ViewsRouter)

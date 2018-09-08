@@ -19,41 +19,6 @@ export const setTheme = (name) => {
 }
 
 /**
- * 获取字典
- */
-export const setDic = (dicData, DIC) => {
-    return (typeof(dicData) == 'string') ? DIC : dicData
-};
-/**
- * 设置px
- */
-export const setPx = (val, defval) => {
-    if (validatenull(val)) {
-        val = defval;
-    }
-    val = val + '';
-    if (val.indexOf('%') == -1) {
-        val = val + 'px';
-    }
-    return val;
-};
-/**
- * 动态获取组件
- */
-export const getComponent = (type) => {
-    if (type == "select") {
-        return "crudSelect";
-    } else if (type == "radio") {
-        return "crudRadio";
-    } else if (type == "checkbox") {
-        return "crudCheckbox";
-    } else if (type == "date") {
-        return "crudDate";
-    } else {
-        return "crudInput";
-    }
-};
-/**
  * 加密处理
  */
 export const encryption = (params) => {
@@ -77,13 +42,7 @@ export const encryption = (params) => {
     return result;
 };
 
-/**
- * 设置浏览器头部标题
- */
-export const setTitle = function(title) {
-    title = title ? `${title}——Avue 通用管理 系统快速开发框架` : 'Avue 通用管理 系统快速开发框架';
-    window.document.title = title;
-};
+
 /**
  * 浏览器判断是否全屏
  */
@@ -169,31 +128,7 @@ export const findParent = (menu, id) => {
     }
 };
 
-/**
- * 总体路由处理器
- */
-export const resolveUrlPath = (url, name) => {
 
-    let reqUrl = url;
-    if (url.indexOf("http") != -1 || url.indexOf("https") != -1) {
-        reqUrl = `/myiframe/urlPath?src=${reqUrl}&name=${name}`;
-    } else {
-        reqUrl = `${reqUrl}`;
-    }
-    return reqUrl;
-};
-/**
- * 总体路由设置器
- */
-export const setUrlPath = ($route) => {
-    let value = "";
-    if ($route.query.src) {
-        value = $route.query.src;
-    } else {
-        value = $route.path;
-    }
-    return value;
-};
 /**
  * 动态插入css
  */

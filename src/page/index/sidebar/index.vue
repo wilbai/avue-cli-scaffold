@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { setUrlPath } from '@/util/util'
 import { mapGetters } from 'vuex'
 import SidebarItem from './sidebarItem'
 export default {
@@ -29,9 +28,7 @@ export default {
   },
   computed: {
     ...mapGetters(['menu', 'tag', 'isCollapse']),
-    nowTagValue: function () {
-      return setUrlPath(this.$route)
-    }
+    nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   mounted () { },
   methods: {}

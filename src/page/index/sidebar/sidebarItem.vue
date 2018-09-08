@@ -35,7 +35,6 @@
   </div>
 </template>
 <script>
-import { resolveUrlPath, setUrlPath } from '@/util/util'
 import { validatenull } from '@/util/validate';
 export default {
   name: 'SidebarItem',
@@ -53,9 +52,7 @@ export default {
   created () { },
   mounted () { },
   computed: {
-    nowTagValue: function () {
-      return setUrlPath(this.$route)
-    }
+    nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   methods: {
     validatenull (val) {
@@ -66,7 +63,10 @@ export default {
     },
     open (item) {
       this.$router.push({
-        path: resolveUrlPath(item.href, item.label),
+        path: this.$router.$avueRouter.getPath({
+          name: item.label,
+          src: item.href
+        }),
         query: item.query
       })
     }

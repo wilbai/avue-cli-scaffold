@@ -270,6 +270,13 @@ const second = [{
     meta: {},
     children: []
 }, {
+    id: 25,
+    label: "标签页操作",
+    href: `/tags/index`,
+    icon: 'icon-canshu',
+    meta: {},
+    children: []
+}, {
     id: 26,
     label: "灰度模式",
     href: `/gray/index`,

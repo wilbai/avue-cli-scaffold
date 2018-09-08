@@ -3,7 +3,7 @@
     <div class="lock-form animated bounceInDown">
       <div class="animated"
            :class="{'shake':passwdError,'bounceOut':pass}">
-        <h3 class="text-white">{{userInfo.username}}</h3>
+        <h3 class="title">{{userInfo.username}}</h3>
         <el-input placeholder="请输入登录密码"
                   type="password"
                   class="input-with-select animated"
@@ -23,7 +23,6 @@
 </template>
 <script>
 import { mapGetters, mapState } from "vuex";
-import { resolveUrlPath } from "@/util/util";
 export default {
   name: "lock",
   data () {
@@ -70,7 +69,7 @@ export default {
       this.pass = true;
       setTimeout(() => {
         this.$store.commit("CLEAR_LOCK");
-        this.$router.push({ path: resolveUrlPath(this.tag.value || "/") });
+        this.$router.push({ path: this.$router.$avueRouter.getPath({ src: this.tag.value }) });
       }, 1000);
     }
   },
@@ -83,8 +82,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
   position: relative;
+  .title {
+    margin-bottom: 8px;
+    color: #333;
+  }
 }
 .lock-container::before {
   z-index: -999;

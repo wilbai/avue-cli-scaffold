@@ -104,7 +104,6 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.$store.dispatch("LoginByPhone", this.loginForm).then(() => {
-            this.$store.commit("ADD_TAG", this.tagWel);
             this.$router.push({ path: this.tagWel.value });
           });
         }

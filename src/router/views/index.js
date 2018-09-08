@@ -60,6 +60,16 @@ export default [{
             import ( /* webpackChunkName: "utils" */ '@/views/clipboard/index')
     }]
 }, {
+    path: '/tags',
+    component: Layout,
+    redirect: '/tags/index',
+    children: [{
+        path: 'index',
+        name: '标签操作',
+        component: () =>
+            import ( /* webpackChunkName: "utils" */ '@/views/tags/index')
+    }]
+}, {
     path: '/role',
     component: Layout,
     redirect: '/role/index',

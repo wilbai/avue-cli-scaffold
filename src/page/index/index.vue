@@ -61,7 +61,7 @@ export default {
   },
   created () {
     //实时检测刷新token
-    this.refreshToken();
+    // this.refreshToken();
   },
   mounted () { },
   computed: mapGetters(['isLock', 'isCollapse', 'website']),
@@ -103,8 +103,7 @@ export default {
 }
 .avue-layout,
 .avue-top {
-  min-width: 1300px;
-  width: 90%;
+  width: 92%;
   height: 100%;
   margin: 0 auto;
 }
@@ -116,7 +115,7 @@ export default {
 }
 .avue-header {
   background: #fff;
-  min-width: 1300px;
+  width: 100%;
   box-shadow: 3px 0 3px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
 }

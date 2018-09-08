@@ -26,6 +26,9 @@ import VueClipboard from 'vue-clipboard2'
 // 插件 json 展示
 import vueJsonTreeView from 'vue-json-tree-view'
 
+
+Vue.use(router)
+
 Vue.use(VueClipboard)
 
 Vue.use(vueJsonTreeView)
