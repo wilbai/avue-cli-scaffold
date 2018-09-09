@@ -27,7 +27,7 @@ router.beforeEach((to, from, next) => {
                     })
                 })
             } else {
-                if (!whiteTagList.includes(to.path)) {
+                if (!vaildPath(whiteTagList, to.path)) {
                     const value = to.query.src ? to.query.src : to.path;
                     const label = to.query.name ? to.query.name : to.name;
                     store.commit('ADD_TAG', {
@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
-        if (whiteList.includes(to.path)) {
+        if (vaildPath(whiteList, to.path)) {
             next()
         } else {
             next('/login')
@@ -52,4 +52,15 @@ router.afterEach(() => {
     NProgress.done();
     const title = store.getters.tag.label;
     router.$avueRouter.setTitle(title);
-})
+});
+//正则验证路由
+function vaildPath(list, path) {
+    let result = false;
+    list.forEach(ele => {
+        if (new RegExp("^" + ele + ".*", "g").test(path)) {
+            result = true
+        }
+
+    })
+    return result;
+}
