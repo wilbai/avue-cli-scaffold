@@ -127,7 +127,9 @@ export const findParent = (menu, id) => {
         }
     }
 };
-
+/**
+ * 判断2个对象属性和值是否相等
+ */
 
 /**
  * 动态插入css
@@ -142,8 +144,20 @@ export const loadStyle = url => {
     head.appendChild(link);
 };
 /**
- * 根据字典的value显示label
+ * 判断路由是否相等
  */
+export const isObjectValueEqual = (a, b) => {
+        let result = true;
+        Object.keys(a).forEach(ele => {
+            const type = typeof(a[ele]);
+            if (type === 'string' && a[ele] !== b[ele]) result = false;
+            else if (type === 'object' && JSON.stringify(a[ele]) !== JSON.stringify(b[ele])) result = false;
+        })
+        return result;
+    }
+    /**
+     * 根据字典的value显示label
+     */
 export const findByvalue = (dic, value) => {
     let result = '';
     if (validatenull(dic)) return value;

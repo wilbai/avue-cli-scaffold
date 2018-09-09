@@ -31,6 +31,17 @@ RouterPlugin.install = function(router, store) {
             }
             return result;
         },
+        //正则处理路由
+        vaildPath: function(list, path) {
+            let result = false;
+            list.forEach(ele => {
+                if (new RegExp("^" + ele + ".*", "g").test(path)) {
+                    result = true
+                }
+
+            })
+            return result;
+        },
         //设置路由值
         getValue: function(route) {
             let value = "";

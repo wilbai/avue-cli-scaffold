@@ -1,7 +1,9 @@
 import { setStore, getStore, removeStore } from '@/util/store'
+import { isObjectValueEqual } from '@/util/util'
 const tagObj = {
     label: '', //标题名称
     value: '', //标题的路径
+    params: '', //标题的路径参数
     query: '', //标题的参数
 }
 
@@ -16,6 +18,7 @@ function setFistTag(list) {
     }
 }
 
+
 const navs = {
     state: {
         tagList: getStore({ name: 'tagList' }) || [],
@@ -23,6 +26,7 @@ const navs = {
         tagWel: {
             label: "首页",
             value: "/wel/index",
+            params: {},
             query: {},
             close: false
         }
@@ -34,15 +38,21 @@ const navs = {
         ADD_TAG: (state, action) => {
             state.tag = action;
             setStore({ name: 'tag', content: state.tag, type: 'session' })
-            if (state.tagList.some(a => a.value === action.value)) return
+            if (state.tagList.some(ele => isObjectValueEqual(ele, action))) return
             state.tagList.push(action)
             setFistTag(state.tagList);
             setStore({ name: 'tagList', content: state.tagList, type: 'session' })
         },
         DEL_TAG: (state, action) => {
             state.tagList = state.tagList.filter(item => {
-                if (item.value !== (typeof(action) === 'object' ? action.value : action)) {
-                    return true;
+                if (typeof(action) === 'object') {
+                    let a = Object.assign({}, item);
+                    let b = Object.assign({}, action);
+                    delete a.close;
+                    delete b.__ob__;
+                    return !isObjectValueEqual(a, b)
+                } else {
+                    return item.value !== action
                 }
             })
             setFistTag(state.tagList);

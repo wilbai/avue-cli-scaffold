@@ -1,6 +1,7 @@
 <template>
   <div>
     <basic-container>
+      <p>动态路由</p>
       <avue-crud :option="tableOption"
                  :data="tableData">
         <template slot-scope="scope"

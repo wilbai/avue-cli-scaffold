@@ -14,7 +14,7 @@
            @touchstart="hadelMousestart">
         <div ref="tagsPageOpened"
              class="tag-item"
-             :class="{'is-active':nowTagValue==item.value}"
+             :class="{'is-active':isObjectValueEqual(item,tag)}"
              :name="item.value"
              @contextmenu.prevent="openMenu(item,$event)"
              v-for="(item,index) in tagList"
@@ -48,6 +48,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { isObjectValueEqual } from '@/util/util';
 export default {
   name: 'tags',
   data () {
@@ -85,9 +86,11 @@ export default {
   },
   computed: {
     ...mapGetters(['tagWel', 'tagList', 'isCollapse', 'tag']),
-    nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   methods: {
+    isObjectValueEqual (a, b) {
+      return isObjectValueEqual(a, b)
+    },
     init () {
       this.refsTag = this.$refs.tagsPageOpened
       setTimeout(() => {
