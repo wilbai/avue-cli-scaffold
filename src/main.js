@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+import 'classlist-polyfill';
 import Vue from 'vue';
 import axios from './router/axios';
 import VueAxios from 'vue-axios';
@@ -6,6 +8,7 @@ import './permission'; // 权限
 import './error'; // 日志
 import router from './router/router';
 import 'avue-plugin-transfer/packages' //引入avue-plugin-transfer插件
+import 'avue-plugin-ueditor/packages' //引入avue-plugin-ueditor插件
 import store from './store';
 import {
     loadStyle

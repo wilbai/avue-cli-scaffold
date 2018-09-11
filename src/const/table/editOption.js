@@ -11,12 +11,14 @@ export default {
     delBtn: false,
     column: [{
             label: '姓名',
-            prop: 'name'
+            prop: 'name',
+            cell: true
         },
         {
             label: '性别',
             prop: 'sex',
             type: 'select',
+            cell: true,
             dicData: DIC.SEX
         }
     ]
