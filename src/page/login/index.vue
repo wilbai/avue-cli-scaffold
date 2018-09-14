@@ -5,35 +5,37 @@
       <img src="/svg/logo.svg"
            alt="">
     </div>
-    <div class="login-left animated fadeInLeft">
-      <div class="login-info">
-        <h2 class="login-info-title">{{website.info.title}}</h2>
-        <ul class="login-info-list">
-          <li class="login-info-item"
-              v-for="(item,index) in website.info.list"
-              :key="index">
-            <i class="el-icon-check"></i>&nbsp;{{item}}
-          </li>
-        </ul>
-        <el-button type="primary"
-                   size="small"
-                   class="login-index">首页</el-button>
+    <div class="login-weaper">
+      <div class="login-left animated fadeInLeft">
+        <div class="login-info">
+          <h2 class="login-info-title">{{website.info.title}}</h2>
+          <ul class="login-info-list">
+            <li class="login-info-item"
+                v-for="(item,index) in website.info.list"
+                :key="index">
+              <i class="el-icon-check"></i>&nbsp;{{item}}
+            </li>
+          </ul>
+          <el-button type="primary"
+                     size="small"
+                     class="login-index">首页</el-button>
+        </div>
       </div>
-    </div>
-    <div class="login-border  animated fadeInRight">
-      <div class="login-main">
-        <h4 class="login-title">登录 {{website.title}}</h4>
-        <userLogin v-if="activeName==='user'"></userLogin>
-        <codeLogin v-else-if="activeName==='code'"></codeLogin>
-        <thirdLogin v-else-if="activeName==='third'"></thirdLogin>
-      </div>
-      <div class="login-menu">
-        <a href="#"
-           @click.stop="activeName='user'">账号密码</a>
-        <a href="#"
-           @click.stop="activeName='code'">手机号登录</a>
-        <a href="#"
-           @click.stop="activeName='third'">第三方登录</a>
+      <div class="login-border  animated fadeInRight">
+        <div class="login-main">
+          <h4 class="login-title">登录 {{website.title}}</h4>
+          <userLogin v-if="activeName==='user'"></userLogin>
+          <codeLogin v-else-if="activeName==='code'"></codeLogin>
+          <thirdLogin v-else-if="activeName==='third'"></thirdLogin>
+        </div>
+        <div class="login-menu">
+          <a href="#"
+             @click.stop="activeName='user'">账号密码</a>
+          <a href="#"
+             @click.stop="activeName='code'">手机号登录</a>
+          <a href="#"
+             @click.stop="activeName='third'">第三方登录</a>
+        </div>
       </div>
     </div>
   </div>
@@ -90,11 +92,17 @@ export default {
 
 <style lang="scss">
 .login-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  // background: rgba(0, 0, 0, 0.2);
   position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+.login-weaper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  margin-top: -200px;
 }
 .login-container::before {
   z-index: -999;
@@ -108,8 +116,9 @@ export default {
   background-size: cover;
 }
 .login-left {
+  float: left;
+  width: 50%;
   position: relative;
-  flex: 1;
 }
 .login-logo {
   position: absolute;
@@ -132,7 +141,8 @@ export default {
   color: rgb(33, 37, 41);
 }
 .login-border {
-  flex: 1;
+  width: 50%;
+  float: left;
   box-sizing: border-box;
 }
 .login-main {

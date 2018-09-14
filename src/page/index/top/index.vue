@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <div class="top-button is-left">
+    <div class="top-bar__left">
       <logo></logo>
       <!-- breadcrumb按钮和面包屑 -->
       <!-- <div class="tags-breadcrumb">
@@ -9,15 +9,15 @@
            @click="showCollapse"></i>
       </div> -->
     </div>
-    <h1 class="top-title">
+    <h1 class="top-bar__title">
       <topMenu></topMenu>
     </h1>
-    <div class="top-button is-right">
+    <div class="top-bar__right">
       <el-tooltip class="item"
                   effect="dark"
                   content="主题色"
                   placement="bottom">
-        <span class="top-item">
+        <span class="top-bar__item ">
           <top-color></top-color>
         </span>
       </el-tooltip>
@@ -25,7 +25,7 @@
                   effect="dark"
                   :content="logsFlag?'没有错误日志':`${logsLen}条错误日志`"
                   placement="bottom">
-        <span class="top-item">
+        <span class="top-bar__item ">
           <top-logs></top-logs>
         </span>
       </el-tooltip>
@@ -33,7 +33,7 @@
                   effect="dark"
                   content="锁屏"
                   placement="bottom">
-        <span class="top-item">
+        <span class="top-bar__item ">
           <top-lock></top-lock>
         </span>
       </el-tooltip>
@@ -41,7 +41,7 @@
                   effect="dark"
                   content="特色主题"
                   placement="bottom">
-        <span class="top-item">
+        <span class="top-bar__item ">
           <top-theme></top-theme>
         </span>
       </el-tooltip>
@@ -49,7 +49,7 @@
                   effect="dark"
                   :content="isFullScren?'退出全屏':'全屏'"
                   placement="bottom">
-        <span class="top-item">
+        <span class="top-bar__item ">
           <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
              @click="handleScreen"></i>
         </span>
@@ -58,7 +58,7 @@
                   effect="dark"
                   content="用户头像"
                   placement="bottom">
-        <img class="top-userImg"
+        <img class="top-bar__img"
              :src="userInfo.avatar">
       </el-tooltip>
       <el-dropdown>

@@ -8,7 +8,7 @@ import './permission'; // 权限
 import './error'; // 日志
 import router from './router/router';
 import 'avue-plugin-transfer/packages' //引入avue-plugin-transfer插件
-import 'avue-plugin-ueditor/packages' //引入avue-plugin-ueditor插件
+import 'avue-plugin-ueditor/packages' //引入avue-plugin-ueditor插件(如果要兼容ie自行换掉富文本编辑器，此款插件不兼容ie)
 import store from './store';
 import {
     loadStyle

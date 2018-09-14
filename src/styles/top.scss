@@ -1,8 +1,7 @@
 .top {
-    align-items: center;
+    position: relative;
     border-bottom: 1px solid #eee;
     color: rgba(0, 0, 0, .65);
-    display: flex;
     font-size: 18px;
     height: 64px;
     line-height: 1;
@@ -10,18 +9,7 @@
     white-space: nowrap;
 }
 
-.top-title {
-    padding-left: 30px;
-    box-sizing: border-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: inherit;
-    font-weight: 400;
-    flex: 1;
-}
-
-.top-userImg {
+.top-bar__img {
     margin: 0 8px 0 10px;
     padding: 2px;
     width: 30px;
@@ -29,13 +17,36 @@
     border-radius: 100%;
     box-sizing: border-box;
     border: 1px solid #eee;
+    vertical-align: middle;
 }
 
-.top-button {
-    display: flex;
-    align-items: center;
+.top-bar__left,
+.top-bar__right {
+    position: absolute;
+    top: 0;
 }
 
-.top-item {
+.top-bar__left {
+    left: 0;
+}
+
+.top-bar__right {
+    padding: 12px 0;
+    right: 0;
+}
+
+.top-bar__title {
+    padding-left: 220px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: inherit;
+    font-weight: 400;
+}
+
+.top-bar__item {
+    display: inline-block;
     margin-right: 12px;
 }

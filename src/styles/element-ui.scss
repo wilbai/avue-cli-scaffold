@@ -31,3 +31,14 @@
 .el-menu--horizontal>.el-submenu .el-submenu__title:hover {
     background-color: transparent;
 }
+
+.el-message__icon,
+.el-message__content {
+    display: inline-block;
+}
+
+.el-date-editor .el-range-input,
+.el-date-editor .el-range-separator {
+    height: auto;
+    overflow: hidden;
+}

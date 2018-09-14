@@ -103,12 +103,18 @@ export default {
 }
 .avue-layout,
 .avue-top {
+  position: relative;
   width: 92%;
   height: 100%;
   margin: 0 auto;
 }
 .avue-left {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 220px !important;
+  height: 100%;
+  z-index: 1024;
 }
 .avue-sidebar {
   height: 100%;
@@ -120,8 +126,10 @@ export default {
   margin-bottom: 20px;
 }
 .avue-main {
+  position: absolute;
+  left: 220px;
   padding: 0;
-  position: relative;
+  width: calc(100% - 230px);
   height: calc(100% - 8px);
   box-sizing: border-box;
   overflow: hidden;
