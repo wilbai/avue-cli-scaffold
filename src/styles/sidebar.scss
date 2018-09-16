@@ -1,36 +1,33 @@
 .sidebar-container {
-    padding-top: 20px;
-    flex: 0 0 auto;
-    width: auto;
+    padding-top: 60px;
     height: 100%;
-    background: #fff;
+    position: relative;
+    background-color: #20222a;
     transition: width .6s;
-    border-radius: 5px;
     box-sizing: border-box;
     .el-menu-item,
     .el-submenu__title {
-        font-weight: 700;
-        font-size: 12px;
-        height: 48px;
-        line-height: 48px;
+        font-size: 14px;
+        height: 56px;
+        line-height: 56px;
     }
     .el-menu-item {
         &:hover {
             background-color: transparent !important;
-            color: $mainBg;
+            color: #fff;
             span,
             i {
-                color: $mainBg;
+                color: #fff;
             }
         }
         &.is-active {
-            background-color: #e2edff !important;
+            background-color: rgba(0, 0, 0, .8) !important;
             span,
             i {
-                color: $mainBg
+                color: #fff;
             }
             &:hover {
-                background-color: #e2edff
+                background-color: rgba(0, 0, 0, .8) !important;
             }
             &::before {
                 content: " ";
@@ -45,23 +42,27 @@
     }
     .el-submenu__title {
         &:hover {
-            background-color: transparent !important;
+            background-color: rgba(0, 0, 0, .8) !important;
         }
     }
     .el-submenu .el-menu-item {
-        font-weight: normal;
+        height: 50px;
+        line-height: 50px;
         &.is-active {
-            background-color: #e2edff !important;
+            background-color: rgba(0, 0, 0, .8) !important;
             span,
             i {
-                color: $mainBg
+                color: #fff
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, .8) !important;
             }
         }
         &:hover {
-            background-color: transparent;
+            background-color: transparent !important;
             span,
             i {
-                color: $mainBg;
+                color: #fff;
             }
         }
     }

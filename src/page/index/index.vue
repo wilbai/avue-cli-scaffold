@@ -1,5 +1,6 @@
 <template>
-  <el-container class="avue-contail">
+  <el-container class="avue-contail"
+                :class="{'avue--collapse':isCollapse}">
     <el-header height="auto"
                class="avue-header">
       <!-- 顶部导航栏 -->
@@ -93,43 +94,53 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .avue-contail {
   width: 100%;
   height: 100%;
-  background-color: #eceef3;
+  background-color: #f2f2f2;
   background-size: 100%;
   background-repeat: no-repeat;
 }
 .avue-layout,
 .avue-top {
   position: relative;
-  width: 92%;
-  height: 100%;
+  width: 100%;
+  height: 50px;
   margin: 0 auto;
 }
 .avue-left {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 220px !important;
   height: 100%;
   z-index: 1024;
 }
-.avue-sidebar {
-  height: 100%;
+.avue--collapse {
+  .avue-left,
+  .avue-logo {
+    width: 60px !important;
+  }
+  .avue-header {
+    padding-left: 60px;
+  }
+  .avue-main {
+    width: calc(100% - 60px);
+    left: 60px;
+  }
 }
 .avue-header {
-  background: #fff;
+  padding: 0;
+  padding-left: 230px;
   width: 100%;
-  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
+  background-color: #fff;
 }
 .avue-main {
   position: absolute;
   left: 220px;
   padding: 0;
-  width: calc(100% - 230px);
+  width: calc(100% - 220px);
   height: calc(100% - 8px);
   box-sizing: border-box;
   overflow: hidden;

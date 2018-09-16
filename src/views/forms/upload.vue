@@ -3,7 +3,9 @@
     <basic-container>
       <avue-form :option="option"
                  v-model="form"
-                 @submit="handleSubmit"></avue-form>
+                 @submit="handleSubmit"
+                 :upload-before="uploadBefore"
+                 :upload-after="uploadAfter"></avue-form>
     </basic-container>
     <basic-container>
       <tree-view :data="option"
@@ -36,6 +38,16 @@ export default {
 
   },
   methods: {
+    uploadBefore (file, done) {
+      console.log(file);
+      done();
+      this.$message.success('上传前的方法')
+    },
+    uploadAfter (error, done) {
+      console.log(error);
+      done();
+      this.$message.success('上传后的方法')
+    },
     handleSubmit () {
       this.$message({
         message: this.form,

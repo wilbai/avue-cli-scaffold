@@ -4,6 +4,7 @@
         background-size: 100% 100%;
     }
     .avue-header,
+    .avue-logo,
     .tags-container {
         background-color: transparent;
     }
@@ -32,9 +33,6 @@
     .el-submenu__title,
     .el-menu {
         background-color: transparent !important
-    }
-    .logo_subtitle {
-        color: #ccc !important;
     }
     .logo_title,
     .tags-breadcrumb,
@@ -91,6 +89,11 @@
             i {
                 color: $mainBg !important;
             }
+        }
+    }
+    .top-bar__item {
+        i {
+            color: #fff;
         }
     }
 }

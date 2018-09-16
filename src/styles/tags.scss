@@ -1,35 +1,56 @@
 .tags-breadcrumb {
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    height: 50px;
-}
-
-.tags-breadcrumb-list {
-    padding: 0 15px;
-}
-
-.tag-collapse {
-    font-size: 36px !important;
-}
-
-.tag-collapse.tag-collapse_right {
-    transform: rotate(90deg);
+    &_collapse {
+        line-height: 55px;
+        font-size: 30px !important;
+        &--right {
+            transform: rotate(90deg);
+        }
+    }
 }
 
 .tags-container {
-    margin: 0 10px 10px 10px;
     position: relative;
+    padding: 5px 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
     overflow: hidden;
-    border-radius: 5px;
+    border-top: 1px solid #f6f6f6;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
     background-color: #fff;
+    .el-tabs--card>.el-tabs__header {
+        margin: 0;
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__nav,
+    .el-tabs--card>.el-tabs__header .el-tabs__item,
+    .el-tabs--card>.el-tabs__header {
+        border: none;
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__item {
+        margin: 0 3px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        font-weight: normal;
+        border: 1px solid #eee;
+        color: #ccc;
+        border-radius: 3px;
+        &.is-active {
+            border: 1px solid #409EFF;
+            color: #409EFF;
+        }
+    }
+    .el-tabs__nav-prev,
+    .el-tabs__nav-next {
+        width: 20px;
+        line-height: 34px;
+        font-size: 18x;
+        text-align: center;
+    }
     .tags-box {
         position: relative;
         box-sizing: border-box;
         padding-right: 106px;
         width: 100%;
-        height: 40px;
     }
     .tags-list {
         position: absolute;
@@ -78,32 +99,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        padding: 5px 15px 0 15px;
-        height: 100%;
+        padding: 1px 15px;
         box-sizing: border-box;
-        background-color: #fff;
-        box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
-    }
-}
-
-.contextmenu {
-    margin: 0;
-    top: 64px;
-    list-style-type: none;
-    padding: 5px 0;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #333;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
-    li {
-        margin: 0;
-        height: 32px;
-        line-height: 32px;
-        padding: 0 15px;
-        cursor: pointer;
-        &:hover {
-            background: #eee;
-        }
     }
 }

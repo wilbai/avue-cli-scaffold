@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :span="24">
-      <el-col :span="10">
+      <el-col :span="7">
         <basic-container>
           <div class="info">
             <div class="img-border">
@@ -23,7 +23,7 @@
           </div>
         </basic-container>
       </el-col>
-      <el-col :span="14">
+      <el-col :span="17">
         <basic-container>
           <avue-data-icons :option="easyDataOption2"></avue-data-icons>
         </basic-container>

@@ -1,58 +1,61 @@
 <template>
   <div class="top">
     <div class="top-bar__left">
-      <logo></logo>
-      <!-- breadcrumb按钮和面包屑 -->
-      <!-- <div class="tags-breadcrumb">
-        <i class="icon-navicon tag-collapse"
-           :class="[{ 'tag-collapse_right': isCollapse }]"
+      <div class="tags-breadcrumb">
+        <i class="icon-navicon tags-breadcrumb_collapse"
+           :class="[{ 'tags-breadcrumb_collapse--right': isCollapse }]"
            @click="showCollapse"></i>
-      </div> -->
+      </div>
     </div>
     <h1 class="top-bar__title">
-      <topMenu></topMenu>
+      <div class="top-bar__item">
+        <top-menu></top-menu>
+      </div>
+      <span class="top-bar__item">
+        <top-search></top-search>
+      </span>
     </h1>
     <div class="top-bar__right">
       <el-tooltip class="item"
                   effect="dark"
                   content="主题色"
                   placement="bottom">
-        <span class="top-bar__item ">
+        <div class="top-bar__item">
           <top-color></top-color>
-        </span>
+        </div>
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
                   :content="logsFlag?'没有错误日志':`${logsLen}条错误日志`"
                   placement="bottom">
-        <span class="top-bar__item ">
+        <div class="top-bar__item">
           <top-logs></top-logs>
-        </span>
+        </div>
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
                   content="锁屏"
                   placement="bottom">
-        <span class="top-bar__item ">
+        <div class="top-bar__item">
           <top-lock></top-lock>
-        </span>
+        </div>
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
                   content="特色主题"
                   placement="bottom">
-        <span class="top-bar__item ">
+        <div class="top-bar__item">
           <top-theme></top-theme>
-        </span>
+        </div>
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
                   :content="isFullScren?'退出全屏':'全屏'"
                   placement="bottom">
-        <span class="top-bar__item ">
+        <div class="top-bar__item">
           <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
              @click="handleScreen"></i>
-        </span>
+        </div>
       </el-tooltip>
       <el-tooltip class="item"
                   effect="dark"
@@ -93,16 +96,18 @@ import { mapGetters } from "vuex";
 import { fullscreenToggel, listenfullscreen } from "@/util/util";
 import topLock from "./top-lock";
 import topMenu from "./top-menu";
+import topSearch from './top-search';
 import topBreadcrumb from "./top-breadcrumb";
 import topColor from "./top-color";
 import topTheme from "./top-theme";
 import topLogs from "./top-logs";
-import logo from '../logo'
 export default {
-  components: { topLock, topMenu, topBreadcrumb, topColor, topTheme, topLogs, logo },
+  components: { topLock, topMenu, topSearch, topBreadcrumb, topColor, topTheme, topLogs },
   name: "top",
   data () {
-    return {};
+    return {
+
+    };
   },
   filters: {},
   created () { },
@@ -119,7 +124,7 @@ export default {
       "tag",
       "logsLen",
       "logsFlag"
-    ])
+    ]),
   },
   methods: {
     handleScreen () {

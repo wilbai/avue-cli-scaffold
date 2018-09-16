@@ -3,7 +3,8 @@
         background-color: #002253!important;
     }
     .avue-header,
-    .tags-container {
+    .tags-container,
+    .avue-logo {
         background-color: transparent;
     }
     .el-card {
@@ -116,6 +117,22 @@
             i {
                 color: #ffb870 !important;
             }
+        }
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__item {
+        color: #ff929a;
+        border: 1px solid #ff929a;
+        &.is-active {
+            border: 1px solid #ffb870;
+            color: #ffb870;
+        }
+    }
+    .tags-container {
+        border-color: #ff929a;
+    }
+    .top-bar__item {
+        i {
+            color: #ff929a;
         }
     }
 }

@@ -3,30 +3,17 @@
     <!-- tag盒子 -->
     <div class="tags-box"
          ref="tagBox">
-      <div class="tags-list"
-           ref="tagsList"
-           @mousewheel="hadelMousewheel"
-           @mouseup="hadelMouseUp"
-           @mousemove="hadelMouse"
-           @mousedown="hadelMousestart"
-           @touchup="hadelMouseUp"
-           @touchmove="hadelMouse"
-           @touchstart="hadelMousestart">
-        <div ref="tagsPageOpened"
-             class="tag-item"
-             :class="{'is-active':isObjectValueEqual(item,tag)}"
-             :name="item.value"
-             @contextmenu.prevent="openMenu(item,$event)"
-             v-for="(item,index) in tagList"
-             :key="index"
-             @click="openUrl(item)">
-          <span class="icon-yuan tag-item-icon"></span>
-          <span class="tag-text">{{item.label}}</span>
-          <i class="el-icon-close tag-close"
-             @click.stop="closeTag(item)"
-             v-if="item.close"></i>
-        </div>
-      </div>
+      <el-tabs v-model="tag.value"
+               type="card"
+               :closable="tagLen!==1"
+               @tab-click="openTag"
+               @edit="menuTag">
+        <el-tab-pane :key="item.value"
+                     v-for="item in tagList"
+                     :label="item.label"
+                     :name="item.value">
+        </el-tab-pane>
+      </el-tabs>
       <el-dropdown class="tags-menu pull-right">
         <el-button type="primary"
                    size="mini">
@@ -39,11 +26,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-    <!-- <ul class='contextmenu' v-show="visible" :style="{left:left+'px',top:top+'px'}">
-          <li @click="closeTag(selectedTag)">关闭</li>
-          <li @click="closeOthersTags">关闭其他</li>
-          <li @click="closeAllTags">关闭全部</li>
-        </ul> -->
+
   </div>
 </template>
 <script>
@@ -67,109 +50,57 @@ export default {
   },
   created () { },
   mounted () {
-    this.init()
+
   },
   watch: {
-    $route () {
-      this.init()
-    },
-    visible (value) {
-      if (value) {
-        document.body.addEventListener('click', this.closeMenu)
-      } else {
-        document.body.removeEventListener('click', this.closeMenu)
-      }
-    },
-    tagBodyLeft (value) {
-      this.$refs.tagsList.style.left = value + 'px'
-    }
   },
   computed: {
     ...mapGetters(['tagWel', 'tagList', 'isCollapse', 'tag']),
+    tagLen () {
+      return this.tagList.length || 0;
+    }
   },
   methods: {
+    menuTag (value, action) {
+      if (action === 'remove') {
+        let { tag, key } = this.findTag(value);
+        this.$store.commit('DEL_TAG', tag)
+        if (tag.value === this.tag.value) {
+          tag = this.tagList[key === 0 ? key : key - 1] //如果关闭本标签让前推一个
+          this.openTag(tag)
+        }
+      }
+    },
+    openTag (item) {
+      let tag;
+      if (item.name) {
+        tag = this.findTag(item.name).tag;
+      } else {
+        tag = item;
+      }
+      this.$router.push({
+        path: this.$router.$avueRouter.getPath({
+          name: tag.label,
+          src: tag.value
+        }),
+        query: tag.query
+      })
+    },
     isObjectValueEqual (a, b) {
       return isObjectValueEqual(a, b)
-    },
-    init () {
-      this.refsTag = this.$refs.tagsPageOpened
-      setTimeout(() => {
-        this.refsTag.forEach((item, index) => {
-          if (this.tag.value === item.attributes.name.value) {
-            let tag = this.refsTag[index]
-            this.moveToView(tag)
-          }
-        })
-      }, 1)
-    },
-    hadelMouseUp () {
-      this.lock = false
-    },
-    hadelMousestart (e) {
-      this.lock = true
-      if (e.clientX && e.clientY) {
-        this.startX = e.clientX
-        this.startY = e.clientY
-      } else {
-        this.startX = e.changedTouches[0].pageX
-        this.startY = e.changedTouches[0].pageY
-      }
-    },
-    hadelMouse (e) {
-      const boundarystart = 0,
-        boundaryend =
-          this.$refs.tagsList.offsetWidth - this.$refs.tagBox.offsetWidth + 100
-      if (!this.lock) {
-        return
-      }
-      //鼠标滑动
-      if (e.clientX && e.clientY) {
-        this.endX = e.clientX
-        this.endY = e.clientY
-        //触摸屏滑动
-      } else {
-        //获取滑动屏幕时的X,Y
-        this.endX = e.changedTouches[0].pageX
-        this.endY = e.changedTouches[0].pageY
-      }
-      //获取滑动距离
-      let distanceX = this.endX - this.startX
-      //判断滑动方向——向右滑动
-      distanceX = parseInt(distanceX * 0.8)
-      if (distanceX > 0 && this.tagBodyLeft < boundarystart) {
-        this.tagBodyLeft = this.tagBodyLeft + distanceX
-        //判断滑动方向——向左滑动
-      } else if (distanceX < 0 && this.tagBodyLeft >= -boundaryend) {
-        this.tagBodyLeft = this.tagBodyLeft + distanceX
-      }
-    },
-    hadelMousewheel (e) {
-      const step = 0.8 * 90 //一个tag长度
-      const boundarystart = 0,
-        boundaryend =
-          this.$refs.tagsList.offsetWidth - this.$refs.tagBox.offsetWidth + 100
-      // Y>0向左滑动
-      if (e.deltaY > 0 && this.tagBodyLeft >= -boundaryend) {
-        this.tagBodyLeft = this.tagBodyLeft - step
-        // Y<0向右滑动
-      } else if (e.deltaY < 0 && this.tagBodyLeft < boundarystart) {
-        this.tagBodyLeft = this.tagBodyLeft + step
-      }
-    },
-    openMenu (tag, e) {
-      if (this.tagList.length == 1) {
-        return
-      }
-      this.visible = true
-      this.selectedTag = tag
-      this.left = e.clientX
-      this.top = e.clientY
     },
     closeOthersTags () {
       this.$store.commit('DEL_TAG_OTHER')
     },
-    closeMenu () {
-      this.visible = false
+    findTag (value) {
+      let tag, key;
+      this.tagList.map((item, index) => {
+        if (item.value === value) {
+          tag = item;
+          key = index;
+        }
+      });
+      return { tag: tag, key: key };
     },
     closeAllTags () {
       this.$store.commit('DEL_ALL_TAG')
@@ -180,46 +111,8 @@ export default {
         query: this.tagWel.query
       })
     },
-    moveToView (tag) {
-      if (tag.offsetLeft < -this.tagBodyLeft) {
-        // 标签在可视区域左侧
-        this.tagBodyLeft = -tag.offsetLeft + 10
-      } else if (
-        tag.offsetLeft + 10 > -this.tagBodyLeft &&
-        tag.offsetLeft + tag.offsetWidth <
-        -this.tagBodyLeft + this.$refs.tagBox.offsetWidth
-      ) {
-        // 标签在可视区域
-      } else {
-        // 标签在可视区域右侧
-        this.tagBodyLeft = -(
-          tag.offsetLeft -
-          (this.$refs.tagBox.offsetWidth - 100 - tag.offsetWidth) +
-          20
-        )
-      }
-    },
-    openUrl (item) {
-      this.$router.push({
-        path: this.$router.$avueRouter.getPath({
-          name: item.label,
-          src: item.value
-        }),
-        query: item.query
-      })
-    },
-    closeTag (tag) {
-      const key = this.tagList.findIndex(item => item.value === tag.value);
-      this.$store.commit('DEL_TAG', tag)
-      if (tag.value === this.tag.value) {
-        tag = this.tagList[key === 0 ? key : key - 1] //如果关闭本标签让前推一个
-        this.openUrl(tag)
-      }
-    }
   }
 }
 </script>
-<style lang="scss" scoped>
-</style>
 
 

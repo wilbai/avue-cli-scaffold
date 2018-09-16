@@ -1,15 +1,14 @@
 <template>
-  <div class="pull-auto top-menu">
+  <div class="top-menu">
     <el-menu :default-active="activeIndex"
              mode="horizontal"
-             text-color="#606266">
+             text-color="#333">
       <template v-for="(item,index) in items">
         <el-menu-item :index="item.parentId+''"
                       @click.native="openMenu(item)"
                       :key="index">
           <template slot="title">
             <i :class="item.icon"></i>
-            <span slot="title">{{item.label}}</span>
           </template>
         </el-menu-item>
       </template>
@@ -75,10 +74,3 @@ export default {
   }
 };
 </script>
-
-<style scoped="scoped" lang="scss">
-.top-menu {
-  margin-top: -4px;
-  box-sizing: border-box;
-}
-</style>

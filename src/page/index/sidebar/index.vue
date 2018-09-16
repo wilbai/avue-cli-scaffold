@@ -1,12 +1,12 @@
 <template>
-  <div class="sidebar-container"
-       :class="{'is-active':isCollapse}">
+  <div class="sidebar-container">
+    <logo></logo>
     <el-menu unique-opened
              :default-active="nowTagValue"
              mode="vertical"
              :show-timeout="200"
-             background-color="#fff"
-             text-color="#666"
+             background-color="#20222a"
+             text-color="rgba(255,255,255,0.7)"
              :collapse="isCollapse">
       <sidebar-item :menu="menu"
                     :isCollapse="isCollapse"></sidebar-item>
@@ -16,10 +16,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import logo from '../logo';
 import SidebarItem from './sidebarItem'
 export default {
   name: 'sidebar',
-  components: { SidebarItem },
+  components: { SidebarItem, logo },
   data () {
     return {}
   },
