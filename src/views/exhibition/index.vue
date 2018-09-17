@@ -71,7 +71,7 @@ export default {
         ]
       },
       easyDataOption0: {
-        // span: 6,
+        span: 6,
         // borderColor: '#fff',
         data: []
       },
@@ -143,7 +143,6 @@ export default {
         ]
       },
       easyDataOption3: {
-        // span: 8,
         data: [
           {
             title: '错误日志',
@@ -162,7 +161,7 @@ export default {
             count: 2223,
             icon: 'icon-jiaoseguanli',
             color: 'rgb(117, 56, 199)',
-          },
+          }
         ]
       }
     }
@@ -184,6 +183,10 @@ export default {
       {
         count: '20,000',
         title: '年活跃数'
+      },
+      {
+        count: '40,000',
+        title: '周度跃数'
       }
     ]
     this.easyDataOption0.data = [

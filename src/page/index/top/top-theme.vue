@@ -3,12 +3,21 @@
     <el-dialog title="选择"
                :visible.sync="box"
                width="50%">
-      <el-radio-group v-model="text">
-        <el-radio v-for="(item,index) in list"
+      <el-radio-group v-model="text"
+                      class="list">
+        <el-row :span="24">
+
+          <el-col v-for="(item,index) in list"
                   :key="index"
-                  :label="item.value">{{item.name}}</el-radio>
+                  :md="4"
+                  :xs="12"
+                  :sm="4">
+            <el-radio :label="item.value">{{item.name}}</el-radio>
+          </el-col>
+        </el-row>
       </el-radio-group>
     </el-dialog>
+
     <span>
       <i class="el-icon-menu"
          @click="open"></i>
@@ -64,5 +73,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.list {
+  width: 100%;
+}
 </style>
+

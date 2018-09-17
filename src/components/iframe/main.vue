@@ -42,10 +42,7 @@ export default {
     }
   },
   components: {
-    ...mapGetters(['tagList']),
-    tagListNum: function () {
-      return this.tagList.length != 0
-    }
+    ...mapGetters(['screen']),
   },
   methods: {
     // 显示等待框
@@ -99,7 +96,7 @@ export default {
     //iframe窗口初始化
     iframeInit () {
       const iframe = this.$refs.iframe
-      const clientHeight = document.documentElement.clientHeight - 200
+      const clientHeight = document.documentElement.clientHeight - (screen > 1 ? 200 : 130);
       iframe.style.height = `${clientHeight}px`
       if (iframe.attachEvent) {
         iframe.attachEvent('onload', () => {

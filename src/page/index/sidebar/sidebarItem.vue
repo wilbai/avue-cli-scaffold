@@ -14,7 +14,7 @@
         <template slot="title">
           <i :class="item.icon"></i>
           <span slot="title"
-                :class="{'el-menu--display':isCollapse}">{{item.label}}</span>
+                :class="{'el-menu--display':collapse}">{{item.label}}</span>
         </template>
         <template v-for="(child,cindex) in item.children">
           <el-menu-item :class="{'siderbar-active':nowTagValue==child.href}"
@@ -28,7 +28,8 @@
           <sidebar-item v-else
                         :menu="[child]"
                         :key="cindex"
-                        :isCollapse="isCollapse"></sidebar-item>
+                        :screen="screen"
+                        :collapse="collapse"></sidebar-item>
         </template>
       </el-submenu>
     </template>
@@ -45,11 +46,15 @@ export default {
     menu: {
       type: Array
     },
-    isCollapse: {
+    screen: {
+      type: Number
+    },
+    collapse: {
       type: Boolean
     }
   },
-  created () { },
+  created () {
+  },
   mounted () { },
   computed: {
     nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
@@ -62,6 +67,7 @@ export default {
       return path == null ? index + '' : path
     },
     open (item) {
+      if (this.screen <= 1) this.$store.commit("SET_COLLAPSE");
       this.$router.push({
         path: this.$router.$avueRouter.getPath({
           name: item.label,

@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-container">
+  <div class="avue-tags">
     <!-- tag盒子 -->
     <div class="tags-box"
          ref="tagBox">
@@ -55,7 +55,7 @@ export default {
   watch: {
   },
   computed: {
-    ...mapGetters(['tagWel', 'tagList', 'isCollapse', 'tag']),
+    ...mapGetters(['tagWel', 'tagList', 'tag']),
     tagLen () {
       return this.tagList.length || 0;
     }

@@ -69,9 +69,7 @@ export default {
         {
             label: "地址",
             span: 24,
-            minRows: 5,
             prop: "address",
-            component: 'AvueUeditor',
         }
     ]
 };

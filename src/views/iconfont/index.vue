@@ -2,98 +2,144 @@
   <div>
     <basic-container>
       <h3 style="color:red;">./src/config/env.js中的iconfontVersion数组追加下图红框的地址即可</h3>
-      <ul class="icon-list">
-        <li>
+      <el-row :span="24"
+              class="icon-list">
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-daohanglanmoshi02"></i>
             <span class="icon-name">icon-daohanglanmoshi02</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-changyonglogo27"></i>
             <span class="icon-name">icon-changyonglogo27</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-biaoge"></i>
             <span class="icon-name">icon-biaoge</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-baidu1"></i>
             <span class="icon-name">icon-baidu1</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-tubiao"></i>
             <span class="icon-name">icon-tubiao</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-souhu"></i>
             <span class="icon-name">icon-souhu</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-msnui-360"></i>
             <span class="icon-name">icon-msnui-360</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-iframe"></i>
             <span class="icon-name">icon-iframe</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-huanyingye"></i>
             <span class="icon-name">icon-huanyingye</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-weixin"></i>
             <span class="icon-name">icon-weixin</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-qq"></i>
             <span class="icon-name">icon-qq</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-tuichu"></i>
             <span class="icon-name">icon-tuichu</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-jiaoseguanli"></i>
             <span class="icon-name">icon-jiaoseguanli</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-yonghuguanli"></i>
             <span class="icon-name">icon-yonghuguanli</span>
           </span>
-        </li>
-        <li>
+        </el-col>
+        <el-col :xs="12"
+                :sm="6"
+                class="item"
+                :md="4">
           <span>
             <i class="icon-caidanguanli"></i>
             <span class="icon-name">icon-caidanguanli</span>
           </span>
-        </li>
-      </ul>
+        </el-col>
+      </el-row>
       <img class="iconfon-explace"
            src="/img/mock/iconfont.png"
            alt="">
@@ -119,13 +165,7 @@ export default {
 .iconfon-container {
   padding: 15px;
 }
-.iconfon-container > ul.icon-list {
-  margin: 15px auto;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  border: 1px solid #eaeefb;
-  border-radius: 4px;
+.iconfon-container .icon-list {
 }
 
 .iconfon-container .content > ul:not(.timeline) {
@@ -135,9 +175,8 @@ export default {
   color: #5e6d82;
   line-height: 2em;
 }
-.icon-list li {
+.icon-list .item {
   float: left;
-  width: 16.66%;
   text-align: center;
   height: 120px;
   line-height: 120px;
@@ -149,7 +188,7 @@ export default {
   margin-right: -1px;
   margin-bottom: -1px;
 }
-.icon-list li span {
+.icon-list .item span {
   display: inline-block;
   line-height: normal;
   vertical-align: middle;
@@ -157,13 +196,13 @@ export default {
     Microsoft YaHei, SimSun, sans-serif;
   color: #99a9bf;
 }
-.icon-list li i {
+.icon-list .item i {
   display: block;
   font-size: 36px !important;
   margin-bottom: 15px;
   color: #606266;
 }
-.icon-list li .icon-name {
+.icon-list .item .icon-name {
   display: inline-block;
   padding: 0 12px;
   font-size: 12px !important;
@@ -171,6 +210,7 @@ export default {
   color: #606266;
 }
 .iconfon-explace {
+  margin: 20px;
   width: 100%;
 }
 </style>

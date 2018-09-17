@@ -12,6 +12,7 @@ const common = {
     state: {
         isCollapse: false,
         isFullScren: false,
+        screen: -1,
         isLock: getStore({
             name: 'isLock'
         }) || false,
@@ -56,6 +57,9 @@ const common = {
                 content: state.isLock,
                 type: 'session'
             })
+        },
+        SET_SCREEN: (state, screen) => {
+            state.screen = screen;
         },
         SET_THEME: (state, color) => {
             state.theme = color;

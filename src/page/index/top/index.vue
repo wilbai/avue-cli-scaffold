@@ -1,14 +1,14 @@
 <template>
-  <div class="top">
+  <div class="avue-top">
     <div class="top-bar__left">
-      <div class="tags-breadcrumb">
-        <i class="icon-navicon tags-breadcrumb_collapse"
-           :class="[{ 'tags-breadcrumb_collapse--right': isCollapse }]"
+      <div class="avue-breadcrumb">
+        <i class="icon-navicon avue-breadcrumb_collapse"
+           :class="[{ 'avue-breadcrumb_collapse--right': isCollapse }]"
            @click="showCollapse"></i>
       </div>
     </div>
     <h1 class="top-bar__title">
-      <div class="top-bar__item">
+      <div class="top-bar__item top-bar__item--show">
         <top-menu></top-menu>
       </div>
       <span class="top-bar__item">
@@ -16,40 +16,35 @@
       </span>
     </h1>
     <div class="top-bar__right">
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   content="主题色"
                   placement="bottom">
         <div class="top-bar__item">
           <top-color></top-color>
         </div>
       </el-tooltip>
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   :content="logsFlag?'没有错误日志':`${logsLen}条错误日志`"
                   placement="bottom">
         <div class="top-bar__item">
           <top-logs></top-logs>
         </div>
       </el-tooltip>
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   content="锁屏"
                   placement="bottom">
         <div class="top-bar__item">
           <top-lock></top-lock>
         </div>
       </el-tooltip>
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   content="特色主题"
                   placement="bottom">
-        <div class="top-bar__item">
+        <div class="top-bar__item top-bar__item--show">
           <top-theme></top-theme>
         </div>
       </el-tooltip>
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   :content="isFullScren?'退出全屏':'全屏'"
                   placement="bottom">
         <div class="top-bar__item">
@@ -57,8 +52,7 @@
              @click="handleScreen"></i>
         </div>
       </el-tooltip>
-      <el-tooltip class="item"
-                  effect="dark"
+      <el-tooltip effect="dark"
                   content="用户头像"
                   placement="bottom">
         <img class="top-bar__img"

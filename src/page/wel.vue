@@ -1,7 +1,9 @@
 <template>
   <div>
     <el-row :span="24">
-      <el-col :span="7">
+      <el-col :md="7"
+              :xs="24"
+              :sm="24">
         <basic-container>
           <div class="info">
             <div class="img-border">
@@ -12,9 +14,7 @@
                    class="img-v"></div>
             <div class="user">
               <div class="user-img">
-                <a href="#">
-                  <span style="user-title">smallwei</span>
-                </a>
+                <span style="user-title">smallwei</span>
                 <div class="user-subtitle">VIP用户</div>
               </div>
               <div class="user-item">绑定机构：Avue后台模版</div>
@@ -23,7 +23,9 @@
           </div>
         </basic-container>
       </el-col>
-      <el-col :span="17">
+      <el-col :md="17"
+              :xs="24"
+              :sm="24">
         <basic-container>
           <avue-data-icons :option="easyDataOption2"></avue-data-icons>
         </basic-container>
@@ -206,12 +208,12 @@ export default {
 <style scoped="scoped" lang="scss">
 .info {
   padding: 21px 0;
-  display: flex;
-  align-items: center;
   .img-border {
     width: 64px;
     height: 65px;
     position: relative;
+    vertical-align: middle;
+    display: inline-block;
   }
   .img-v {
     position: absolute;
@@ -238,13 +240,9 @@ export default {
   }
   .user {
     margin-left: 20px;
+    display: inline-block;
     color: rgb(153, 153, 153);
-    flex: 1 1 auto;
-  }
-  .user-img {
-    display: flex;
-    height: 24px;
-    align-items: center;
+    vertical-align: middle;
   }
   .user-title {
     font-size: 18px;
@@ -257,6 +255,8 @@ export default {
     overflow: hidden;
   }
   .user-subtitle {
+    display: inline-block;
+    width: 40px;
     height: 16px;
     line-height: 16px;
     border-radius: 2px;

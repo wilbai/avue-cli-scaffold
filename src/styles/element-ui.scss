@@ -42,3 +42,15 @@
     height: auto;
     overflow: hidden;
 }
+
+.el-dialog__wrapper {
+    z-index: 2048;
+}
+
+.el-scrollbar__wrap {
+    overflow-x: hidden;
+}
+
+.el-col {
+    margin-bottom: 8px;
+}

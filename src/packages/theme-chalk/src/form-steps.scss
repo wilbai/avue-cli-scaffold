@@ -1,0 +1,15 @@
+.avue-form-steps {
+    &--vertical {
+        width: 100%;
+        display: flex;
+    }
+    &__steps {
+        width: 230px;
+    }
+    &__contail {
+        flex: 1;
+    }
+    &__form {
+        margin: 0 auto;
+    }
+}

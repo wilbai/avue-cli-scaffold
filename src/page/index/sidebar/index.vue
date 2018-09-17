@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-container">
+  <div class="avue-sidebar">
     <logo></logo>
     <el-menu unique-opened
              :default-active="nowTagValue"
@@ -7,9 +7,10 @@
              :show-timeout="200"
              background-color="#20222a"
              text-color="rgba(255,255,255,0.7)"
-             :collapse="isCollapse">
+             :collapse="keyCollapse">
       <sidebar-item :menu="menu"
-                    :isCollapse="isCollapse"></sidebar-item>
+                    :screen="screen"
+                    :collapse="keyCollapse"></sidebar-item>
     </el-menu>
   </div>
 </template>
@@ -28,7 +29,7 @@ export default {
     this.$store.dispatch('GetMenu')
   },
   computed: {
-    ...mapGetters(['menu', 'tag', 'isCollapse']),
+    ...mapGetters(['menu', 'tag', 'keyCollapse', 'screen']),
     nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   mounted () { },

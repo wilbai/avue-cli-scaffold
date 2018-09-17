@@ -105,14 +105,14 @@ export default {
   margin-top: -200px;
 }
 .login-container::before {
-  z-index: -999;
-  content: '';
+  z-index: -1024;
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/img/login.png');
+  background-image: url("/img/login.png");
   background-size: cover;
 }
 .login-left {

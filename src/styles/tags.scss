@@ -1,4 +1,4 @@
-.tags-breadcrumb {
+.avue-breadcrumb {
     &_collapse {
         line-height: 55px;
         font-size: 30px !important;
@@ -8,7 +8,7 @@
     }
 }
 
-.tags-container {
+.avue-tags {
     position: relative;
     padding: 5px 10px;
     margin-bottom: 10px;
@@ -58,42 +58,6 @@
         overflow: visible;
         white-space: nowrap;
         transition: left .3s ease;
-    }
-    .tag-item-icon {
-        color: #ccc;
-        font-size: 11px !important;
-    }
-    .tag-item {
-        position: relative;
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        margin: 2px 4px 2px 0;
-        padding: 0 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        color: #ccc;
-        font-size: 12px;
-        vertical-align: middle;
-        opacity: 1;
-        overflow: hidden;
-        cursor: pointer;
-        &.is-active {
-            color: #495060;
-            border-color: $mainBg;
-            .tag-item-icon {
-                color: $mainBg;
-            }
-        }
-    }
-    .tag-text {
-        margin-left: 8px;
-    }
-    .tag-close {
-        margin-left: 8px;
-    }
-    .tag-item:hover {
-        opacity: .85;
     }
     .tags-menu {
         position: absolute;
