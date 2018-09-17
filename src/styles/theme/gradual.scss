@@ -50,8 +50,9 @@
     .top {
         border-bottom: none;
     }
-    .tags-menu {
-        background: linear-gradient(90deg, hsla(0, 0%, 100%, .8), hsla(0, 0%, 100%, 0)) !important;
+    .avue-tags {
+        background-color: transparent;
+        border: none;
     }
     .tag-item {
         color: #fff !important;

@@ -15,7 +15,6 @@
     background-repeat: no-repeat;
 }
 
-.avue-layout,
 .avue-top {
     position: relative;
     width: 100%;
@@ -47,18 +46,19 @@
 }
 
 .avue-header {
-    padding: 0;
     padding-left: 240px;
     width: 100%;
     background-color: #fff;
+    box-sizing: border-box;
 }
 
 .avue-main {
     position: absolute;
     left: 220px;
     padding: 0;
+    padding-bottom: 20px;
     width: calc(100% - 220px);
-    height: 100%;
+    height: calc(100% - 57px);
     box-sizing: border-box;
     overflow: hidden;
 }

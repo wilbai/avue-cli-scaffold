@@ -48,8 +48,9 @@
     .top {
         border-bottom: none;
     }
-    .tags-menu {
-        background-color: rgba(0, 0, 0, .6) !important;
+    .avue-tags {
+        background-color: transparent;
+        border: none;
     }
     .tag-item {
         color: #fff !important;
@@ -89,6 +90,28 @@
             i {
                 color: $mainBg !important;
             }
+        }
+    }
+    .top-search {
+        input::-webkit-input-placeholder,
+        textarea::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: #fff;
+        }
+        input:-moz-placeholder,
+        textarea:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #fff;
+        }
+        input::-moz-placeholder,
+        textarea::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #fff;
+        }
+        input:-ms-input-placeholder,
+        textarea:-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: #fff;
         }
     }
     .top-bar__item {

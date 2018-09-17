@@ -54,8 +54,9 @@
     .top {
         border-bottom: none;
     }
-    .tags-menu {
-        background: #002253 !important;
+    .avue-tags {
+        background-color: transparent;
+        border: none;
     }
     .tag-item {
         color: #ff929a !important;
@@ -129,6 +130,28 @@
     }
     .tags-container {
         border-color: #ff929a;
+    }
+    .top-search {
+        input::-webkit-input-placeholder,
+        textarea::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: #ff929a;
+        }
+        input:-moz-placeholder,
+        textarea:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #ff929a;
+        }
+        input::-moz-placeholder,
+        textarea::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #ff929a;
+        }
+        input:-ms-input-placeholder,
+        textarea:-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: #ff929a;
+        }
     }
     .top-bar__item {
         i {

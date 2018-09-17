@@ -3,7 +3,7 @@
     <!-- tag盒子 -->
     <div class="tags-box"
          ref="tagBox">
-      <el-tabs v-model="tag.value"
+      <el-tabs v-model="active"
                type="card"
                :closable="tagLen!==1"
                @tab-click="openTag"
@@ -36,23 +36,17 @@ export default {
   name: 'tags',
   data () {
     return {
-      visible: false,
-      tagBodyLeft: 0,
-      lock: false,
-      startX: 0,
-      startY: 0,
-      endX: 0,
-      endY: 0,
-      top: 0,
-      left: 0,
-      selectedTag: {}
+      active: '',
     }
   },
   created () { },
   mounted () {
-
+    this.setActive();
   },
   watch: {
+    tag () {
+      this.setActive();
+    }
   },
   computed: {
     ...mapGetters(['tagWel', 'tagList', 'tag']),
@@ -61,6 +55,10 @@ export default {
     }
   },
   methods: {
+    //激活当前选项
+    setActive () {
+      this.active = this.tag.value;
+    },
     menuTag (value, action) {
       if (action === 'remove') {
         let { tag, key } = this.findTag(value);

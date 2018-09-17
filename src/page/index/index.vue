@@ -1,20 +1,19 @@
 <template>
-  <el-container class="avue-contail"
-                :class="{'avue--collapse':isCollapse}">
-    <el-header height="auto"
-               class="avue-header">
+  <div class="avue-contail"
+       :class="{'avue--collapse':isCollapse}">
+    <div class="avue-header">
       <!-- 顶部导航栏 -->
       <top />
-    </el-header>
+    </div>
 
-    <el-container class="avue-layout">
+    <div class="avue-layout">
       <div class="avue-left">
         <!-- 左侧导航栏 -->
         <el-scrollbar style="height:100%">
           <sidebar />
         </el-scrollbar>
       </div>
-      <el-main class="avue-main">
+      <div class="avue-main">
         <!-- 顶部标签卡 -->
         <tags />
         <!-- 主体视图层 -->
@@ -27,8 +26,8 @@
                        v-if="!$route.meta.keepAlive" />
         </el-scrollbar>
 
-      </el-main>
-    </el-container>
+      </div>
+    </div>
     <!-- <el-footer class="avue-footer">
       <img src="/svg/logo.svg"
            alt=""
@@ -37,7 +36,7 @@
     </el-footer> -->
     <div class="avue-shade"
          @click="showCollapse"></div>
-  </el-container>
+  </div>
 </template>
 
 <script>
