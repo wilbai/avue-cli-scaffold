@@ -20,13 +20,15 @@ import {
 } from '@/config/env';
 import * as filters from './filters' // 全局filter
 import './styles/common.scss';
-// // 引入avue的包
-// import '@smallwei/avue/lib/index.js';
-// // 引入avue的样式文件
-// import '@smallwei/avue/lib/theme-chalk/index.css';
+// 引入avue的包
+import '@smallwei/avue/lib/index.js';
+// 引入avue的样式文件
+import '@smallwei/avue/lib/theme-chalk/index.css';
 
-import './packages/index.js';
-import './packages/theme-chalk/src/index.scss';
+// //源文件包
+// import './packages/index.js';
+// import './packages/theme-chalk/src/index.scss';
+
 import basicContainer from './components/basic-container/main'
 import VueClipboard from 'vue-clipboard2'
 // 插件 json 展示
