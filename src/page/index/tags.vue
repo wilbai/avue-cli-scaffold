@@ -1,5 +1,6 @@
 <template>
-  <div class="avue-tags">
+  <div class="avue-tags"
+       v-if="showTag">
     <!-- tag盒子 -->
     <div class="tags-box"
          ref="tagBox">
@@ -30,7 +31,8 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+
 import { isObjectValueEqual } from '@/util/util';
 export default {
   name: 'tags',
@@ -50,6 +52,9 @@ export default {
   },
   computed: {
     ...mapGetters(['tagWel', 'tagList', 'tag']),
+    ...mapState({
+      showTag: state => state.common.showTag,
+    }),
     tagLen () {
       return this.tagList.length || 0;
     }

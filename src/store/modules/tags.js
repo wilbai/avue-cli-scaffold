@@ -1,4 +1,4 @@
-import { setStore, getStore, removeStore } from '@/util/store'
+import { setStore, getStore } from '@/util/store'
 import { isObjectValueEqual } from '@/util/util'
 const tagObj = {
     label: '', //标题名称
@@ -59,8 +59,8 @@ const navs = {
             setStore({ name: 'tagList', content: state.tagList, type: 'session' })
         },
         DEL_ALL_TAG: (state) => {
-            state.tagList = [];
-            removeStore({ name: 'tagList' });
+            state.tagList = [state.tagWel];
+            setStore({ name: 'tagList', content: state.tagList, type: 'session' })
         },
         DEL_TAG_OTHER: (state) => {
             state.tagList = state.tagList.filter(item => item.value === state.tag.value)

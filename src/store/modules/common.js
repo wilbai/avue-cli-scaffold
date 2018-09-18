@@ -13,9 +13,34 @@ const common = {
         isCollapse: false,
         isFullScren: false,
         screen: -1,
+        showTag: getStore({ name: 'showTag' }),
         isLock: getStore({
             name: 'isLock'
         }) || false,
+        showDebug: getStore({
+            name: 'showDebug'
+        }) || true,
+        showCollapse: getStore({
+            name: 'showCollapse'
+        }) || true,
+        showSearch: getStore({
+            name: 'showSearch'
+        }) || true,
+        showLock: getStore({
+            name: 'showLock'
+        }) || true,
+        showFullScren: getStore({
+            name: 'showFullScren'
+        }) || true,
+        showTheme: getStore({
+            name: 'showTheme'
+        }) || true,
+        showColor: getStore({
+            name: 'showColor'
+        }) || true,
+        showMenu: getStore({
+            name: 'showMenu'
+        }) || true,
         theme: getStore({
             name: 'theme'
         }) || '#409EFF',
@@ -49,6 +74,69 @@ const common = {
         },
         SET_FULLSCREN: (state) => {
             state.isFullScren = !state.isFullScren;
+        },
+        SET_SHOWCOLLAPSE: (state, active) => {
+            state.showCollapse = active;
+            setStore({
+                name: 'showCollapse',
+                content: state.showCollapse
+            })
+        },
+        SET_SHOWTAG: (state, active) => {
+            state.showTag = active;
+            setStore({
+                name: 'showTag',
+                content: state.showTag
+            })
+        },
+        SET_SHOWMENU: (state, active) => {
+            state.showMenu = active;
+            setStore({
+                name: 'showMenu',
+                content: state.showMenu
+            })
+        },
+        SET_SHOWLOCK: (state, active) => {
+            state.showLock = active;
+            setStore({
+                name: 'showLock',
+                content: state.showLock
+            })
+        },
+        SET_SHOWSEARCH: (state, active) => {
+            state.showSearch = active;
+            setStore({
+                name: 'showSearch',
+                content: state.showSearch
+            })
+        },
+        SET_SHOWFULLSCREN: (state, active) => {
+            state.showFullScren = active;
+            setStore({
+                name: 'showFullScren',
+                content: state.showFullScren
+            })
+        },
+        SET_SHOWDEBUG: (state, active) => {
+            state.showDebug = active;
+            setStore({
+                name: 'showDebug',
+                content: state.showDebug
+            })
+        },
+        SET_SHOWTHEME: (state, active) => {
+            state.showTheme = active;
+            setStore({
+                name: 'showTheme',
+                content: state.showTheme
+            })
+        },
+        SET_SHOWCOLOR: (state, active) => {
+            state.showColor = active;
+            setStore({
+                name: 'showColor',
+                content: state.showColor
+            })
         },
         SET_LOCK: (state) => {
             state.isLock = true;
