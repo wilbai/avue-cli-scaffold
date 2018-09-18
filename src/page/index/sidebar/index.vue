@@ -10,6 +10,7 @@
              :collapse="keyCollapse">
       <sidebar-item :menu="menu"
                     :screen="screen"
+                    :props="website.menu.props"
                     :collapse="keyCollapse"></sidebar-item>
     </el-menu>
   </div>
@@ -18,10 +19,10 @@
 <script>
 import { mapGetters } from 'vuex'
 import logo from '../logo';
-import SidebarItem from './sidebarItem'
+import sidebarItem from './sidebarItem'
 export default {
   name: 'sidebar',
-  components: { SidebarItem, logo },
+  components: { sidebarItem, logo },
   data () {
     return {}
   },
@@ -29,7 +30,7 @@ export default {
     this.$store.dispatch('GetMenu')
   },
   computed: {
-    ...mapGetters(['menu', 'tag', 'keyCollapse', 'screen']),
+    ...mapGetters(['website', 'menu', 'tag', 'keyCollapse', 'screen']),
     nowTagValue: function () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   mounted () { },
