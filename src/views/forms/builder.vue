@@ -333,13 +333,12 @@ export default {
 
   .result,
   .status {
-    .from {
-      .el-row {
-        height: 500px;
-        overflow-y: scroll;
-        > div {
-          height: 500px;
-        }
+    .el-row {
+      height: 500px;
+      overflow: hidden;
+      overflow-y: scroll;
+      > div {
+        height: 100%;
       }
     }
   }

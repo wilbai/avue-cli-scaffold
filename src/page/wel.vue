@@ -71,6 +71,8 @@ export default {
         "stripe": true,
         "selection": true,
         "page": false,
+        "menuBtn": true,
+        "menuWidth": 130,
         "menuAlign": "center",
         "align": "center",
         "dic": ['type'],

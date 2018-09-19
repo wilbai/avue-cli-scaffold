@@ -6,12 +6,16 @@ export const userOption = {
     index: true,
     indexLabel: '序号',
     selection: false,
+    menuBtn: true,
+    menuAlign: 'center',
+    menuWidth: 130,
     dicData: DIC,
     formWidth: '60%',
     column: [{
             label: "用户名",
             prop: "username",
             width: "150",
+            fixed: true,
             rules: [{
                 required: true,
                 message: "请输入用户名",
@@ -53,12 +57,14 @@ export const roleOption = {
     index: true,
     selection: false,
     calcHeight: 320,
+    menuBtn: true,
     menuAlign: 'center',
-    menuWidth: 300,
+    menuWidth: 200,
     column: [{
             label: "角色名称",
             prop: "name",
             width: "150",
+            fixed: true,
             rules: [{
                 required: true,
                 message: "请输入用户名",

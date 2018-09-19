@@ -1,4 +1,4 @@
-const baseUrl = `http://51aizhiyuan.com/select`;
+const baseUrl = `https://avue.top/api/area`;
 export default {
     props: {
         label: 'name',

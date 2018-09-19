@@ -19,7 +19,7 @@
     </el-dialog>
 
     <span>
-      <i class="el-icon-menu"
+      <i class="el-icon-view"
          @click="open"></i>
     </span>
   </div>

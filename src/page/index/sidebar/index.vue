@@ -1,18 +1,20 @@
 <template>
   <div class="avue-sidebar">
     <logo></logo>
-    <el-menu unique-opened
-             :default-active="nowTagValue"
-             mode="vertical"
-             :show-timeout="200"
-             background-color="#20222a"
-             text-color="rgba(255,255,255,0.7)"
-             :collapse="keyCollapse">
-      <sidebar-item :menu="menu"
-                    :screen="screen"
-                    :props="website.menu.props"
-                    :collapse="keyCollapse"></sidebar-item>
-    </el-menu>
+    <el-scrollbar style="height:100%">
+      <el-menu unique-opened
+               :default-active="nowTagValue"
+               mode="vertical"
+               :show-timeout="200"
+               background-color="#20222a"
+               text-color="rgba(255,255,255,0.7)"
+               :collapse="keyCollapse">
+        <sidebar-item :menu="menu"
+                      :screen="screen"
+                      :props="website.menu.props"
+                      :collapse="keyCollapse"></sidebar-item>
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 

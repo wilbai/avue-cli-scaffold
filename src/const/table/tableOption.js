@@ -9,9 +9,9 @@ export default {
     stripe: false,
     selection: true,
     // customClass: '',自定义弹出框样式
-    menuWidth: 300,
+    menuBtn: true,
+    menuWidth: 200,
     menuAlign: 'center',
-    editBtn: false,
     align: 'center',
     searchSize: 'small',
     // defaultSort: {

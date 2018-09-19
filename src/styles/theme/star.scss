@@ -70,6 +70,12 @@
         span {
             color: #fff !important;
         }
+        &:hover {
+            i,
+            span {
+                color: #409eff !important;
+            }
+        }
         &.is-active {
             background-color: rgba(0, 0, 0, .4) !important;
             &:hover {
@@ -82,6 +88,13 @@
         span {
             color: #fff !important;
         }
+        &:hover {
+            i,
+            span {
+                color: #409eff !important;
+            }
+            background-color:transparent !important;
+        }
     }
     .el-submenu .el-menu-item {
         &.is-active {
@@ -89,6 +102,9 @@
             span,
             i {
                 color: $mainBg !important;
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, .4) !important;
             }
         }
     }

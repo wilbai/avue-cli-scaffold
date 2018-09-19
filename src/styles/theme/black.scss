@@ -118,6 +118,9 @@
             i {
                 color: #ffb870 !important;
             }
+            &:hover {
+                background: hsla(0, 0%, 100%, .05) !important;
+            }
         }
     }
     .el-tabs--card>.el-tabs__header .el-tabs__item {

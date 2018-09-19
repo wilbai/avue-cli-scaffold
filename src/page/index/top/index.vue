@@ -79,9 +79,6 @@
             <router-link to="/info/index">个人信息</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
-            <top-setting></top-setting>
-          </el-dropdown-item>
-          <el-dropdown-item>
             <a href="https://gitee.com/smallweigit/avue"
                target="_blank">码云地址</a>
           </el-dropdown-item>
@@ -93,6 +90,7 @@
                             divided>退出系统</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+      <top-setting></top-setting>
     </div>
   </div>
 </template>

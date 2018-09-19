@@ -112,6 +112,9 @@
             i {
                 color: #fff !important;
             }
+            &:hover {
+                background: linear-gradient(90deg, hsla(0, 0%, 100%, .28), hsla(0, 0%, 100%, 0)) !important;
+            }
         }
     }
     .top-bar__item {

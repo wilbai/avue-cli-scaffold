@@ -101,11 +101,7 @@
         </template>
         <template slot-scope="scope"
                   slot="menu">
-          <el-button type="primary"
-                     icon="el-icon-check"
-                     size="small"
-                     plain
-                     @click.stop="handleEdit(scope.row,scope.index)">编辑</el-button>
+          &nbsp;&nbsp;
           <el-button icon="el-icon-check"
                      size="small"
                      @click.stop="handleGrade(scope.row,scope.index)">权限</el-button>

@@ -9,9 +9,11 @@ export default {
     cellBtn: true,
     editBtn: false,
     delBtn: false,
+    menuWidth: 130,
     column: [{
             label: '姓名',
             prop: 'name',
+            fixed: true,
             cell: true
         },
         {

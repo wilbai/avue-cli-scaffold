@@ -12,44 +12,21 @@ const common = {
     state: {
         isCollapse: false,
         isFullScren: false,
+        isShade: false,
         screen: -1,
+        isLock: getStore({ name: 'isLock' }) || false,
         showTag: getStore({ name: 'showTag' }),
-        isLock: getStore({
-            name: 'isLock'
-        }) || false,
-        showDebug: getStore({
-            name: 'showDebug'
-        }) || true,
-        showCollapse: getStore({
-            name: 'showCollapse'
-        }) || true,
-        showSearch: getStore({
-            name: 'showSearch'
-        }) || true,
-        showLock: getStore({
-            name: 'showLock'
-        }) || true,
-        showFullScren: getStore({
-            name: 'showFullScren'
-        }) || true,
-        showTheme: getStore({
-            name: 'showTheme'
-        }) || true,
-        showColor: getStore({
-            name: 'showColor'
-        }) || true,
-        showMenu: getStore({
-            name: 'showMenu'
-        }) || true,
-        theme: getStore({
-            name: 'theme'
-        }) || '#409EFF',
-        themeName: getStore({
-            name: 'themeName'
-        }) || '',
-        lockPasswd: getStore({
-            name: 'lockPasswd'
-        }) || '',
+        showDebug: getStore({ name: 'showDebug' }),
+        showCollapse: getStore({ name: 'showCollapse' }),
+        showSearch: getStore({ name: 'showSearch' }),
+        showLock: getStore({ name: 'showLock' }),
+        showFullScren: getStore({ name: 'showFullScren' }),
+        showTheme: getStore({ name: 'showTheme' }),
+        showColor: getStore({ name: 'showColor' }),
+        showMenu: getStore({ name: 'showMenu' }),
+        theme: getStore({ name: 'theme' }) || '#409EFF',
+        themeName: getStore({ name: 'themeName' }) || '',
+        lockPasswd: getStore({ name: 'lockPasswd' }) || '',
         website: website,
     },
     actions: {
@@ -69,6 +46,9 @@ const common = {
         }
     },
     mutations: {
+        SET_SHADE: (state, active) => {
+            state.isShade = active;
+        },
         SET_COLLAPSE: (state) => {
             state.isCollapse = !state.isCollapse;
         },

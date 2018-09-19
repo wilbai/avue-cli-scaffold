@@ -9,9 +9,7 @@
     <div class="avue-layout">
       <div class="avue-left">
         <!-- 左侧导航栏 -->
-        <el-scrollbar style="height:100%">
-          <sidebar />
-        </el-scrollbar>
+        <sidebar />
       </div>
       <div class="avue-main">
         <!-- 顶部标签卡 -->
