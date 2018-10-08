@@ -1,5 +1,6 @@
 let RouterPlugin = function() {
     this.$router = null;
+    this.$store = null;
 };
 RouterPlugin.install = function(router, store) {
     this.$router = router;
@@ -13,6 +14,8 @@ RouterPlugin.install = function(router, store) {
         return result.join('&');
     }
     this.$router.$avueRouter = {
+        //全局配置
+        $website: this.$store.getters.website,
         // 设置标题
         setTitle: function(title) {
             title = title ? `${title}——Avue 通用管理 系统快速开发框架` : 'Avue 通用管理 系统快速开发框架';
@@ -51,6 +54,67 @@ RouterPlugin.install = function(router, store) {
                 value = route.path;
             }
             return value;
+        },
+        //动态路由
+        formatRoutes: function(aMenu, first) {
+            const aRouter = []
+            const propsConfig = this.$website.menu.props;
+            const propsDefault = {
+                label: propsConfig.label || 'label',
+                path: propsConfig.path || 'path',
+                icon: propsConfig.icon || 'icon',
+                children: propsConfig.children || 'children'
+            }
+            if (!aMenu) return;
+            aMenu.forEach(oMenu => {
+                const path = oMenu[propsDefault.path],
+                    component = oMenu.component,
+                    name = oMenu[propsDefault.label],
+                    icon = oMenu[propsDefault.icon],
+                    children = oMenu[propsDefault.children];
+
+                const isChild = children.length !== 0;
+                const oRouter = {
+                    path: path,
+                    component(resolve) {
+                        // 判断是否为首路由
+                        if (first) {
+                            require(['../page/index'], resolve)
+                            return
+                            // 判断是否为多层路由
+                        } else if (isChild && !first) {
+                            require(['../page/index/layout'], resolve)
+                            return
+                            // 判断是否为最终的页面视图
+                        } else {
+                            require([`../${component}.vue`], resolve)
+                        }
+                    },
+                    name: name,
+                    icon: icon,
+                    redirect: (() => {
+                        if (!isChild && first) return `${path}/index`
+                        else return '';
+                    })(),
+                    // 处理是否为一级路由
+                    children: !isChild ? (() => {
+                        if (first) {
+                            oMenu[propsDefault.path] = `${path}/index`;
+                            return [{
+                                component(resolve) { require([`../${component}.vue`], resolve) },
+                                icon: icon,
+                                name: name,
+                                path: 'index'
+                            }]
+                        }
+                        return [];
+                    })() : (() => {
+                        return this.formatRoutes(children, false)
+                    })()
+                }
+                aRouter.push(oRouter)
+            })
+            return aRouter
         }
     }
 }

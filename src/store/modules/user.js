@@ -1,14 +1,33 @@
 import { setToken, removeToken } from '@/util/auth'
 import { setStore, getStore } from '@/util/store'
-import { validatenull } from '@/util/validate'
 import { encryption } from '@/util/util'
+import webiste from '@/const/website'
 import { loginByUsername, getUserInfo, getTableData, getMenu, logout, getMenuAll } from '@/api/user'
+
+
+function addPath(ele) {
+    const propsConfig = webiste.menu.props;
+    const propsDefault = {
+        label: propsConfig.label || 'label',
+        path: propsConfig.path || 'path',
+        icon: propsConfig.icon || 'icon',
+        children: propsConfig.children || 'children'
+    }
+    const isChild = ele[propsDefault.children] && ele[propsDefault.children].length !== 0;
+    if (!isChild) return
+    ele[propsDefault.children].forEach(child => {
+        if (!child[propsDefault.path].includes('http') && !child[propsDefault.path].includes('https')) {
+            child[propsDefault.path] = `${ele[propsDefault.path]}/${child[propsDefault.path]?child[propsDefault.path]:'index'}`
+        }
+        addPath(child);
+    })
+}
 const user = {
     state: {
         userInfo: {},
         permission: {},
         roles: [],
-        menu: [],
+        menu: getStore({ name: 'menu' }) || [],
         menuAll: [],
         token: getStore({ name: 'token' }) || '',
     },
@@ -81,6 +100,7 @@ const user = {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
                     commit('SET_TOKEN', '')
+                    commit('SET_MENU', [])
                     commit('SET_ROLES', [])
                     commit('DEL_ALL_TAG');
                     commit('CLEAR_LOCK');
@@ -95,6 +115,7 @@ const user = {
         FedLogOut({ commit }) {
             return new Promise(resolve => {
                 commit('SET_TOKEN', '')
+                commit('SET_MENU', [])
                 commit('SET_ROLES', [])
                 commit('DEL_ALL_TAG');
                 commit('CLEAR_LOCK');
@@ -104,12 +125,14 @@ const user = {
         },
         //获取系统菜单
         GetMenu({ commit }, parentId) {
-            parentId
             return new Promise(resolve => {
                 getMenu(parentId).then((res) => {
-                    const data = res.data;
-                    commit('SET_MENU', data);
-                    resolve(data);
+                    const data = res.data
+                    data.forEach(ele => {
+                        addPath(ele);
+                    })
+                    commit('SET_MENU', data)
+                    resolve(data)
                 })
             })
         },
@@ -134,16 +157,12 @@ const user = {
             state.userInfo = userInfo;
         },
         SET_MENU: (state, menu) => {
-            const list = menu.filter(ele => {
-                if (validatenull(ele.meta)) return true;
-                if (validatenull(ele.meta.roles)) return true;
-                if (ele.meta.roles.indexOf(state.roles[0]) != -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            state.menu = list;
+            state.menu = menu
+            setStore({
+                name: 'menu',
+                content: state.menu,
+                type: 'session'
+            })
         },
         SET_MENU_ALL: (state, menuAll) => {
             state.menuAll = menuAll;

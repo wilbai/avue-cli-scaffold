@@ -1,14 +1,16 @@
 const first = [{
     id: 33,
     label: "引导页",
-    href: '/guide/index',
+    path: '/guide',
+    component: 'views/guide/index',
     icon: 'icon-canshu',
     children: [],
 }, {
     id: 13,
     label: "权限测试页",
-    href: '/role/index',
+    path: '/role',
     icon: 'icon-quanxian',
+    component: 'views/role',
     meta: {
         roles: ['admin'],
     },
@@ -16,38 +18,40 @@ const first = [{
 }, {
     id: 14,
     label: "数据展示",
-    href: '/exhibition/index',
+    path: '/exhibition',
     icon: 'icon-shujuzhanshi2',
+    component: 'views/exhibition/index',
     children: [],
 }, {
     id: 7,
     label: "阿里图标",
-    href: '/iconfont/index',
+    path: '/iconfont',
     icon: 'icon-changyonglogo27',
+    component: 'views/iconfont/index',
     meta: {},
     children: []
 }, {
     id: 2,
     label: "第三方网站",
-    href: '',
+    path: '',
     icon: 'icon-iframe',
     meta: {},
     children: [{
         id: 3,
         label: "百度",
-        href: 'https://www.baidu.com',
+        path: 'https://www.baidu.com',
         icon: 'icon-baidu1',
         children: [],
     }, {
         id: 4,
         label: "搜狐",
-        href: 'http://www.shouhu.com',
+        path: 'http://www.shouhu.com',
         icon: 'icon-souhu',
         children: [],
     }, {
         id: 5,
         label: "360",
-        href: 'http://www.360.com',
+        path: 'http://www.360.com',
         icon: 'icon-msnui-360',
         children: [],
 
@@ -55,13 +59,14 @@ const first = [{
 }, {
     id: 22,
     label: "CRUD表单",
-    href: '',
+    path: '/forms',
     icon: 'icon-biaodan',
     meta: {},
     children: [{
         id: 9,
         label: "表单CRUD",
-        href: '/forms/index',
+        path: 'index',
+        component: 'views/forms/index',
         query: {
             a: 1
         },
@@ -71,70 +76,80 @@ const first = [{
     }, {
         id: 19,
         label: "表单TABS",
-        href: '/forms/tabs',
+        path: 'tabs',
+        component: 'views/forms/tabs',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单SELECT联动",
-        href: '/forms/select',
+        path: 'select',
+        component: 'views/forms/select',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单DATE",
-        href: '/forms/date',
+        path: 'date',
+        component: 'views/forms/date',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单TREE",
-        href: '/forms/tree',
+        path: 'tree',
+        component: 'views/forms/tree',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单STEPS",
-        href: '/forms/steps',
+        path: 'steps',
+        component: 'views/forms/steps',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单RATE",
-        href: '/forms/rate',
+        path: 'rate',
+        component: 'views/forms/rate',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单UPLOAD",
-        href: '/forms/upload',
+        path: 'upload',
+        component: 'views/forms/upload',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单DETAIL",
-        href: '/forms/detail',
+        path: 'detail',
+        component: 'views/forms/detail',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单SILDER",
-        href: '/forms/silder',
+        path: 'silder',
+        component: 'views/forms/silder',
         icon: 'icon-biaodan',
         meta: {},
         children: []
     }, {
         id: 10,
         label: "表单自定义组件",
-        href: '/forms/transfer',
+        path: 'transfer',
+        component: 'views/forms/transfer',
         icon: 'icon-biaodan',
         meta: {},
         children: []
@@ -142,13 +157,14 @@ const first = [{
 }, {
     id: 6,
     label: "CRUD表格",
-    href: '',
+    path: '/table',
     icon: 'icon-biaoge',
     meta: {},
     children: [{
         id: 16,
         label: "CRUD表格",
-        href: '/table/index',
+        path: 'index',
+        component: 'views/table/index',
         query: {
             a: 1
         },
@@ -158,7 +174,8 @@ const first = [{
     }, {
         id: 161,
         label: "表格TREE",
-        href: '/table/tree',
+        path: 'tree',
+        component: 'views/table/tree',
         query: {
             a: 1
         },
@@ -168,7 +185,8 @@ const first = [{
     }, {
         id: 161,
         label: "表格EDIT",
-        href: '/table/edit',
+        path: 'edit',
+        component: 'views/table/edit',
         query: {
             a: 1
         },
@@ -178,7 +196,8 @@ const first = [{
     }, {
         id: 16,
         label: "表格TREE自定义",
-        href: '/table/alltree',
+        path: 'alltree',
+        component: 'views/table/alltree',
         query: {
             a: 1
         },
@@ -189,14 +208,16 @@ const first = [{
 }, {
     id: 9,
     label: "CRUD表格生成器",
-    href: `/table/generator`,
+    path: `/generator`,
+    component: 'views/table/generator',
     icon: 'icon-biaoge',
     meta: {},
     children: []
 }, {
     id: 19,
     label: "CRUD表单生成器",
-    href: '/forms/builder',
+    path: '/builder',
+    component: 'views/forms/builder',
     icon: 'icon-biaodan',
     meta: {},
     children: []
@@ -204,38 +225,42 @@ const first = [{
 const second = [{
     id: 15,
     label: "高级路由",
-    href: '#',
+    path: '/advanced-router',
     icon: 'icon-iconset0265',
     meta: {},
     children: [{
         id: 16,
         label: "动态路由",
-        href: '/advanced-router/mutative-router',
+        path: 'mutative-router',
+        component: 'views/advanced-router/mutative-router',
         icon: 'icon-dongtai',
         children: []
     }, {
         id: 17,
         label: "参数路由",
-        href: '/advanced-router/argument-page',
+        path: 'argument-page',
+        component: 'views/advanced-router/argument-page',
         icon: 'icon-canshu',
         children: []
     }, ]
 }, {
     id: 8,
     label: "综合错误",
-    href: '#',
+    path: '/logs',
     icon: 'icon-cuowu',
     meta: {},
     children: [{
         id: 15,
         label: "错误页面",
-        href: '/logs/page',
+        path: 'page',
+        component: 'views/logs/page',
         icon: 'icon-cuowutishitubiao',
         children: []
     }, {
         id: 15,
         label: "错误日志",
-        href: '/logs/error',
+        path: 'error',
+        component: 'views/logs/error',
         icon: 'icon-cuowutishitubiao',
         children: []
     }]
@@ -243,7 +268,8 @@ const second = [{
     id: 23,
     label: "环境变量",
     icon: 'icon-dongtai',
-    href: '/dev/index',
+    path: '/dev',
+    component: 'views/dev/index',
     meta: {
 
     },
@@ -252,61 +278,67 @@ const second = [{
     id: 25,
     label: "json树形",
     icon: 'icon-dongtai',
-    href: '/json-tree/index',
+    path: '/json-tree',
+    component: 'views/json-tree/index',
     meta: {},
     children: []
 }, {
     id: 24,
     label: "数据持久化",
-    href: `/store/index`,
+    path: `/store`,
+    component: 'views/store/index',
     icon: 'icon-huanyingye',
     meta: {},
     children: []
 }, {
     id: 25,
     label: "剪切板",
-    href: `/clipboard/index`,
+    path: `/clipboard`,
+    component: 'views/clipboard/index',
     icon: 'icon-canshu',
     meta: {},
     children: []
 }, {
     id: 25,
     label: "标签页操作",
-    href: `/tags/index`,
+    path: `/tags`,
+    component: 'views/tags/index',
     icon: 'icon-canshu',
     meta: {},
     children: []
 }, {
     id: 26,
     label: "灰度模式",
-    href: `/gray/index`,
+    path: `/gray`,
+    component: 'views/gray/index',
     icon: 'icon-shujuzhanshi2',
     meta: {},
     children: []
 }, {
     id: 9,
     label: "系统管理",
+    path: '/admin',
     icon: 'icon-liuliangyunpingtaitubiao08',
-    meta: {
-
-    },
     children: [{
             id: 20,
             label: "用户管理",
-            href: '/admin/user',
+            path: 'user',
+            component: 'views/admin/user/index',
             icon: 'icon-yonghuguanli',
             children: []
         }, {
             id: 21,
             label: "角色管理",
-            href: '/admin/role',
+            path: 'role',
+            component: 'views/admin/role/index',
             icon: 'icon-jiaoseguanli',
             children: []
         },
         {
             id: 22,
             label: "菜单管理",
-            href: '/admin/menu',
+            path: 'menu',
+            component: 'views/admin/menu/index',
             icon: 'icon-caidanguanli',
             children: []
         }

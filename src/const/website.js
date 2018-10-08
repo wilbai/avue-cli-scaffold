@@ -18,7 +18,7 @@ export default {
     menu: {
         props: {
             label: 'label',
-            path: 'href',
+            path: 'path',
             icon: 'icon',
             children: 'children'
         }
