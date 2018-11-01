@@ -51,9 +51,9 @@ export default {
   },
   methods: {
     openMenu (item) {
-      this.$store.dispatch("GetMenu", item.parentId).then((data) => {
+      this.$store.dispatch("GetMenu", item.parentId).then(data => {
         if (data.length === 0) return
-        this.$router.addRoutes(this.$router.$avueRouter.formatRoutes(data, true))
+        this.$router.$avueRouter.formatRoutes(data, true);
         let itemActive,
           childItemActive = 0;
         if (item.href) {
@@ -71,7 +71,7 @@ export default {
             src: itemActive.href
           })
         });
-      });
+      })
     }
   }
 };

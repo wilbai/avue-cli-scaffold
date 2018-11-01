@@ -73,7 +73,7 @@ export default {
     };
   },
   created () {
-    this.roleSwitch = this.roles[0];
+    this.roleSwitch = this.roles;
   },
   computed: {
     ...mapGetters(["roles", "permission"])

@@ -1,18 +1,14 @@
 import router from './router/router'
 import store from './store'
+import { getToken } from '@/util/auth'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-
-
-import { asyncRouterMap } from '@/router/router'
 NProgress.configure({ showSpinner: false });
 const lockPage = store.getters.website.lockPage; //锁屏页
-const whiteList = store.getters.website.whiteList; //不鉴权白名单
-const whiteTagList = store.getters.website.whiteTagList; //不加tags白名单
-router.addRoutes(asyncRouterMap);
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    if (store.getters.token) {
+    const meta = to.meta || {};
+    if (getToken()) {
         if (store.getters.isLock && to.path != lockPage) {
             next({ path: lockPage })
         } else if (to.path === '/login') {
@@ -27,7 +23,7 @@ router.beforeEach((to, from, next) => {
                     })
                 })
             } else {
-                if (!router.$avueRouter.vaildPath(whiteTagList, to.path)) {
+                if (meta.isTab !== false) {
                     const value = to.query.src ? to.query.src : to.path;
                     const label = to.query.name ? to.query.name : to.name;
                     store.commit('ADD_TAG', {
@@ -41,7 +37,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
-        if (router.$avueRouter.vaildPath(whiteList, to.path)) {
+        if (meta.isAuth === false) {
             next()
         } else {
             next('/login')
@@ -54,4 +50,3 @@ router.afterEach(() => {
     const title = store.getters.tag.label;
     router.$avueRouter.setTitle(title);
 });
-//正则验证路由

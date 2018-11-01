@@ -33,7 +33,7 @@ const first = [{
 }, {
     id: 2,
     label: "第三方网站",
-    path: '',
+    path: '/url',
     icon: 'icon-iframe',
     meta: {},
     children: [{
@@ -175,7 +175,7 @@ const first = [{
         id: 161,
         label: "表格TREE",
         path: 'tree',
-        component: 'views/table/tree',
+        component: 'views/table/table-tree/index',
         query: {
             a: 1
         },
@@ -197,7 +197,7 @@ const first = [{
         id: 16,
         label: "表格TREE自定义",
         path: 'alltree',
-        component: 'views/table/alltree',
+        component: 'views/table/table-tree/all',
         query: {
             a: 1
         },
@@ -253,14 +253,14 @@ const second = [{
         id: 15,
         label: "错误页面",
         path: 'page',
-        component: 'views/logs/page',
+        component: 'page/logs/page',
         icon: 'icon-cuowutishitubiao',
         children: []
     }, {
         id: 15,
         label: "错误日志",
         path: 'error',
-        component: 'views/logs/error',
+        component: 'page/logs/error',
         icon: 'icon-cuowutishitubiao',
         children: []
     }]

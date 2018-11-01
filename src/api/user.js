@@ -1,5 +1,6 @@
 import { userInfo, tableData } from '@/mock/user'
 import { menu } from '@/mock/menu'
+import { deepClone } from '@/util/util';
 export const loginByUsername = (username, password, code, redomStr) => {
     console.log(username, password, code, redomStr);
     return new Promise((resolve) => {
@@ -21,7 +22,7 @@ export const RefeshToken = () => {
 export const getMenu = (parentId) => {
     return new Promise((resolve) => {
         if (parentId != 1) parentId = 0;
-        resolve({ data: menu[parentId] });
+        resolve(deepClone({ data: menu[parentId] }));
     })
 }
 export const getMenuAll = () => {

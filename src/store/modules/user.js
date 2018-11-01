@@ -1,5 +1,6 @@
 import { setToken, removeToken } from '@/util/auth'
 import { setStore, getStore } from '@/util/store'
+import { isURL } from '@/util/validate'
 import { encryption } from '@/util/util'
 import webiste from '@/const/website'
 import { loginByUsername, getUserInfo, getTableData, getMenu, logout, getMenuAll } from '@/api/user'
@@ -16,7 +17,7 @@ function addPath(ele) {
     const isChild = ele[propsDefault.children] && ele[propsDefault.children].length !== 0;
     if (!isChild) return
     ele[propsDefault.children].forEach(child => {
-        if (!child[propsDefault.path].includes('http') && !child[propsDefault.path].includes('https')) {
+        if (!isURL(child[propsDefault.path])) {
             child[propsDefault.path] = `${ele[propsDefault.path]}/${child[propsDefault.path]?child[propsDefault.path]:'index'}`
         }
         addPath(child);
@@ -158,11 +159,7 @@ const user = {
         },
         SET_MENU: (state, menu) => {
             state.menu = menu
-            setStore({
-                name: 'menu',
-                content: state.menu,
-                type: 'session'
-            })
+            setStore({ name: 'menu', content: state.menu, type: 'session' })
         },
         SET_MENU_ALL: (state, menuAll) => {
             state.menuAll = menuAll;

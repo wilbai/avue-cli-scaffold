@@ -1,15 +1,16 @@
 <template>
   <div class="menu-wrapper">
-    <template v-for="(item,index) in menu">
-      <el-menu-item v-if="validatenull(item[childrenKey])"
-                    :index="filterPath(item[pathKey],index)"
+    <template v-for="item in menu">
+      <el-menu-item v-if="validatenull(item[childrenKey]) && vaildRoles(item)"
+                    :index="item[pathKey]"
                     @click="open(item)"
-                    :key="item[labelKey]">
+                    :key="item[labelKey]"
+                    :class="{'is-active':nowTagValue===item[pathKey]}">
         <i :class="item[iconKey]"></i>
         <span slot="title">{{item[labelKey]}}</span>
       </el-menu-item>
-      <el-submenu v-else
-                  :index="filterPath(item[labelKey],index)"
+      <el-submenu v-else-if="!validatenull(item[childrenKey])&&vaildRoles(item)"
+                  :index="item[pathKey]"
                   :key="item[labelKey]">
         <template slot="title">
           <i :class="item[iconKey]"></i>
@@ -17,9 +18,9 @@
                 :class="{'el-menu--display':collapse}">{{item[labelKey]}}</span>
         </template>
         <template v-for="(child,cindex) in item[childrenKey]">
-          <el-menu-item :class="{'siderbar-active':nowTagValue==child[pathKey]}"
-                        :index="filterPath(child[pathKey],cindex)"
+          <el-menu-item :index="child[pathKey],cindex"
                         @click="open(child)"
+                        :class="{'is-active':nowTagValue===child[pathKey]}"
                         v-if="validatenull(child[childrenKey])"
                         :key="child[labelKey]">
             <i :class="child[iconKey]"></i>
@@ -37,6 +38,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import { validatenull } from '@/util/validate';
 import config from './config.js'
 export default {
@@ -65,6 +67,7 @@ export default {
   },
   mounted () { },
   computed: {
+    ...mapGetters(['roles']),
     labelKey () { return this.props.label || this.config.propsDefault.label },
     pathKey () { return this.props.path || this.config.propsDefault.path },
     iconKey () { return this.props.icon || this.config.propsDefault.icon },
@@ -72,11 +75,12 @@ export default {
     nowTagValue () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   methods: {
+    vaildRoles (item) {
+      item.meta = item.meta || {};
+      return item.meta.roles ? item.meta.roles.includes(this.roles) : true
+    },
     validatenull (val) {
       return validatenull(val);
-    },
-    filterPath (path, index) {
-      return path == null ? index + '' : path
     },
     open (item) {
       if (this.screen <= 1) this.$store.commit("SET_COLLAPSE");
@@ -91,13 +95,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-//刷新激活状态
-.siderbar-active {
-  i,
-  span {
-    color: #409eff;
-  }
-}
-</style>
 

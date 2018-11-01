@@ -5,7 +5,7 @@ export const userInfo = {
         name: 'avue',
         avatar: 'https://gitee.com/uploads/61/632261_smallweigit.jpg',
     },
-    roles: ['admin'],
+    roles: 'admin',
     permission: [
         'sys_crud_btn_add',
         'sys_crud_btn_export',
