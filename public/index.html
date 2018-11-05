@@ -14,13 +14,87 @@
     <link rel="stylesheet" href="<%= BASE_URL %>cdn/iconfont/1.0.0/index.css">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Avue 通用管理 系统快速开发框架</title>
+    <style>
+        html,
+        body,
+        #app {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .avue-home {
+            background-color: #303133;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .avue-home__main {
+            user-select: none;
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .avue-home__footer {
+            width: 100%;
+            flex-grow: 0;
+            text-align: center;
+            padding: 1em 0;
+        }
+        
+        .avue-home__footer>a {
+            font-size: 12px;
+            color: #ABABAB;
+            text-decoration: none;
+        }
+        
+        .avue-home__loading {
+            height: 32px;
+            width: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .avue-home__title {
+            color: #FFF;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .avue-home__sub-title {
+            color: #ABABAB;
+            font-size: 12px;
+        }
+    </style>
 </head>
 
 <body>
     <noscript>
-    <strong>We're sorry but avue2.0 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>
+        很抱歉，如果没有 JavaScript 支持，Avue-cli 将不能正常工作。请启用浏览器的 JavaScript 然后继续。
+      </strong>
   </noscript>
-    <div id="app"></div>
+    <div id="app">
+        <div class="avue-home">
+            <div class="avue-home__main">
+                <img class="avue-home__loading" src="./svg/loading-spin.svg" alt="loading">
+                <div class="avue-home__title">
+                    正在加载资源
+                </div>
+                <div class="avue-home__sub-title">
+                    初次加载资源可能需要较多时间 请耐心等待
+                </div>
+            </div>
+            <div class="avue-home__footer">
+                <a href="https://gitee.com/smallweigit/avue" target="_blank">
+                https://gitee.com/smallweigit/avue </a>
+            </div>
+        </div>
+    </div>
     <!-- built files will be auto injected -->
     <script src="<%= BASE_URL %>util/aes.js" charset="utf-8"></script>
     <script src="<%= BASE_URL %>cdn/vue/2.5.2/vue.min.js" charset="utf-8"></script>
