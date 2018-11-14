@@ -1,7 +1,7 @@
 <template>
   <div class="pull-chheight role-container">
     <basic-container>
-      <p>当前用户的权限值是有权限时(admin) 时，才可以看到菜单有这个页面。</p>
+      <p>当前用户的权限值是有权限时(admin) 时，才可以看到下面的个别按钮。</p>
       <el-switch v-model="roleSwitch"
                  active-color="#13ce66"
                  inactive-color="#ff4949"
@@ -13,7 +13,6 @@
       </el-switch>
     </basic-container>
     <basic-container>
-      <p>当前用户的权限值是有权限时(admin) 时。才能看到全部按钮</p>
       <el-row :span="24"
               class="btn-list">
         <el-col :md="2"

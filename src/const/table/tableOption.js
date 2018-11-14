@@ -10,7 +10,7 @@ export default {
     selection: true,
     // customClass: '',自定义弹出框样式
     menuBtn: true,
-    menuWidth: 200,
+    menuWidth: 290,
     menuAlign: 'center',
     align: 'center',
     searchSize: 'small',

@@ -24,7 +24,7 @@ router.beforeEach((to, from, next) => {
                 })
             } else {
                 if (meta.isTab !== false) {
-                    const value = to.query.src ? to.query.src : to.path;
+                    const value = to.query.src ? to.query.src : to.fullPath;
                     const label = to.query.name ? to.query.name : to.name;
                     store.commit('ADD_TAG', {
                         label: label,

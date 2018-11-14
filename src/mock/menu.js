@@ -11,9 +11,6 @@ const first = [{
     path: '/role',
     icon: 'icon-quanxian',
     component: 'views/role',
-    meta: {
-        roles: ['admin'],
-    },
     children: [],
 }, {
     id: 14,
@@ -37,6 +34,12 @@ const first = [{
     icon: 'icon-iframe',
     meta: {},
     children: [{
+        id: 3,
+        label: "avue官网",
+        path: 'https://avue.top',
+        icon: 'el-icon-document',
+        children: [],
+    }, {
         id: 3,
         label: "百度",
         path: 'https://www.baidu.com',
@@ -205,22 +208,6 @@ const first = [{
         meta: {},
         children: []
     }]
-}, {
-    id: 9,
-    label: "CRUD表格生成器",
-    path: `/generator`,
-    component: 'views/table/generator',
-    icon: 'icon-biaoge',
-    meta: {},
-    children: []
-}, {
-    id: 19,
-    label: "CRUD表单生成器",
-    path: '/builder',
-    component: 'views/forms/builder',
-    icon: 'icon-biaodan',
-    meta: {},
-    children: []
 }]
 const second = [{
     id: 15,

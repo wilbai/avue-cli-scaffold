@@ -1,5 +1,5 @@
 import { setStore, getStore } from '@/util/store'
-import { isObjectValueEqual } from '@/util/util'
+import { diff } from '@/util/util'
 const tagObj = {
     label: '', //标题名称
     value: '', //标题的路径
@@ -38,22 +38,14 @@ const navs = {
         ADD_TAG: (state, action) => {
             state.tag = action;
             setStore({ name: 'tag', content: state.tag, type: 'session' })
-            if (state.tagList.some(ele => isObjectValueEqual(ele, action))) return
+            if (state.tagList.some(ele => diff(ele, action))) return
             state.tagList.push(action)
             setFistTag(state.tagList);
             setStore({ name: 'tagList', content: state.tagList, type: 'session' })
         },
         DEL_TAG: (state, action) => {
             state.tagList = state.tagList.filter(item => {
-                if (typeof(action) === 'object') {
-                    let a = Object.assign({}, item);
-                    let b = Object.assign({}, action);
-                    delete a.close;
-                    delete b.__ob__;
-                    return !isObjectValueEqual(a, b)
-                } else {
-                    return item.value !== action
-                }
+                return !diff(item, action);
             })
             setFistTag(state.tagList);
             setStore({ name: 'tagList', content: state.tagList, type: 'session' })

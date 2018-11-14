@@ -8,9 +8,7 @@ export const userOption = {
     selection: false,
     menuBtn: true,
     menuAlign: 'center',
-    menuWidth: 130,
     dicData: DIC,
-    formWidth: '60%',
     column: [{
             label: "用户名",
             prop: "username",
@@ -59,7 +57,7 @@ export const roleOption = {
     calcHeight: 320,
     menuBtn: true,
     menuAlign: 'center',
-    menuWidth: 200,
+    menuWidth: 320,
     column: [{
             label: "角色名称",
             prop: "name",

@@ -11,7 +11,6 @@
                  @row-del="handleDel">
         <template slot-scope="scope"
                   slot="menu">
-          &nbsp;&nbsp;
           <el-button icon="el-icon-check"
                      size="small"
                      @click="handleGrade(scope.row,scope.$index)">权限</el-button>

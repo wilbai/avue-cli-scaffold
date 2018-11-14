@@ -1,18 +1,14 @@
 <template>
   <div>
     <basic-container>
-      <avue-form :option="formOption"
+      <avue-form ref="form"
                  v-model="formData"
-                 @submit="handleSubmit">
+                 :option="formOption"
+                 @reset-change="emptytChange"
+                 @submit="submit">
         <template slot-scope="scope"
-                  slot="name">
-          <avue-crud-input @click.native="tip"
-                           :disabled="scope.column.disabled"
-                           v-model="formData.name">
-          </avue-crud-input>
-        </template>
-        <template slot="menuForm">
-          <el-button @click="tip('我是自定义按钮')">我是自定义按钮</el-button>
+                  slot="menuForm">
+          <el-button @click="tip">自定义按钮</el-button>
         </template>
       </avue-form>
     </basic-container>
@@ -40,34 +36,25 @@ export default {
       formData: {},
     };
   },
-  created () {
-
-  },
   watch: {},
-  mounted () {
-    this.formData = {
-      name: "smallwei",
-      sex: 0,
-      type: 0,
-      grade: [0, 1]
-    }
-    this.formData.username = "smallwei";
+  created () {
+    this.formData.username = 'smallwei'
+    this.formData.switch = 0;
+    this.formData.phone = '17547400800';
   },
   computed: {
     ...mapGetters(["permission"])
   },
   props: [],
   methods: {
-    tip (msg) {
-      this.$message({
-        message: msg || "点击事件"
-      });
+    emptytChange () {
+      this.$message.success('清空方法回调');
     },
-    handleSubmit () {
-      this.$message({
-        message: this.formData,
-        type: "success"
-      });
+    submit () {
+      this.$message.success('当前数据' + JSON.stringify(this.obj));
+    },
+    tip () {
+      this.$message.success('自定义按钮');
     }
   }
 };

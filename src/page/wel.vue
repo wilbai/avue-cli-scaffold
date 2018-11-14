@@ -65,37 +65,35 @@ export default {
   data () {
     return {
       tableOption: {
-        "border": true,
-        "index": true,
-        "expand": true,
-        "stripe": true,
-        "selection": true,
-        "page": false,
-        "menuBtn": true,
-        "menuWidth": 130,
-        "menuAlign": "center",
-        "align": "center",
-        "dic": ['type'],
-        "column": [{
-          "label": "用户名",
-          "prop": "username",
-          "width": 120,
-          "span": 24,
-          "solt": true,
-          "sortable": true,
-          "rules": [{
-            "required": true,
-            "message": "请输入用户名",
-            "trigger": "blur"
+        border: true,
+        index: true,
+        expand: true,
+        stripe: true,
+        selection: true,
+        page: false,
+        menuBtn: true,
+        menuAlign: "center",
+        align: "center",
+        column: [{
+          label: "用户名",
+          prop: "username",
+          width: 120,
+          span: 24,
+          solt: true,
+          sortable: true,
+          rules: [{
+            required: true,
+            message: "请输入用户名",
+            trigger: "blur"
           }]
         },
         {
-          "label": "类型",
-          "prop": "type",
-          "width": 80,
-          "type": "select",
-          "sortable": true,
-          "dicData": [{
+          label: "类型",
+          prop: "type",
+          width: 80,
+          type: "select",
+          sortable: true,
+          dicData: [{
             label: '前端',
             value: 0,
           }, {
@@ -104,28 +102,28 @@ export default {
           }]
         },
         {
-          "label": "stars",
-          "width": "150",
-          "prop": "stars",
-          "sortable": true,
-          "solt": true,
+          label: "stars",
+          width: "150",
+          prop: "stars",
+          sortable: true,
+          solt: true,
         },
         {
-          "label": "码云",
-          "solt": true,
-          "span": 24,
-          "prop": "address",
-          "type": "textarea",
-          "overHidden": true
+          label: "码云",
+          solt: true,
+          span: 24,
+          prop: "address",
+          type: "textarea",
+          overHidden: true
         }, {
-          "label": "项目介绍",
-          "width": "300",
-          "prop": "info",
-          "editDisabled": true,
-          "formHeight": 200,
-          "type": "ueditor",
-          "span": 24,
-          "overHidden": true
+          label: "项目介绍",
+          width: "300",
+          prop: "info",
+          editDisabled: true,
+          formHeight: 200,
+          type: "ueditor",
+          span: 24,
+          overHidden: true
         },
         ]
       },
