@@ -1,6 +1,12 @@
-import {
-    validatenull
-} from './validate'
+import { validatenull } from './validate'
+//表单序列化
+export const serialize = data => {
+    let list = [];
+    Object.keys(data).forEach(ele => {
+        list.push(`${ele}=${data[ele]}`)
+    })
+    return list.join('&');
+};
 export const getObjType = obj => {
     var toString = Object.prototype.toString;
     var map = {

@@ -1,10 +1,10 @@
 <template>
   <div>
     <basic-container>
-      <avue-form-tabs :option="option"
-                      v-model="form"
-                      @change="handleChange"
-                      @submit="handleSubmit">
+      <avue-tabs :option="option"
+                 v-model="form"
+                 @change="handleChange"
+                 @submit="handleSubmit">
         <div slot="before">
           {{type}}头部卡槽
         </div>
@@ -18,7 +18,7 @@
         <div slot="after">
           {{type}}尾部卡槽
         </div>
-      </avue-form-tabs>
+      </avue-tabs>
     </basic-container>
     <basic-container>
       <tree-view :data="option"

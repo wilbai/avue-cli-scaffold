@@ -5,7 +5,7 @@
                     :index="item[pathKey]"
                     @click="open(item)"
                     :key="item[labelKey]"
-                    :class="{'is-active':nowTagValue===item[pathKey]}">
+                    :class="{'is-active':vaildAvtive(item)}">
         <i :class="item[iconKey]"></i>
         <span slot="title">{{item[labelKey]}}</span>
       </el-menu-item>
@@ -20,7 +20,7 @@
         <template v-for="(child,cindex) in item[childrenKey]">
           <el-menu-item :index="child[pathKey],cindex"
                         @click="open(child)"
-                        :class="{'is-active':nowTagValue===child[pathKey]}"
+                        :class="{'is-active':vaildAvtive(child)}"
                         v-if="validatenull(child[childrenKey])"
                         :key="child[labelKey]">
             <i :class="child[iconKey]"></i>
@@ -75,6 +75,10 @@ export default {
     nowTagValue () { return this.$router.$avueRouter.getValue(this.$route) }
   },
   methods: {
+    vaildAvtive (item) {
+      const groupFlag = (item['group'] || []).some(ele => this.$route.path.includes(ele));
+      return this.nowTagValue === item[this.pathKey] || groupFlag
+    },
     vaildRoles (item) {
       item.meta = item.meta || {};
       return item.meta.roles ? item.meta.roles.includes(this.roles) : true
@@ -84,6 +88,7 @@ export default {
     },
     open (item) {
       if (this.screen <= 1) this.$store.commit("SET_COLLAPSE");
+      this.$router.$avueRouter.group = item.group;
       this.$router.push({
         path: this.$router.$avueRouter.getPath({
           name: item[this.labelKey],

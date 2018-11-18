@@ -1,6 +1,7 @@
 let RouterPlugin = function() {
     this.$router = null;
     this.$store = null;
+
 };
 RouterPlugin.install = function(router, store) {
     this.$router = router;
@@ -16,6 +17,8 @@ RouterPlugin.install = function(router, store) {
     this.$router.$avueRouter = {
         //全局配置
         $website: this.$store.getters.website,
+        routerList: [],
+        group: '',
         safe: this,
         // 设置标题
         setTitle: function(title) {
@@ -57,22 +60,32 @@ RouterPlugin.install = function(router, store) {
             return value;
         },
         //动态路由
-        formatRoutes: function(aMenu, first) {
+        formatRoutes: function(aMenu = [], first) {
             const aRouter = []
             const propsConfig = this.$website.menu.props;
             const propsDefault = {
                 label: propsConfig.label || 'label',
                 path: propsConfig.path || 'path',
                 icon: propsConfig.icon || 'icon',
-                children: propsConfig.children || 'children'
+                children: propsConfig.children || 'children',
+                meta: propsConfig.meta || 'meta',
             }
-            if (!aMenu) return;
-            aMenu.forEach(oMenu => {
-                const path = oMenu[propsDefault.path],
+            if (aMenu.length === 0) return;
+            for (let i = 0; i < aMenu.length; i++) {
+                const oMenu = aMenu[i];
+                if (this.routerList.includes(oMenu[propsDefault.path])) return;
+                const path = (() => {
+                        if (first) {
+                            return oMenu[propsDefault.path].replace('/index', '')
+                        } else {
+                            return oMenu[propsDefault.path]
+                        }
+                    })(),
                     component = oMenu.component,
                     name = oMenu[propsDefault.label],
                     icon = oMenu[propsDefault.icon],
-                    children = oMenu[propsDefault.children];
+                    children = oMenu[propsDefault.children],
+                    meta = oMenu[propsDefault.meta];
 
                 const isChild = children.length !== 0;
                 const oRouter = {
@@ -93,6 +106,7 @@ RouterPlugin.install = function(router, store) {
                     },
                     name: name,
                     icon: icon,
+                    meta: meta,
                     redirect: (() => {
                         if (!isChild && first) return `${path}/index`
                         else return '';
@@ -105,6 +119,7 @@ RouterPlugin.install = function(router, store) {
                                 component(resolve) { require([`../${component}.vue`], resolve) },
                                 icon: icon,
                                 name: name,
+                                meta: meta,
                                 path: 'index'
                             }]
                         }
@@ -114,9 +129,12 @@ RouterPlugin.install = function(router, store) {
                     })()
                 }
                 aRouter.push(oRouter)
-            })
+            }
             if (first) {
-                this.safe.$router.addRoutes(aRouter)
+                if (!this.routerList.includes(aRouter[0][propsDefault.path])) {
+                    this.safe.$router.addRoutes(aRouter)
+                    this.routerList.push(aRouter[0][propsDefault.path])
+                }
             } else {
                 return aRouter
             }

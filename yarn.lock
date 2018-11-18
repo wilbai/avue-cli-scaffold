@@ -613,8 +613,8 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
 "@smallwei/avue@^1.3.4-beta1":
-  version "1.3.4-beta1"
-  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.3.4-beta1.tgz#2fb108af68699d715e89d5ad83c455588b7bd2e0"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.4.0.tgz#e23faec67027176c0b16c04a470438c0ecdd81aa"
   dependencies:
     async-validator "~1.8.1"
     avue-plugin-dynamicquery "^0.0.4"
@@ -624,7 +624,7 @@
     babel-helper-vue-jsx-merge-props "^2.0.0"
     dayjs "^1.7.5"
     deepmerge "^1.2.0"
-    element-ui "^2.3.6"
+    element-ui "^2.4.9"
     mockjs "^1.0.1-beta3"
     normalize-wheel "^1.0.1"
     resize-observer-polyfill "^1.5.0"
@@ -2865,9 +2865,20 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
-element-ui@^2.3.6, element-ui@^2.4.5, element-ui@^2.4.6:
+element-ui@^2.4.5:
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.4.9.tgz#b7c9c96da06f182c6a4fe7f508b8c8ef1a516732"
+  dependencies:
+    async-validator "~1.8.1"
+    babel-helper-vue-jsx-merge-props "^2.0.0"
+    deepmerge "^1.2.0"
+    normalize-wheel "^1.0.1"
+    resize-observer-polyfill "^1.5.0"
+    throttle-debounce "^1.0.1"
+
+element-ui@^2.4.6, element-ui@^2.4.9:
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.4.10.tgz#941eb68af70383920628a6d5abe95a1cb264f5d7"
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"

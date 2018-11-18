@@ -11,11 +11,11 @@
       </el-button-group>
     </basic-container>
     <basic-container>
-      <avue-form-steps :option="option"
-                       ref="formSteps"
-                       v-model="form"
-                       @change="handleChange"
-                       @submit="handleSubmit">
+      <avue-steps :option="option"
+                  ref="formSteps"
+                  v-model="form"
+                  @change="handleChange"
+                  @submit="handleSubmit">
         <div slot="before"
              class="content">
           <div v-if="type==='pwd'">
@@ -59,7 +59,7 @@
           <el-button @click="agan"
                      v-if="type=='finsh'">再来一单</el-button>
         </template>
-      </avue-form-steps>
+      </avue-steps>
     </basic-container>
     <basic-container>
       <tree-view :data="option"

@@ -1,3 +1,6 @@
+/**
+ * 全局配置文件
+ */
 export default {
     title: "Avue",
     logo: "A",
@@ -11,6 +14,18 @@ export default {
             '您可以 Avue 为基础，不只限制于vue的页面，你可以嵌入第三方网站，基于iframe框架。',
             'Avue 构建简单上手快，最大程度上帮助企业节省时间成本和费用开支。',
         ]
+    },
+    //http的status默认放行不才用统一处理的,
+    statusWhiteList: [400],
+    //配置首页不可关闭
+    isFirstPage: false,
+    fistPage: {
+        label: "首页",
+        value: "/wel/index",
+        params: {},
+        query: {},
+        group: [],
+        close: false
     },
     //配置菜单的属性
     menu: {

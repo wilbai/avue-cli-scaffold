@@ -1,3 +1,14 @@
+/**
+ * 
+ * 动态模拟菜单
+ * 
+ * label菜单的名字
+ * path菜单的路径
+ * icon菜单的图标（系统采用的阿里巴巴图表库）
+ * compnent组件的地址
+ * children子类菜单数组
+ * group配置其他路由激活菜单高亮
+ */
 const first = [{
     id: 33,
     label: "引导页",
@@ -64,7 +75,9 @@ const first = [{
     label: "CRUD表单",
     path: '/forms',
     icon: 'icon-biaodan',
-    meta: {},
+    meta: {
+        keepAlive: true
+    },
     children: [{
         id: 9,
         label: "表单CRUD",
@@ -74,7 +87,9 @@ const first = [{
             a: 1
         },
         icon: 'icon-biaodan',
-        meta: {},
+        meta: {
+            keepAlive: true
+        },
         children: []
     }, {
         id: 19,
@@ -208,6 +223,14 @@ const first = [{
         meta: {},
         children: []
     }]
+}, {
+    id: 11,
+    label: "树型",
+    path: '/tree',
+    component: 'views/tree/index',
+    icon: 'icon-biaodan',
+    meta: {},
+    children: []
 }]
 const second = [{
     id: 15,
@@ -221,6 +244,10 @@ const second = [{
         path: 'mutative-router',
         component: 'views/advanced-router/mutative-router',
         icon: 'icon-dongtai',
+        //配置某些路由激活菜单高亮
+        group: [
+            '/advanced-router/mutative-detail'
+        ],
         children: []
     }, {
         id: 17,
@@ -228,6 +255,7 @@ const second = [{
         path: 'argument-page',
         component: 'views/advanced-router/argument-page',
         icon: 'icon-canshu',
+        group: ['/advanced-router/argument-detail'],
         children: []
     }, ]
 }, {

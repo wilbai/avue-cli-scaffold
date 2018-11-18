@@ -1,6 +1,9 @@
 <template>
   <div>
     <basic-container>
+      <el-tag>本页面在meta里配置keepAlive缓冲，关闭本标签缓冲失效</el-tag>
+    </basic-container>
+    <basic-container>
       <avue-form ref="form"
                  v-model="formData"
                  :option="formOption"
@@ -51,7 +54,7 @@ export default {
       this.$message.success('清空方法回调');
     },
     submit () {
-      this.$message.success('当前数据' + JSON.stringify(this.obj));
+      this.$message.success('当前数据' + JSON.stringify(this.formData));
     },
     tip () {
       this.$message.success('自定义按钮');

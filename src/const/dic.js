@@ -1,3 +1,7 @@
+/**
+ * 本地全局字典
+ *
+ */
 export const DIC = {
     VAILD: [{
         label: '真',
