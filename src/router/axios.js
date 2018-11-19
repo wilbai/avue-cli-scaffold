@@ -28,7 +28,7 @@ axios.interceptors.request.use(config => {
 
     NProgress.start() // start progress bar
     const isToken = (config.data || {}).isToken === false
-    if (getToken() && isToken) {
+    if (getToken() && !isToken) {
         config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带token--['Authorization']为自定义key 请根据实际情况自行修改
     }
     //headers中配置serialize为true开启序列化
