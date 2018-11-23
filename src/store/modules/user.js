@@ -77,13 +77,15 @@ const user = {
             })
         },
         GetUserInfo({ commit }) {
-            return new Promise((resolve) => {
+            return new Promise((resolve, reject) => {
                 getUserInfo().then((res) => {
                     const data = res.data;
                     commit('SET_USERIFNO', data.userInfo);
                     commit('SET_ROLES', data.roles);
                     commit('SET_PERMISSION', data.permission)
                     resolve(data);
+                }).catch(err => {
+                    reject(err);
                 })
             })
         },

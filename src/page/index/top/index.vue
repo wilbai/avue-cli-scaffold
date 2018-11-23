@@ -51,6 +51,10 @@
           <top-theme></top-theme>
         </div>
       </el-tooltip>
+      <div class="top-bar__item">
+        <top-msg></top-msg>
+      </div>
+
       <el-tooltip v-if="showFullScren"
                   effect="dark"
                   :content="isFullScren?'退出全屏':'全屏'"
@@ -109,8 +113,9 @@ import topColor from "./top-color";
 import topTheme from "./top-theme";
 import topLogs from "./top-logs";
 import topSetting from "./top-setting";
+import topMsg from "./top-msg";
 export default {
-  components: { topLock, topMenu, topSearch, topBreadcrumb, topColor, topTheme, topLogs, topSetting },
+  components: { topLock, topMenu, topSearch, topBreadcrumb, topColor, topTheme, topLogs, topSetting, topMsg },
   name: "top",
   data () {
     return {

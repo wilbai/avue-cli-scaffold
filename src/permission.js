@@ -26,11 +26,12 @@ router.beforeEach((to, from, next) => {
     }
     const meta = to.meta || {};
     if (getToken()) {
-        if (store.getters.isLock && to.path != lockPage) {
+        if (store.getters.isLock && to.path != lockPage) { //如果系统激活锁屏，全部跳转到锁屏页
             next({ path: lockPage })
-        } else if (to.path === '/login') {
+        } else if (to.path === '/login') { //如果登录成功访问登录页跳转到主页
             next({ path: '/' })
         } else {
+            //如果用户信息为空则获取用户信息，获取用户信息失败，跳转到登录页
             if (store.getters.roles.length === 0) {
                 store.dispatch('GetUserInfo').then(() => {
                     next({...to, replace: true })
@@ -55,6 +56,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
+        //判断是否需要认证，没有登录访问去登录页
         if (meta.isAuth === false) {
             next()
         } else {
@@ -66,5 +68,6 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     NProgress.done();
     const title = store.getters.tag.label;
+    //根据当前的标签也获取label的值动态设置浏览器标题
     router.$avueRouter.setTitle(title);
 });

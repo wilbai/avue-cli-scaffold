@@ -6,6 +6,8 @@
  * isToken是否需要token
  */
 import axios from 'axios'
+import store from '@/store/';
+import router from '@/router/router'
 import { serialize } from '@/util/util'
 import { getToken } from '@/util/auth'
 import { Message } from 'element-ui'
@@ -54,6 +56,11 @@ axios.interceptors.response.use(res => {
         })
         return Promise.reject(new Error(message))
     }
+    //如果是401则跳转到登录页面
+    if (status === 401) store.dispatch('FedLogOut').then(() => router.push({ path: '/login' }));
+
+    // 如果是白名单类型放入catch自行处理
+    if (status !== 200) return Promise.reject(res);
     return res;
 }, error => {
     NProgress.done();
