@@ -612,9 +612,9 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
-"@smallwei/avue@^1.3.4-beta1":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.4.0.tgz#e23faec67027176c0b16c04a470438c0ecdd81aa"
+"@smallwei/avue@^1.4.2":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.4.3.tgz#763a5a132bf682ac54e972b9f4bbb9c86c5d5268"
   dependencies:
     async-validator "~1.8.1"
     avue-plugin-dynamicquery "^0.0.4"

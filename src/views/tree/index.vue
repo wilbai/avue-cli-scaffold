@@ -2,6 +2,7 @@
   <div>
     <basic-container>
       <avue-tree :option="option"
+                 :data="data"
                  @update="update"
                  @save="save"
                  @del="del"
@@ -36,41 +37,41 @@ export default {
           label: 'label',
           value: 'value',
           children: 'children'
-        },
-        column: [
-          {
-            id: 0,
-            label: '一级部门',
-            value: 0,
-            children: [
-              {
-                id: 1,
-                label: '一级部门1',
-                value: 0,
-              }, {
-                id: 2,
-                label: '一级部门2',
-                value: 0,
-              }
-            ]
-          }, {
-            id: 3,
-            label: '二级部门',
-            value: 0,
-            children: [
-              {
-                id: 4,
-                label: '二级部门1',
-                value: 0,
-              }, {
-                id: 5,
-                label: '二级部门2',
-                value: 0,
-              }
-            ]
-          }
-        ]
-      }
+        }
+      },
+      data: [
+        {
+          id: 0,
+          label: '一级部门',
+          value: 0,
+          children: [
+            {
+              id: 1,
+              label: '一级部门1',
+              value: 0,
+            }, {
+              id: 2,
+              label: '一级部门2',
+              value: 0,
+            }
+          ]
+        }, {
+          id: 3,
+          label: '二级部门',
+          value: 0,
+          children: [
+            {
+              id: 4,
+              label: '二级部门1',
+              value: 0,
+            }, {
+              id: 5,
+              label: '二级部门2',
+              value: 0,
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {

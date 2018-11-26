@@ -5,6 +5,7 @@ import axios from './router/axios';
 import VueAxios from 'vue-axios';
 import App from './App';
 import router from './router/router';
+import './mock/'; //模拟数据
 import './permission'; // 权限
 import './error'; // 日志
 import 'avue-plugin-transfer/packages' //引入avue-plugin-transfer插件

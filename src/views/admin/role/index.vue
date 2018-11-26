@@ -38,6 +38,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getRoleData } from '@/api/admin'
 import { roleOption } from "@/const/admin/adminTabelOption.js";
 export default {
   name: "role",
@@ -118,9 +119,9 @@ export default {
      **/
     handleList () {
       this.tableLoading = true;
-      this.$store
-        .dispatch("GetRoleData", { page: `${this.tablePage}` })
-        .then(data => {
+      getRoleData({ page: `${this.tablePage}` })
+        .then(res => {
+          const data = res.data.data;
           setTimeout(() => {
             this.tableData = data.tableData;
             this.page = {

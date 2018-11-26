@@ -3,7 +3,7 @@ import { setStore, getStore } from '@/util/store'
 import { isURL } from '@/util/validate'
 import { encryption, deepClone } from '@/util/util'
 import webiste from '@/const/website'
-import { loginByUsername, getUserInfo, getTableData, getMenu, logout, getMenuAll } from '@/api/user'
+import { loginByUsername, getUserInfo, getMenu, logout, getMenuAll, RefeshToken } from '@/api/user'
 
 
 function addPath(ele, first) {
@@ -46,7 +46,7 @@ const user = {
             });
             return new Promise((resolve) => {
                 loginByUsername(user.username, user.password, userInfo.code, userInfo.redomStr).then(res => {
-                    const data = res.data;
+                    const data = res.data.data;
                     commit('SET_TOKEN', data);
                     commit('DEL_ALL_TAG');
                     commit('CLEAR_LOCK');
@@ -59,7 +59,7 @@ const user = {
         LoginByPhone({ commit }, userInfo) {
             return new Promise((resolve) => {
                 loginByUsername(userInfo.phone, userInfo.code).then(res => {
-                    const data = res.data;
+                    const data = res.data.data;
                     commit('SET_TOKEN', data);
                     commit('DEL_ALL_TAG');
                     commit('CLEAR_LOCK');
@@ -68,18 +68,10 @@ const user = {
                 })
             })
         },
-        GetTableData(params, page) {
-            return new Promise((resolve) => {
-                getTableData(page).then(res => {
-                    const data = res.data;
-                    resolve(data);
-                })
-            })
-        },
         GetUserInfo({ commit }) {
             return new Promise((resolve, reject) => {
                 getUserInfo().then((res) => {
-                    const data = res.data;
+                    const data = res.data.data;
                     commit('SET_USERIFNO', data.userInfo);
                     commit('SET_ROLES', data.roles);
                     commit('SET_PERMISSION', data.permission)
@@ -92,10 +84,11 @@ const user = {
         //刷新token
         RefeshToken({ commit }) {
             return new Promise((resolve, reject) => {
-                logout().then(() => {
-                    commit('SET_TOKEN', new Date().getTime());
-                    setToken();
-                    resolve();
+                RefeshToken().then(res => {
+                    const data = res.data.data;
+                    commit('SET_TOKEN', data);
+                    setToken(data);
+                    resolve(data);
                 }).catch(error => {
                     reject(error)
                 })
@@ -133,7 +126,7 @@ const user = {
         GetMenu({ commit }, parentId) {
             return new Promise(resolve => {
                 getMenu(parentId).then((res) => {
-                    const data = res.data
+                    const data = res.data.data
                     let menu = deepClone(data);
                     menu.forEach(ele => {
                         addPath(ele, true);
@@ -147,7 +140,7 @@ const user = {
         GetMenuAll({ commit }) {
             return new Promise(resolve => {
                 getMenuAll().then((res) => {
-                    const data = res.data;
+                    const data = res.data.data;
                     commit('SET_MENU_ALL', data);
                     resolve(data);
                 })

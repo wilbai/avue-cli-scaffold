@@ -136,6 +136,7 @@ import html2canvas from 'html2canvas';
 import tableOption from '@/const/table/tableOption';
 import { parseTime } from '@/filters/'
 import { validatenull } from '@/util/validate';
+import { getTableData } from '@/api/user'
 export default {
   name: 'table',
   data () {
@@ -328,9 +329,9 @@ export default {
      **/
     handleList (form) {
       this.tableLoading = true;
-      this.$store
-        .dispatch('GetTableData', Object.assign({}, form, { page: `${this.tablePage}` }))
-        .then(data => {
+      getTableData(Object.assign({}, form, { page: `${this.tablePage}` }))
+        .then(res => {
+          const data = res.data.data;
           setTimeout(() => {
             this.tableData = data.tableData;
             this.page.total = data.total;

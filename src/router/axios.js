@@ -63,6 +63,7 @@ axios.interceptors.response.use(res => {
     if (status !== 200) return Promise.reject(res);
     return res;
 }, error => {
+    console.log(error);
     NProgress.done();
     return Promise.reject(new Error(error));
 })

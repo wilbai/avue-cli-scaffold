@@ -1,44 +1,50 @@
-import { userInfo, tableData } from '@/mock/user'
-import { menu } from '@/mock/menu'
-import { deepClone } from '@/util/util';
-export const loginByUsername = (username, password, code, redomStr) => {
-    console.log(username, password, code, redomStr);
-    return new Promise((resolve) => {
-        resolve({ data: new Date().getTime() });
-    })
-}
+import request from '@/router/axios';
+export const loginByUsername = (username, password, code, redomStr) => request({
+    url: '/user/login',
+    method: 'post',
+    data: {
+        username,
+        password,
+        code,
+        redomStr
+    }
+})
 
-export const getUserInfo = () => {
-    return new Promise((resolve) => {
-        resolve({ data: userInfo });
-    })
-}
-export const RefeshToken = () => {
-    return new Promise((resolve) => {
-        resolve({ data: new Date().getTime() });
-    })
-}
+export const getUserInfo = () => request({
+    url: '/user/getUserInfo',
+    method: 'get'
+});
 
-export const getMenu = (parentId) => {
-    return new Promise((resolve) => {
-        if (parentId != 1) parentId = 0;
-        resolve(deepClone({ data: menu[parentId] }));
-    })
-}
-export const getMenuAll = () => {
-    return new Promise((resolve) => {
-        resolve({ data: menu[0] });
-    })
-}
+export const RefeshToken = () => request({
+    url: '/user/refesh',
+    method: 'post'
+})
 
-export const getTableData = (page) => {
-    console.log(page);
-    return new Promise((resolve) => {
-        resolve({ data: tableData });
-    })
-}
-export const logout = () => {
-    return new Promise((resolve) => {
-        resolve();
-    })
-}
+export const getMenu = (type = 0) => request({
+    url: '/user/getMenu',
+    method: 'get',
+    data: {
+        type
+    }
+});
+
+export const getMenuAll = () => request({
+    url: '/user/getMenu',
+    method: 'get',
+    data: {
+        type: 0
+    }
+});
+
+export const getTableData = (page) => request({
+    url: '/user/getTable',
+    method: 'get',
+    data: {
+        page
+    }
+});
+
+export const logout = () => request({
+    url: '/user/logout',
+    method: 'get'
+})

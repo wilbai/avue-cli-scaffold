@@ -2,8 +2,8 @@
   <div class="avue-tags"
        v-if="showTag">
     <!-- tag盒子 -->
-    <div class="tags-box"
-         ref="tagBox">
+    <div class="avue-tags__box"
+         :class="{'avue-tags__box--close':!website.isFirstPage}">
       <el-tabs v-model="active"
                type="card"
                :closable="tagLen!==1"
@@ -15,7 +15,7 @@
                      :name="item.value">
         </el-tab-pane>
       </el-tabs>
-      <el-dropdown class="tags-menu pull-right">
+      <el-dropdown class="avue-tags__menu">
         <el-button type="primary"
                    size="mini">
           更多
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['tagWel', 'tagList', 'tag']),
+    ...mapGetters(['tagWel', 'tagList', 'tag', 'website']),
     ...mapState({
       showTag: state => state.common.showTag,
     }),

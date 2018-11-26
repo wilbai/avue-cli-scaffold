@@ -18,7 +18,7 @@
           </el-button>
         </a>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://pig4cloud.com"
+        <a href="https://avue/top/#/pay"
            target="_blank">
           <el-button type="primary">
             查看详情

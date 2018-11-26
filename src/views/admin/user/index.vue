@@ -20,6 +20,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getUserData } from '@/api/admin'
 import { userOption } from "@/const/admin/adminTabelOption.js";
 export default {
   name: "user",
@@ -75,9 +76,9 @@ export default {
      **/
     handleList () {
       this.tableLoading = true;
-      this.$store
-        .dispatch("GetUserData", { page: `${this.tablePage}` })
-        .then(data => {
+      getUserData({ page: `${this.tablePage}` })
+        .then(res => {
+          const data = res.data.data;
           setTimeout(() => {
             this.tableData = data.tableData;
             this.page = {

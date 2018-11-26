@@ -49,20 +49,23 @@
         font-size: 18x;
         text-align: center;
     }
-    .tags-box {
+    &__box {
         position: relative;
         box-sizing: border-box;
         padding-right: 106px;
         width: 100%;
+        &--close {
+            .el-tabs__item {
+                &:first-child {
+                    padding: 0 20px !important;
+                    .el-icon-close {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
-    .tags-list {
-        position: absolute;
-        padding: 2px 10px;
-        overflow: visible;
-        white-space: nowrap;
-        transition: left .3s ease;
-    }
-    .tags-menu {
+    &__menu {
         position: absolute;
         top: 0;
         right: 0;
