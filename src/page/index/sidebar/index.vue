@@ -10,6 +10,7 @@
                text-color="rgba(255,255,255,0.7)"
                :collapse="keyCollapse">
         <sidebar-item :menu="menu"
+                      first
                       :screen="screen"
                       :props="website.menu.props"
                       :collapse="keyCollapse"></sidebar-item>
