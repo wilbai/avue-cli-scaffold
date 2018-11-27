@@ -1,10 +1,11 @@
 .el-dropdown-menu__item {
-    font-size: 12px;
-    line-height: 28px;
+    font-size: 12px !important;
+    line-height: 28px !important;
 }
 
 .el-card.is-always-shadow {
     box-shadow: none;
+    border: none !important;
 }
 
 .el-scrollbar__view {
