@@ -12,7 +12,7 @@ avue-cli是一款基于avue和element-ui完全开源、免费的企业后端产�
 
 ## 预览
 
-[预览](cli2.avue.top)
+[预览](https://cli2.avue.top)
 
 ## 开发
 
