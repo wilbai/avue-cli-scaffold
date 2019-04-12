@@ -72,7 +72,7 @@ import { randomLenNum } from "@/util/util";
 import { mapGetters } from "vuex";
 export default {
   name: "userlogin",
-  data () {
+  data() {
     const validateCode = (rule, value, callback) => {
       if (this.code.value != value) {
         this.loginForm.code = "";
@@ -98,7 +98,7 @@ export default {
       },
       loginRules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: "请输入用户名", trigger: "blur" }
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
@@ -113,28 +113,28 @@ export default {
       passwordType: "password"
     };
   },
-  created () {
+  created() {
     this.refreshCode();
   },
-  mounted () { },
+  mounted() {},
   computed: {
     ...mapGetters(["tagWel"])
   },
   props: [],
   methods: {
-    refreshCode () {
+    refreshCode() {
       this.loginForm.redomStr = randomLenNum(this.code.len, true);
       this.code.type == "text"
         ? (this.code.value = randomLenNum(this.code.len))
         : (this.code.src = `${this.codeUrl}/${this.loginForm.redomStr}`);
       this.loginForm.code = this.code.value;
     },
-    showPassword () {
-      this.passwordType == ""
+    showPassword() {
+      this.passwordType === "text"
         ? (this.passwordType = "password")
-        : (this.passwordType = "");
+        : (this.passwordType = "text");
     },
-    handleLogin () {
+    handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.$store.dispatch("LoginByUsername", this.loginForm).then(() => {

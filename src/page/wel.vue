@@ -62,7 +62,7 @@
 <script>
 export default {
   name: "wel",
-  data () {
+  data() {
     return {
       tableOption: {
         border: true,
@@ -74,140 +74,147 @@ export default {
         menuBtn: true,
         menuAlign: "center",
         align: "center",
-        column: [{
-          label: "用户名",
-          prop: "username",
-          width: 120,
-          span: 24,
-          solt: true,
-          sortable: true,
-          rules: [{
-            required: true,
-            message: "请输入用户名",
-            trigger: "blur"
-          }]
-        },
-        {
-          label: "类型",
-          prop: "type",
-          width: 80,
-          type: "select",
-          sortable: true,
-          dicData: [{
-            label: '前端',
-            value: 0,
-          }, {
-            label: '后端',
-            value: 1,
-          }]
-        },
-        {
-          label: "stars",
-          width: "150",
-          prop: "stars",
-          sortable: true,
-          solt: true,
-        },
-        {
-          label: "码云",
-          solt: true,
-          span: 24,
-          prop: "address",
-          type: "textarea",
-          overHidden: true
-        }, {
-          label: "项目介绍",
-          width: "300",
-          prop: "info",
-          editDisabled: true,
-          formHeight: 200,
-          type: "ueditor",
-          span: 24,
-          overHidden: true
-        },
+        column: [
+          {
+            label: "用户名",
+            prop: "username",
+            width: 120,
+            span: 24,
+            solt: true,
+            sortable: true,
+            rules: [
+              {
+                required: true,
+                message: "请输入用户名",
+                trigger: "blur"
+              }
+            ]
+          },
+          {
+            label: "类型",
+            prop: "type",
+            width: 80,
+            type: "select",
+            sortable: true,
+            dicData: [
+              {
+                label: "前端",
+                value: 0
+              },
+              {
+                label: "后端",
+                value: 1
+              }
+            ]
+          },
+          {
+            label: "stars",
+            width: "150",
+            prop: "stars",
+            sortable: true,
+            solt: true
+          },
+          {
+            label: "码云",
+            solt: true,
+            span: 24,
+            prop: "address",
+            type: "textarea",
+            overHidden: true
+          },
+          {
+            label: "项目介绍",
+            width: "300",
+            prop: "info",
+            editDisabled: true,
+            formHeight: 200,
+            type: "ueditor",
+            span: 24,
+            overHidden: true
+          }
         ]
       },
-      data: [{
-        username: "lengleng",
-        name: "lengleng",
-        number: 12,
-        type: '0',
-        stars: 'https://gitee.com/log4j/pig/badge/star.svg?theme=white',
-        git: 'https://gitee.com/log4j/pig',
-        address: "https://gitee.com/log4j",
-        info: 'Pig是基于Spring Cloud、OAuth2.0，使用Vue前后分离的开发平台,支持账号、 短信、 SSO等多种登录。 ',
-      },
-      {
-        username: "smallwei",
-        name: "smallwei",
-        number: 20,
-        type: '1',
-        stars: 'https://gitee.com/smallweigit/avue/badge/star.svg?theme=white',
-        git: 'https://gitee.com/smallweigit/avue',
-        address: "https://gitee.com/smallweigit",
-        info: 'Avue是一个后台集成解决方案，它基于 Vue.js 和 element。 使用了最新的前端技术栈，支持权限验证，第三方网站嵌套等功能。',
-      }],
+      data: [
+        {
+          username: "lengleng",
+          name: "lengleng",
+          number: 12,
+          type: "0",
+          stars: "https://gitee.com/log4j/pig/badge/star.svg?theme=white",
+          git: "https://gitee.com/log4j/pig",
+          address: "https://gitee.com/log4j",
+          info:
+            "Pig是基于Spring Cloud、OAuth2.0，使用Vue前后分离的开发平台,支持账号、 短信、 SSO等多种登录。 "
+        },
+        {
+          username: "smallwei",
+          name: "smallwei",
+          number: 20,
+          type: "1",
+          stars:
+            "https://gitee.com/smallweigit/avue/badge/star.svg?theme=white",
+          git: "https://gitee.com/smallweigit/avue",
+          address: "https://gitee.com/smallweigit",
+          info:
+            "Avue是一个后台集成解决方案，它基于 Vue.js 和 element。 使用了最新的前端技术栈，支持权限验证，第三方网站嵌套等功能。"
+        }
+      ],
       easyDataOption2: {
         // color: 'rgb(63, 161, 255)',
         span: 6,
         discount: true,
         data: [
           {
-            title: '错误日志',
-            icon: 'icon-cuowu'
+            title: "错误日志",
+            icon: "icon-cuowu"
           },
           {
-            title: '数据展示',
-            icon: 'icon-shujuzhanshi2'
+            title: "数据展示",
+            icon: "icon-shujuzhanshi2"
           },
           {
-            title: '权限管理',
-            icon: 'icon-jiaoseguanli'
+            title: "权限管理",
+            icon: "icon-jiaoseguanli"
           },
           {
-            title: '菜单管理',
-            icon: 'icon-caidanguanli'
-          }]
+            title: "菜单管理",
+            icon: "icon-caidanguanli"
+          }
+        ]
       },
       easyDataOption: {
         data: [
           {
-            title: '错误日志',
+            title: "错误日志",
             count: 12332,
-            icon: 'icon-cuowu',
-            color: 'rgb(49, 180, 141)',
+            icon: "icon-cuowu",
+            color: "rgb(49, 180, 141)"
           },
           {
-            title: '数据展示',
+            title: "数据展示",
             count: 33,
-            icon: 'icon-shujuzhanshi2',
-            color: 'rgb(56, 161, 242)',
+            icon: "icon-shujuzhanshi2",
+            color: "rgb(56, 161, 242)"
           },
           {
-            title: '权限管理',
+            title: "权限管理",
             count: 2223,
-            icon: 'icon-jiaoseguanli',
-            color: 'rgb(117, 56, 199)',
-          },
+            icon: "icon-jiaoseguanli",
+            color: "rgb(117, 56, 199)"
+          }
         ]
       }
     };
   },
-  computed: {
-
-  },
-  created () {
-
-  },
-  methods: {
-
-  }
+  computed: {},
+  created() {},
+  methods: {}
 };
 </script>
 
 <style scoped="scoped" lang="scss">
 .info {
-  padding: 21px 0;
+  padding: 12px 0;
   .img-border {
     width: 64px;
     height: 65px;
