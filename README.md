@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://avue.top" target="_blank" rel="noopener noreferrer"><img width="100" src="https://gitee.com/smallweigit/avue/raw/master/static/images/logo.jpg" alt="Avue logo"></a></p>
+<p align="center"><a href="https://avuejs.com" target="_blank" rel="noopener noreferrer"><img width="100" src="https://gitee.com/smallweigit/avue/raw/master/static/images/logo.jpg" alt="Avue logo"></a></p>
 
 ## 介绍
 
@@ -8,11 +8,11 @@ avue-cli是一款基于avue和element-ui完全开源、免费的企业后端产�
 ## 文档
 
 [文档](https://www.kancloud.cn/smallwei/avue/579870)
-[文档说明](https://avuex.avue.top/#/doc/docs)
+[文档说明](https://avuejs.com/doc/plugins/avue-cli)
 
 ## 预览
 
-[预览](https://cli2.avue.top)
+[预览](https://cli2.avuejs.com)
 
 ## 开发
 
