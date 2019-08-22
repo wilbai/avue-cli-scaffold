@@ -39,7 +39,7 @@ export default {
         {
           label: "官网",
           icon: 'el-icon-document',
-          href: "https://avue.top",
+          href: "https://avuejs.com",
           parentId: 3
         }
       ]

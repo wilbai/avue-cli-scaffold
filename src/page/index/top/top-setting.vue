@@ -11,7 +11,7 @@
       <div class="setting__body setting__about">
         <p>当前版本：avue-cli v2.x </p>
         <p>基于框架：avue v2.x</p>
-        <a href="https://avue.top/#/component/avue2.x"
+        <a href="https://avuejs.com/#/component/avue2.x"
            target="_blank">
           <el-button type="primary">
             获取源码

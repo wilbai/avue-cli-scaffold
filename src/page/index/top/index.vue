@@ -83,7 +83,7 @@
             <router-link to="/info/index">个人信息</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
-            <a href="https://avue.top"
+            <a href="https://avuejs.com"
                target="_blank">avue官网</a>
           </el-dropdown-item>
           <el-dropdown-item>

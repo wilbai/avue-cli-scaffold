@@ -1,11 +1,17 @@
 <template>
   <div>
+    <basic-container>
+      <h3>大部分的例子可以在官网查看
+        <a href="https://avuejs.com"
+           target="_blank">https://avuejs.com</a>
+      </h3>
+    </basic-container>
     <el-row :span="24">
       <el-col :md="7"
               :xs="24"
               :sm="24">
         <basic-container>
-          <div class="info">
+          <div class="wel-info">
             <div class="img-border">
               <a href="#">
                 <div class="img"><img src="https://gitee.com/uploads/61/632261_smallweigit.jpg"></div>
@@ -62,7 +68,7 @@
 <script>
 export default {
   name: "wel",
-  data() {
+  data () {
     return {
       tableOption: {
         border: true,
@@ -80,7 +86,7 @@ export default {
             prop: "username",
             width: 120,
             span: 24,
-            solt: true,
+            slot: true,
             sortable: true,
             rules: [
               {
@@ -112,11 +118,11 @@ export default {
             width: "150",
             prop: "stars",
             sortable: true,
-            solt: true
+            slot: true
           },
           {
             label: "码云",
-            solt: true,
+            slot: true,
             span: 24,
             prop: "address",
             type: "textarea",
@@ -207,14 +213,17 @@ export default {
     };
   },
   computed: {},
-  created() {},
+  created () { },
   methods: {}
 };
 </script>
 
-<style scoped="scoped" lang="scss">
-.info {
-  padding: 12px 0;
+<style  lang="scss">
+.data-icons .item {
+  margin: 0;
+}
+.wel-info {
+  padding: 26px 0;
   .img-border {
     width: 64px;
     height: 65px;
