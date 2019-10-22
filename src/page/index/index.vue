@@ -53,6 +53,11 @@ export default {
     sidebar
   },
   name: 'index',
+  provide () {
+    return {
+      index: this
+    };
+  },
   data () {
     return {
       //刷新token锁
@@ -71,6 +76,36 @@ export default {
   computed: mapGetters(['isLock', 'isCollapse', 'website']),
   props: [],
   methods: {
+    //打开菜单
+    openMenu (item = {}) {
+      this.$store.dispatch("GetMenu", item.parentId).then(data => {
+        if (data.length !== 0) {
+          this.$router.$avueRouter.formatRoutes(data, true);
+        }
+        //当点击顶部菜单做的事件
+        if (!this.validatenull(item)) {
+          let itemActive,
+            childItemActive = 0;
+          if (item.href) {
+            itemActive = item;
+          } else {
+            if (this.menu[childItemActive].length == 0) {
+              itemActive = this.menu[childItemActive];
+            } else {
+              itemActive = this.menu[childItemActive].children[childItemActive];
+            }
+          }
+          this.$store.commit('SET_MENUID', item);
+          this.$router.push({
+            path: this.$router.$avueRouter.getPath({
+              name: itemActive.label,
+              src: itemActive.href
+            })
+          });
+        }
+
+      });
+    },
     showCollapse () {
       this.$store.commit("SET_COLLAPSE");
     },
@@ -89,7 +124,7 @@ export default {
         const token = getStore({
           name: 'token',
           debug: true,
-        });
+        }) || {};
         const date = calcDate(token.datetime, new Date().getTime());
         if (validatenull(date)) return;
         if (!(date.seconds >= this.website.tokenTime) && !this.refreshLock) {

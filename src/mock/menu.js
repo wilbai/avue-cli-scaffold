@@ -11,6 +11,25 @@ import Mock from 'mockjs'
  * children子类菜单数组
  * group配置其他路由激活菜单高亮
  */
+
+var top = [{
+  label: "首页",
+  href: "/wel/index",
+  icon: 'el-icon-menu',
+  parentId: 0
+},
+{
+  label: "设置",
+  icon: 'el-icon-setting',
+  href: '/dev/index',
+  parentId: 1
+},
+{
+  label: "官网",
+  icon: 'el-icon-document',
+  href: "https://avuejs.com",
+  parentId: 3
+}]
 const first = [{
   id: 33,
   label: "引导页",
@@ -182,14 +201,6 @@ const second = [{
     component: 'views/admin/role/index',
     icon: 'icon-jiaoseguanli',
     children: []
-  },
-  {
-    id: 22,
-    label: "菜单管理",
-    path: 'menu',
-    component: 'views/admin/menu/index',
-    icon: 'icon-caidanguanli',
-    children: []
   }
   ]
 }]
@@ -199,7 +210,13 @@ export default ({ mock }) => {
   Mock.mock('/user/getMenu', 'get', (res) => {
     let body = JSON.parse(res.body);
     return {
-      data: menu[body.type]
+      data: menu[body.type] || []
+    }
+  })
+  Mock.mock('/user/getTopMenu', 'get', () => {
+    return {
+      data: top
     }
   })
 }
+

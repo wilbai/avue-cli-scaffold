@@ -20,59 +20,28 @@
 import { mapGetters } from "vuex";
 export default {
   name: "top-menu",
+  inject: ["index"],
   data () {
     return {
       activeIndex: "0",
-      items: [
-        {
-          label: "首页",
-          href: "/wel/index",
-          icon: 'el-icon-menu',
-          parentId: 0
-        },
-        {
-          label: "设置",
-          icon: 'el-icon-setting',
-          href: '/dev/index',
-          parentId: 1
-        },
-        {
-          label: "官网",
-          icon: 'el-icon-document',
-          href: "https://avuejs.com",
-          parentId: 3
-        }
-      ]
+      items: []
     };
   },
-  created () { },
+  created () {
+    this.getMenu();
+  },
   computed: {
     ...mapGetters(["tagCurrent", "menu"])
   },
   methods: {
     openMenu (item) {
-      this.$store.dispatch("GetMenu", item.parentId).then(data => {
-        if (data.length === 0) return
-        this.$router.$avueRouter.formatRoutes(data, true);
-        let itemActive,
-          childItemActive = 0;
-        if (item.href) {
-          itemActive = item;
-        } else {
-          if (this.menu[childItemActive].length == 0) {
-            itemActive = this.menu[childItemActive];
-          } else {
-            itemActive = this.menu[childItemActive].children[childItemActive];
-          }
-        }
-        this.$router.push({
-          path: this.$router.$avueRouter.getPath({
-            name: itemActive.label,
-            src: itemActive.href
-          })
-        });
-      })
-    }
+      this.index.openMenu(item)
+    },
+    getMenu () {
+      this.$store.dispatch("GetTopMenu").then(res => {
+        this.items = res;
+      });
+    },
   }
 };
 </script>
