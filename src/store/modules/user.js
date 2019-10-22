@@ -33,7 +33,7 @@ const user = {
     roles: [],
     menuId: getStore({ name: 'menuId' }) || [],
     menu: getStore({ name: 'menu' }) || [],
-    menuAll: [],
+    menuAll: getStore({ name: 'menuAll' }) || [],
     token: getStore({ name: 'token' }) || '',
   },
   actions: {
